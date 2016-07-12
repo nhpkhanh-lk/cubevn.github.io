@@ -16,24 +16,277 @@
     </section>
 
     <section class="main-content">
-      <h1>
-<a id="ec-cube-3開発ドキュメント" class="anchor" href="#ec-cube-3%E9%96%8B%E7%99%BA%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EC-CUBE 3開発ドキュメント</h1>
+      <hr>
 
-<p>github page of the <a href="http://ec-cube.github.io/">http://ec-cube.github.io/</a></p>
+<p>layout: default
+title: ホーム</p>
 
-<p>EC-CUBE 3 の仕様や手順、開発Tipsに関するドキュメントを掲載しています。
-修正や追記、新規ドキュメントの作成をいただく場合、本レポジトリへPullRequestをお送りください。</p>
+<h2>
+<a id="description-ec-cubeのドキュメントサイトです開発ガイドラインや要素技術の概念本体開発やプラグイン開発のチュートリアルcookbookなどの情報を提供しています" class="anchor" href="#description-ec-cube%E3%81%AE%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%88%E3%81%A7%E3%81%99%E9%96%8B%E7%99%BA%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3%E3%82%84%E8%A6%81%E7%B4%A0%E6%8A%80%E8%A1%93%E3%81%AE%E6%A6%82%E5%BF%B5%E6%9C%AC%E4%BD%93%E9%96%8B%E7%99%BA%E3%82%84%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E9%96%8B%E7%99%BA%E3%81%AE%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%ABcookbook%E3%81%AA%E3%81%A9%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E6%8F%90%E4%BE%9B%E3%81%97%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>description: EC-CUBEのドキュメントサイトです。開発ガイドラインや要素技術の概念、本体開発やプラグイン開発のチュートリアル、Cookbookなどの情報を提供しています。</h2>
 
-<p>github pageはjekyllを使っています。
-windows環境の方は以下のURLを参考に環境を作成してください。
-<a href="http://qiita.com/chihiro-adachi/items/99a82c902b4c8467aa4c"></a><a href="http://qiita.com/chihiro-adachi/items/99a82c902b4c8467aa4c">http://qiita.com/chihiro-adachi/items/99a82c902b4c8467aa4c</a></p>
+<hr>
+
+<h1>
+<a id="ec-cube-3-開発ドキュメント" class="anchor" href="#ec-cube-3-%E9%96%8B%E7%99%BA%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EC-CUBE 3 開発ドキュメント</h1>
+
+<h2>
+<a id="github" class="anchor" href="#github" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>GitHub</h2>
+
+<ul>
+<li><a href="https://github.com/EC-CUBE/ec-cube">EC-CUBE 3 開発レポジトリ</a></li>
+<li><a href="https://github.com/EC-CUBE/ec-cube.github.io">EC-CUBE 3 開発ドキュメントレポジトリ</a></li>
+</ul>
+
+<h2>
+<a id="quick-start" class="anchor" href="#quick-start" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Quick Start</h2>
+
+<ul>
+<li><a href="/requirement.html">システム要件</a></li>
+<li><a href="development-environment.html">開発環境の構築</a></li>
+<li><a href="/install.html">インストール方法</a></li>
+<li><a href="/update.html">アップデート方法</a></li>
+</ul>
+
+<h2>
+<a id="ec-cube-3-仕様" class="anchor" href="#ec-cube-3-%E4%BB%95%E6%A7%98" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EC-CUBE 3 仕様</h2>
+
+<ul>
+<li>
+<a href="/spec-directory-structure.html">ディレクトリ・ファイル構成</a>
+
+<ol>
+<li>主なディレクトリと役割</li>
+<li>設定ファイル</li>
+<li>定数</li>
+<li>2系・3系置き換え早見表</li>
+</ol>
+</li>
+<li><a href="/template.html">テンプレート探索順序</a></li>
+<li><a href="https://github.com/EC-CUBE/eccube3-doc/blob/master/feature_list.xls">機能一覧</a></li>
+<li><a href="https://github.com/EC-CUBE/eccube3-doc/tree/master/ER-D">テーブル・ER図</a></li>
+<li><a href="https://github.com/EC-CUBE/eccube3-doc/tree/master/IntegrationTest">結合試験項目書</a></li>
+</ul>
+
+<h2>
+<a id="プラグイン仕様" class="anchor" href="#%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E4%BB%95%E6%A7%98" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>プラグイン仕様</h2>
+
+<ul>
+<li><a href="/plugin.html">プラグイン仕様・チュートリアル</a></li>
+<li><a href="/plugin_install.html">インストーラ仕様</a></li>
+<li>
+<a href="/plugin_handler.html">ハンドラによる優先制御仕様</a> </li>
+<li><a href="/plugin_console.html">php app/console plugin:develop を利用したプラグイン開発</a></li>
+<li><a href="plugin-test.html">プラグインのテスト</a></li>
+</ul>
+
+<h2>
+<a id="web-api仕様" class="anchor" href="#web-api%E4%BB%95%E6%A7%98" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Web API仕様</h2>
+
+<ul>
+<li><a href="/web-api-doc.html">Web API β版 プラグインスタートアップガイド</a></li>
+<li><a href="/api.html">Web API開発指針</a></li>
+<li><a href="/api_authorization.html">Web API認証 ( Authorization ) ガイド</a></li>
+</ul>
+
+<h2>
+<a id="開発ガイドライン" class="anchor" href="#%E9%96%8B%E7%99%BA%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>開発ガイドライン</h2>
+
+<ul>
+<li>
+<p>開発を行う際の、主なフローと、前提知識を提供します。</p>
+
+<ul>
+<li><a href="workflow-general-image.html">開発作業全体概要</a></li>
+<li><a href="coding_style.html">コーディング規約</a></li>
+<li><a href="migration.html">マイグレーションガイド</a></li>
+<li><a href="http://qiita.com/nanasess/items/350e59b29cceb2f122b3">ログ設計指針</a></li>
+<li><a href="workflow.html">Gitを用いた開発手順</a></li>
+<li>
+<a href="customize-reference.html">カスタマイズリファレンス</a>
+
+<ol>
+<li>カスタマイズ時に作成・変更するファイル</li>
+<li>外部コンポーネント</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="開発の補助" class="anchor" href="#%E9%96%8B%E7%99%BA%E3%81%AE%E8%A3%9C%E5%8A%A9" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>開発の補助</h2>
+
+<ul>
+<li><a href="tips.html">デバッグ・Tips</a></li>
+</ul>
+
+<h2>
+<a id="ec-cube-3で利用されている技術" class="anchor" href="#ec-cube-3%E3%81%A7%E5%88%A9%E7%94%A8%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E6%8A%80%E8%A1%93" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EC-CUBE 3で利用されている技術</h2>
+
+<ul>
+<li>
+<p>EC-CUBE 3のコアとなる技術概要と、参考になるサイトの参照先を紹介しています。</p>
+
+<ul>
+<li>
+<a href="/architecture.html">技術一覧</a>
+
+<ol>
+<li>Silex </li>
+<li>Symfony2</li>
+<li>データーベース抽象化レイヤ </li>
+<li>テンプレートエンジン </li>
+<li>ライブラリ管理 </li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="チュートリアル" class="anchor" href="#%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>チュートリアル</h2>
+
+<ul>
+<li>
+<p>チュートリアルで最終的に作るもの</p>
+
+<ul>
+<li><p>データーベースの「CRUD」を画面表示とあわせて作成します。</p></li>
+<li>
+<p>本チュートリアルの完成ソースは以下から入手できます。</p>
+
+<ul>
+<li><a href="https://github.com/geany-y/ec-cube/tree/documents/tutorial">GitHub</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
 <h3>
-<a id="開発協力に関して" class="anchor" href="#%E9%96%8B%E7%99%BA%E5%8D%94%E5%8A%9B%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>開発協力に関して</h3>
+<a id="チュートリアル一覧" class="anchor" href="#%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB%E4%B8%80%E8%A6%A7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>チュートリアル一覧</h3>
 
-<p>コードの提供・追加、修正・変更その他「EC-CUBE」への開発の御協力（Issue投稿、PullRequest投稿など、GitHub上での活動）を行っていただく場合には、
-<a href="https://github.com/EC-CUBE/ec-cube/blob/50de4ac511ab5a5577c046b61754d98be96aa328/LICENSE.txt">EC-CUBEのコピーライトポリシー</a>をご理解いただき、ご了承いただく必要がございます。
-PullRequestを送信する際は、EC-CUBEのコピーライトポリシーに同意したものとみなします。</p>
+<ul>
+<li>
+<p><strong>URLを設定しよう</strong></p>
+
+<ul>
+<li><a href="tutorial-1.html">ルーティングとコントローラープロバイダー</a></li>
+</ul>
+</li>
+<li>
+<p><strong>コントローラーからビューを表示してみよう</strong></p>
+
+<ul>
+<li><a href="tutorial-2.html">ビューのレンダリング</a></li>
+</ul>
+</li>
+<li>
+<p><strong>画面に変数を渡してみよう</strong></p>
+
+<ul>
+<li><a href="tutorial-3.html">Twig構文とView変数</a></li>
+</ul>
+</li>
+<li>
+<p><strong>フォームを表示してみよう</strong></p>
+
+<ul>
+<li><a href="tutorial-4.html">Formとフォームビルダー</a></li>
+</ul>
+</li>
+<li>
+<p><strong>フォーム情報を整理して入力値チェックも追加しよう</strong></p>
+
+<ul>
+<li><a href="tutorial-5.html">FormType</a></li>
+</ul>
+</li>
+<li>
+<p><strong>データーベースを作成しよう</strong></p>
+
+<ul>
+<li>本章は「開発ガイドライン」で説明を行なっているために、本チュートリアルのテーブル定義のみ、記述します。</li>
+<li>詳しい作成方法は以下を参照ください。
+
+<ul>
+<li><a href="migration.html">マイグレーションガイド</a></li>
+<li><a href="tutorial-6.html">本チュートリアルのテーブル定義</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Doctrineのためにデーターベース構造を設定しよう</strong></p>
+
+<ul>
+<li><a href="tutorial-7.html">データーベーススキーマ定義</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Doctrineのためにエンティティファイルを作成しよう</strong></p>
+
+<ul>
+<li><a href="tutorial-8.html">エンティティ</a></li>
+</ul>
+</li>
+<li>
+<p><strong>データーベースに登録してみよう</strong></p>
+
+<ul>
+<li><a href="tutorial-9.html">エンティティマネージャーを利用した情報の登録</a></li>
+</ul>
+</li>
+<li>
+<p><strong>データベースから情報を取り出してテーブルリストで表示してみよう</strong></p>
+
+<ul>
+<li><a href="tutorial-10.html">データーベース情報の取得とViewのループ処理</a></li>
+</ul>
+</li>
+<li>
+<p><strong>データーベース操作処理をレポジトリに整理しよう</strong></p>
+
+<ul>
+<li><a href="tutorial-11.html">レポジトリとデータベース操作</a></li>
+</ul>
+</li>
+<li>
+<p><strong>リストを編集しよう</strong></p>
+
+<ul>
+<li><a href="tutorial-12.html">条件検索とアップデート処理</a></li>
+</ul>
+</li>
+<li>
+<p><strong>いらない情報を削除してみよう</strong></p>
+
+<ul>
+<li><a href="tutorial-13.html">レコードの削除</a></li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="クックブック" class="anchor" href="#%E3%82%AF%E3%83%83%E3%82%AF%E3%83%96%E3%83%83%E3%82%AF" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>クックブック</h2>
+
+<ul>
+<li>本クックブックでは、チュートリアルとは違い、より実践的なカスタマイズ方法を説明していきます。</li>
+</ul>
+
+<h3>
+<a id="管理画面項目の追加" class="anchor" href="#%E7%AE%A1%E7%90%86%E7%94%BB%E9%9D%A2%E9%A0%85%E7%9B%AE%E3%81%AE%E8%BF%BD%E5%8A%A0" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>管理画面項目の追加</h3>
+
+<ol>
+<li><a href="cookbook-1-cube3-customize-admin-add.html">本体カスタマイズ</a></li>
+</ol>
+
+<h3>
+<a id="googleanaliticsの追加方法" class="anchor" href="#googleanalitics%E3%81%AE%E8%BF%BD%E5%8A%A0%E6%96%B9%E6%B3%95" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>GoogleAnaliticsの追加方法</h3>
+
+<ol>
+<li><a href="cookbook-2-cube3-customize-js.html">管理機能ブロックを利用したJavaScriptの追加</a></li>
+</ol>
 
       <footer class="site-footer">
 
