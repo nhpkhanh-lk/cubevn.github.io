@@ -68,8 +68,7 @@ However, in REST emphasis the convience without regarding
 In case of API that is not resource operation which is called search, use verb, not noun.
 
 ```
-例)
-https://ドメイン名/api/v1/search?name=aaaa&price=1000
+Ex)https://ドメイン名/api/v1/search?name=aaaa&price=1000
 
 
 
@@ -124,7 +123,7 @@ Morever, set array in order to transfer many error.
 }
 
 ```
-* 参考 [http://qiita.com/suin/items/f7ac4de914e9f3f35884](http://qiita.com/suin/items/f7ac4de914e9f3f35884)
+* Reference  [http://qiita.com/suin/items/f7ac4de914e9f3f35884](http://qiita.com/suin/items/f7ac4de914e9f3f35884)
 
 Status code when occurred error, will be different based on process. However basically, try to return `400` series.  
 However, contents of respose header will consider separately.
