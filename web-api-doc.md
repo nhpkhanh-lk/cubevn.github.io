@@ -124,7 +124,7 @@ Because move to 管理画面(management screen) of EC-CUBE, so if choose 「許�
 - Notice
     - Regardless of the scope that chose in Swagger side, Request is executing with all scope, but this is due to bug Swagger. It is not bug of authentication of EC-CUBE API.
 
-### 4. GET((acqusition) the product info
+### 4. GET(acqusition) the product info
 1. Choose 「GET /api/v0/product」
 1. If click 「実際に実行」(run actually), you can get the product info.
 
