@@ -121,8 +121,8 @@ Because move to 管理画面(management screen) of EC-CUBE, so if choose 「許�
 
 ---
 
-- ご注意
-    - Swagger側で選択したスコープに関わらず、全てのスコープに対してリクエストが行われてしまいますが、これはSwagger不具合によるものです。EC-CUBE APIの認証の不具合ではありません。
+- Notice
+    - Regardless of the scope that chose in Swagger side, Request is executing with all scope, but this is due to bug Swagger. It is not bug of authentication of EC-CUBE API.
 
 ### 4. GET((acqusition) the product info
 1. Choose 「GET /api/v0/product」
@@ -165,13 +165,13 @@ About detail, please confirm the following document.
 <a href="https://github.com/nanasess/DotNetOpenAuth" target="_blank">C# での実装例(Web/Wpf)</a>  
 <a href="https://github.com/nanasess/eccube3-oauth2-client-for-java" target="_blank">Java での実装例</a>  
 <a href="https://developers.google.com/oauthplayground/" target="_blank">Google OAuth 2.0 Playground</a>  	
-    - OAuth 2.0 Configuration -> OAuth endpoint -> Custom にて動作確認済み  
-    - Authorization Endpoint に ```?state=<random_state>``` を付与する必要があります
+    - Confirmed operation already in OAuth 2.0 Configuration -> OAuth endpoint -> Custom   
+    - It is necessary to give  ```?state=<random_state>``` for Authorization Endpoint
 
 ## About the usable API End-point
 
-In EC-CUBE 3.0, では、RESTの原則に基づいたAPIの実装を行っています。  
-詳細は下記のドキュメントをご確認ください。  
+In EC-CUBE 3.0, conduct implementation API based on rule of REST.  
+Please refer detail at the following document.  
 
 API developing document  
 [http://ec-cube.github.io/api](http://ec-cube.github.io/api)  
@@ -180,18 +180,18 @@ API End-point list
 
 ## About info that can get in API
 In β version, supplying CRUD access with each Table of EC-CUBE 3.0  
-そのためAPIから取得したデータの定義は、EC-CUBE 3.0のテーブル定義に依存します。  
-EC-CUBE 3.0のテーブル定義は下記を参照してください。  
+Therefore, data definition that got from API will depend on Table definition of EC-CUBE 3.0.  
+Table definition of EC-CUBE 3.0 will refer the following part.  
   
-EC-CUBE 3.0テーブル定義  
+Table definition of EC-CUBE 3.0  
 [https://github.com/EC-CUBE/eccube3-doc/tree/master/ER-D](https://github.com/EC-CUBE/eccube3-doc/tree/master/ER-D)  
 
-## トラブルシューティング
+## Troubleshooting
 
-1. 認証したのにレスポンスが401となる
+1. Authenticated, but response becomes 401
 
-    一部のレンタルサーバーや SAPI CGI/FastCGI の環境では、認証情報(Authorization ヘッダ)が取得できず、 401 Unauthorized エラーとなってしまう場合があります。
-    この場合は、 <ec-cube-install-path>/html/.htaccess に以下を追記してください。
+   In environment of the part of rental server or SAPI CGI/FastCGI, sometimes you can get authentication info (Authorization header) and get errror 401 Unauthorized
+   In this case, please add the following part into  <ec-cube-install-path>/html/.htaccess
 
     ```
     RewriteCond %{HTTP:Authorization} ^(.*)
