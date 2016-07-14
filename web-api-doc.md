@@ -26,7 +26,7 @@ title: Web API β version Plugin startup Guide
 
 1. Can CRUD all tables
     - DELETE is just table which exists del_flg
-    - public アクセス可能なテーブル、Customer 認証時に参照/更新可能なテーブル、 フィールドは別途定める
+    - Table that can access public, Table, field that can refer/ updae when authenticate Customer will decide separately.
     - API definition depends on Table structure
     - The hashed data will use as character string
 1. β version is testing implementation, so perhaps spec will change until official release. 
@@ -40,8 +40,8 @@ title: Web API β version Plugin startup Guide
     - Safety of Authentication depends on  SymfonySecurity, php-oauth2-server, EC-CUBE 3.0のプラグイン機構に依存
 1. シングルサインオンの機能はサポートしない
 1. API ドキュメント生成に使用している swagger-ui は master ブランチの未リリースのものを使用（SHA:b856d6c）
-1. PHP5.4以降にて動作確認
-1. PostgreSQL9.2, MySQL5.5, SQLite3 にて動作確認
+1. Confirm operation in over PHP5.4
+1. Confirm operation in PostgreSQL9.2, MySQL5.5, SQLite3 
 1. <a href="https://github.com/EC-CUBE/eccube-api/issues" target="_blank">現状把握している課題(Issue)</a>
 
 ## Installation
@@ -54,7 +54,7 @@ Please get from EC-CUBE Owner's store.
 
 ## public アクセス可能なAPIエンドポイントへのアクセス
 
-- EC-CUBE APIβ版プラグインインストール後に、下記のURLにアクセスすることで、商品情報を取得できます。
+- After Install EC-CUBE APIβ version Plugin, access into the following URL to get product info 
 
 	URL： http://<サイトURL> /api/v0/product  
 	レスポンス形式： JSON形式
@@ -63,14 +63,14 @@ Please get from EC-CUBE Owner's store.
 
 ## 認証が必要なAPIエンドポイントへのアクセス
 
-public アクセス不可のAPIエンドポイントを使用する場合は、クライアントの登録と認証が必要です。  
-このドキュメントではSwaggerをクライアントとして使用して、動作確認を行います。  
-以下に手順を示します。
+In case use API Endpoint that can not access public, registration and authentication of client are essential.   
+In this document, use Swagger as Client and conduct operating confirmation.  
+Express order as below
 
-### 1. APIクライアントの登録	
+### 1. Register API Client 	
 
-認証を行うにはクライアントの登録が必要です。  
-管理画面>設定>メンバー管理 から`APIクライアントの追加`を行ってください。
+It is necessary to register Client when conduct authentication.  
+Execute `APIクライアントの追加`(add API client) from 管理画面(management screen)>設定(setting)>メンバー管理(member management)
 
 ---
 
