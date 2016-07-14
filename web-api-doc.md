@@ -1,56 +1,56 @@
 ---
 layout: default
-title: Web API β版 プラグインスタートアップガイド
+title: Web API β version Plugin startup Guide
 ---
 
 ---
 
-# EC-CUBE API β版 プラグイン スタートアップガイド
+# EC-CUBE API β version Plugin Startup Guide
 
-## 本章の内容
+## Contents of this chapter
 
-- EC-CUBE API β版
-	- インストール方法
-    - Swaggerを利用した動作確認方法
-    - 開発に必要なドキュメント
+- EC-CUBE API β version
+    - Install method
+    - Operating confirmation method that used Swagger
+    - Document that needs for developing
 
-- 対象者
-	- OAuth2.0やOpenID Connectによる認証/APIの利用経験のある方を想定しています。   
-	（Facebook/Twitter/Google連携アプリの作成など）
+- Target
+	- Based on OAuth2.0 and OpenID Connect to assume about the person who has experience in using authentication /API   
+	（Create liking App of Facebook/Twitter/Google)
 
-- 関連ページ  
+- Revelant page  
 	[API開発指針](/api.html)
 	[Web API Authorization ガイド](/api_authorization.html)  
 
-## β版 基本要件
+## β version  Basic requirement
 
-1. 全テーブルの CRUD が可能なこと
-    - DELETE は del_flg が存在するテーブルのみ
+1. Can CRUD all tables
+    - DELETE is just table which exists del_flg
     - public アクセス可能なテーブル、Customer 認証時に参照/更新可能なテーブル、 フィールドは別途定める
-    - API定義は、テーブル構成に依存する
-    - ハッシュ化されているデータはそのまま文字列として扱う
-1. β版は試験的な実装のため、正式リリースまでに仕様が変更される可能性あり
-	- エンドポイントの名前
-	- 取得できるデータ構造（EC-CUBE内のテーブルレイアウトに依存)
-	- 各テーブルへのアクセス制限
-	- など
-1. OAuth2.0/OpenID Connect に準拠した認証
-    - 一部未サポートの仕様あり（今後サポート予定）
-    - セキュティ強化のためOAuth2.0, OpenID Connectの仕様で「推奨→必須」に変更しているパラメータあり
-    - 認証の安全性は SymfonySecurity, php-oauth2-server, EC-CUBE 3.0のプラグイン機構に依存
+    - API definition depends on Table structure
+    - The hashed data will use as character string
+1. β version is testing implementation, so perhaps spec will change until official release. 
+	- Name of Endpoint
+	- Getable data structure (depend on Table Layout in EC-CUBE)
+	- Access limitation to each Table
+	- etc..
+1. Authentication base on OAuth2.0/OpenID Connect 
+    - There us spec which un-support one part (Plan that supports later)
+    - There is parameter which is changing into 「推奨→必須」(recommendation ->required) in spec of OpenID Connect in order to strenghthen security.
+    - Safety of Authentication depends on  SymfonySecurity, php-oauth2-server, EC-CUBE 3.0のプラグイン機構に依存
 1. シングルサインオンの機能はサポートしない
 1. API ドキュメント生成に使用している swagger-ui は master ブランチの未リリースのものを使用（SHA:b856d6c）
 1. PHP5.4以降にて動作確認
 1. PostgreSQL9.2, MySQL5.5, SQLite3 にて動作確認
 1. <a href="https://github.com/EC-CUBE/eccube-api/issues" target="_blank">現状把握している課題(Issue)</a>
 
-## インストール
+## Installation
 
-EC-CUBEオーナーズストアから入手してください。  
+Please get from EC-CUBE Owner's store.  
   
 <a href="http://www.ec-cube.net/products/detail.php?product_id=1116" target="_blank">プラグインダウンロードページ</a>  
   
-※β版は試験的なリリースのため**本番環境にはインストールしない**でください。
+※β version is trial release, so please **本番環境にはインストールしない** (do not install in real environment)
 
 ## public アクセス可能なAPIエンドポイントへのアクセス
 
