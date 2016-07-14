@@ -1,51 +1,50 @@
 ---
 layout: default
-title: API開発指針
+title: API developmemt Guideline
 ---
 
 ---
 
-EC-CUBE 3でAPIを開発するための指針をまとめたものです。
+This is document which summarized Guideline for developing API in EC-CUBE
 
-EC-CUBE 3では
+In EC-CUBE 3
 
-* RESTの原則に基づいてAPI対応を行います。
-* RESTでは商品一覧、商品詳細といったそれぞれのリソースに対して固有の一意なURIが与えられ、そのURIに対してGETやPOST、PUT、DELETEといった
-HTTPメソッドでパラメータを送ることで投稿や削除などの操作を行います。
+* Implement API handling based on principle of REST
+* In REST, unique URI will be given for each resource which is called product list,　conduct operation such as submit and delete by sending parameter by HTTP method which is called GET and POST, PUT, DELETE with that URI.
 
-#### 関連ページ
+#### Relevant page
 [Web API Authorization ガイド](/api_authorization.html)  
 [EC-CUBE API β版 プラグイン スタートアップガイド](/web-api-doc.html)
 
-## APIのエンドポイント
+## End point of API
 
-エンドポイントのベースURIは、https://ドメイン名/api/v1 とし、この後に各エンドポイントのパスを記述します。
+Base URI of End Point will set https://ドメイン名/api/v1 , after that descrive path of each End point.
 
 ```
-例) /products の場合
+Ex) In case of /products
 https://ドメイン名/api/v1/products
 ```
 
 
-## APIバージョニング
+## API versioning
 
-URLにバージョンを含めます。
+Include version in URL
 
 ```
 http://ドメイン名/api/v1/products
 ```
 
-今後APIのバージョンが上がった場合、`/v1`のバージョン部分が変更され、旧バージョンのAPIは互換性維持のために残しておきます。
-バージョンは整数のみとし、マイナーバージョンは作りません。
+In future, in case version up API, part of version of  `/v1` will be change, and API of old version will leave in order to maintain compatibility.
+Version is just interger, do not create minor version.
 
 
-## リソース名
+## resource name
 
-REST APIではURLでリソースを表現し、そのリソースへの操作をHTTPメソッドを用いて表現します。
+IN REST API, express resource by URL, use HTTP method to express the operation to that resource.
 
-リソース例)
+Resource example)
 
-|目的|URL|HTTPメソッド|
+|Purpose|URL|HTTP method|
 |---|---|---|
 |商品一覧の取得|/products|GET|
 |商品の新規登録|/products|POST|
@@ -54,27 +53,27 @@ REST APIではURLでリソースを表現し、そのリソースへの操作を
 |商品情報の削除|/products/:id|DELETE|
 
 
-* 小文字のみを使用する。
-* リソースを名詞で表す。
-* なるべく具体的な複数形の名詞を名称として付ける。
-* リソースの操作をHTTPメソッドで表す。
-* 分かりやすくするため`/products/:id/xxxxx`以上に深くなるURLは利用しない。
-* URLは浅く保ち複雑なものはクエリストリングにする。
-* クエリストリング名は配列で複数渡すものについては複数形、一つだけ渡すものについては単数形とする。
+* Just use lower case letter
+* Display resource by name
+* Put many basic concrete noun as name as much as possible
+* Show operation of resource by HTTP method
+* In order to be easy to understand, do not use deeply URL more than `/products/:id/xxxxx`.
+* URLは浅く保ち複雑なものはクエリストリングにする。(※)
+* About Query string name, if transfer many by array, will set plural form; if just transfer a part, will set singular form.
 
-ただし、RESTには必ずこだわらず利便性を重要視します。
+However, in REST emphasis the convience without regarding
 
 
-## RESTに適さないAPI
-検索といったリソース操作でないAPIの場合、名詞でなく動詞を使います。
+## API that is not suitable for REST
+In case of API that is not resource operation which is called search, use verb, not noun.
 
 ```
 例)
 https://ドメイン名/api/v1/search?name=aaaa&price=1000
-```
 
 
-## エラー処理
+
+## error process
 
 #### HTTPステータスコード
 エラー発生時にHTTPステータスコードを使いますが、HTTPステータスコードは全て網羅せず以下に止めておきます。
@@ -91,24 +90,24 @@ https://ドメイン名/api/v1/search?name=aaaa&price=1000
 |500|Internal Server Error|サーバサイドでエラーが発生した場合に返される。|
 |503|Service Unavailable|サービス利用不可。サービスが一時的に過負荷やメンテナンスで使用不可能である。|
 
-* 参考 [https://ja.wikipedia.org/wiki/HTTPステータスコード](https://ja.wikipedia.org/wiki/HTTPステータスコード)
+* Reference  [https://ja.wikipedia.org/wiki/HTTPステータスコード](https://ja.wikipedia.org/wiki/HTTPステータスコード)
 
-EC-CUBE 3ではレスポンスを渡す時にHTTPステータスコードの`200`番台を返すようにします。
+In EC-CUBE 3, make sure that return `200` series of HTTP status code when transfer response.
 
 ```php
 $data = 'aaa';
 return $app->json($data, 201);
 ```
-ただし、正常系のGetメソッドに関してはHTTPステータスコードの`200`は渡しません。
+However, relating to Get method of normal system, do not transfer `200` of HTTP status code.
 
 ```php
 $data = 'aaa';
 return $app->json($data);
 ```
 
-#### エラー時のレスポンス
-HTTPステータスコードに加えてエラーが発生した場合、エラーコード, エラーメッセージ, エラー詳細などをJSONレスポンスで返すようにします。
-また、エラーが複数渡せるように配列にしておきます。
+#### Response when occurred error
+In case add into HTTP status code, and occurred error, make sure that return error code, error message, error detail by JSON response
+Morever, set array in order to transfer many error.
 
 ```json
 {
@@ -127,22 +126,22 @@ HTTPステータスコードに加えてエラーが発生した場合、エラ�
 ```
 * 参考 [http://qiita.com/suin/items/f7ac4de914e9f3f35884](http://qiita.com/suin/items/f7ac4de914e9f3f35884)
 
-エラーが発生したときのステータスコードは処理によって異なりますが、基本は`400`番台を返すようにします。  
-また、レスポンスヘッダの内容については別途検討します。
+Status code when occurred error, will be different based on process. However basically, try to return `400` series.  
+However, contents of respose header will consider separately.
 
 
-## レスポンスヘッダについて
-今後、認証処理のヘッダ情報などEC-CUBE 3独自のヘッダ内容を記述します。
+## About response header
+In future, describe unique header contents of EC-CUBE 3 such as header info to authentication process
 
-## レスポンスのフォーマット
-レスポンスデータフォーマットはJSONのみを原則とします。
+## Format of response 
+As general rule, response data format will be just JSON.
 
 
-## 返り値について
-JSONの属性名に規約はありませんがJavaScriptの命名規約においてキャメルケースを使うケースが多いため、
-なるべく先頭小文字のキャメルケースを使う方が望ましいですが、EC-CUBE 3にとって使い勝手の良い形式とするため特に制約は設けません。
+## About return value
+There is no rule in property name of JSON, but there are many cases which use camel case for naming rule of JavaScript
+so that Use of camel case of the first lower character is expected. In EC-CUBE 3, there is not speial rule in order to tcreate user-friendly format.
 
-ただし、JSONの返り値の形式は必ず**key-value形式**にします。
+However, format of returned value will choose **key-value形式**
 
 ```json
 // サンプル
@@ -173,39 +172,40 @@ JSONの属性名に規約はありませんがJavaScriptの命名規約におい
 
 
 
-#### データ型
-1. Date型  
-日付データの形式にはRFC 3339を用います。また、時差対応しやすくするためUTCで返すことを原則とします。  
-例：2014-08-30T20:00:00Z
+#### Data type
+1. Date type    
+In format of date data, use RFC 3339. As general rule, return by UTC in order to hanとします。  
+Ex) 2014-08-30T20:00:00Z
 
-1. boolean型  
-true、falseを返します。
-
-1. 数値型  
-文字列に変換するのではなく、数値のままで返すようにします。  
-ただし金額の場合、金額の値については文字列として表現("1000")します。
-
-1. 文字列
-""で囲んで文字列を返します。  
-タブや改行など、いくつかの特殊な文字はエスケープする必要があります。
+1. boolean type  
+Return true, false.
 
 
-1. null扱い  
-nullとして値がセットされていた場合、空文字などに変換せずそのまま返します。
+1. Numeric value  
+Remain numeric value and return without convert character string.  
+But in case of amount of money, display ("1000") value of amount of money as character string 
+
+1. Character string
+Surround in "" and return character string.  
+It is necessary to escape Tab, lines breaks, some special characters.
+
+
+1. Handle null  
+In case value is set as null, remain like that and return without converting into null text.
 
 
 
 
-## URLパラメータ名
-URLパラメータ名はEntityのプロパティ名を基本的に利用します。(DBの項目名とは異なるプロパティ名もあります。)
-また、検索画面については以下の共通パラメータ指定を行います。
+## URL parameter name
+URL parameter name will use property name of Entity. (Sometimes, there are property names which are different with Item name od DB)
+Morever, about searching screen, conduct specifying the following common parameter.
 
-#### ページネーション
-`limit` と `offset` パラメータで指定することで、`offset`番目から`limit`件取得できるようにします。  
+#### Pagination
+By specifying parameter `limit` and `offset`, try to get record `limit` from `offset` .  
 例) `/products?limit=25&offset=50`
 
-戻り値のJSONには全レコード件数を metadata としてレスポンスに含めるようにします。
-省略時のデフォルト件数はデータサイズやアプリケーションによって決定します。
+In JSON of returned value, include all records into response as metadata.
+The number of default records when omitted, will decide based on data size and Application.
 
 ```json
 {
@@ -222,61 +222,62 @@ URLパラメータ名はEntityのプロパティ名を基本的に利用しま�
 }
 ```
 
-#### フィールド指定
-レスポンス量を増やさないために、フィールドを指定するとそのフィールドの値だけを返すように制御します。  
-例) `/products?fields=name,color,location`
+#### Specify field
+Response volume will not increase, if specify field, control in order to return just value of that field.  
+Ex) `/products?fields=name,color,location`
 
-`fields` パラメータにカンマ区切りで指定することで指定したフィールドのみを返します。
+When specify in paramter `fields` by comma separated value, return just the specified field.
 
 
-## パラメータチェックについて
-FormTypeを利用できる箇所はFormTypeを使って入力チェックを行い、利用できない箇所は個別にチェックを行います。  
-個別入力チェックについては`Symfony\Component\Validator\Constraints`パッケージにあるクラスを極力使うようにします。
+## About parameter check
+Place that can use FormType will use FormType to check input, place that can not use, will check separately.  
+About individual input check, try to use class that exists in package `Symfony\Component\Validator\Constraints` as much as possible
 
-###### 個別入力チェックサンプル
+###### Individual input check sample
 
  
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/api/SampleValidate.php"></script>
 
-## 認証について
+## Authentication
 
-EC-CUBE で Web API を実行する際、一般公開された情報を参照する場合は必要ありませんが、顧客情報を参照したり、受注情報を更新する場合などは認証が必要です。
+In EC-CUBE, when excecute Web API, it is not necessary in case refer the general public info. But it is necessary for authentication in case refer the customer info or update the receiving order info.
 
-EC-CUBE 3 では、 OpenID Connect を使用した
+In EC-CUBE 3, OpenID Connect is used.
 
-[OAuth2.0 Authorization](http://openid-foundation-japan.github.io/rfc6749.ja.html) 及び [OpenID Connect](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html) をサポートしています。
+Supporting [OAuth2.0 Authorization](http://openid-foundation-japan.github.io/rfc6749.ja.html) and  [OpenID Connect](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html).
 
-詳しくは [Web API Authorization ガイド](/api_authorization.html) を参照してください。
+Please refer detail at [Web API Authorization ガイド](/api_authorization.html) 
 
-### 対応する認証フロー
+### The handled authentication flow
 
-以下の認証フローに対応しています。
+Handling for the following authentication flow
 
-- [OAuth2.0 Authorization Code Flow](http://openid-foundation-japan.github.io/rfc6749.ja.html#grant-code) - 主にWebアプリ向け
-- [OAuth2.0 Implicit Flow](http://openid-foundation-japan.github.io/rfc6749.ja.html#grant-implicit) - 主にJavaScript、 ネイティブアプリ向け
-- [OpenID Connect Authorization Code Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#CodeFlowAuth) - 主にWebアプリ向け
-- [OpenID Connect Implicit Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#ImplicitFlowAuth) - 主にJavaScript、 ネイティブアプリ向け
 
-### 利用方法
+- [OAuth2.0 Authorization Code Flow](http://openid-foundation-japan.github.io/rfc6749.ja.html#grant-code) - For Web App
+- [OAuth2.0 Implicit Flow](http://openid-foundation-japan.github.io/rfc6749.ja.html#grant-implicit) - For JavaScript , Native App
+- [OpenID Connect Authorization Code Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#CodeFlowAuth) - For Web App
+- [OpenID Connect Implicit Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#ImplicitFlowAuth) - For JavaScript, Native App
+
+### Usage method
 
 #### 管理画面メンバー(Member)
 
-1. 管理画面→設定→システム情報設定→メンバー管理→メンバーの編集より **APIクライアント一覧** をクリックします。
-2. 「新規作成」より、APIクライアントを新規登録します。
-    - **アプリケーション名** には任意の名称を入力します
-    - **redirect_uri** には、Authorization Endpoint からのリダイレクト先の URL を入力します。ネイティブアプリやテスト環境用に `urn:ietf:wg:oauth:2.0:oob` を使用することも可能です。
-3. 登録が終わると、`client_id`, `client_secret` などが発行されます。公開鍵は `id_token` を検証する際に使用します。
-3. APIクライアントを実装します。
+1. Click 管理画面(management screen)→設定(setting)→システム情報設定(system info setting)→メンバー管理(member management)→ **APIクライアント一覧**(API client list) from editing member
+2.  Register new APOI client from [新規作成](new create)
+    -  Input the optional name for **アプリケーション名** 
+    - In **redirect_uri**, input URL of direct destination from Authorization Endpoint. It is possible to use `urn:ietf:wg:oauth:2.0:oob` for Native App and Testing environment.
+3. If the registration has finished, `client_id`, `client_secret` will be issued. The public key will use when verify  `id_token` 
+3. Execute API Client
 
 #### 会員(Customer)
 
-1. mypage にログインし、 `/mypage/api` へアクセスします。
-2. **新規登録** をクリックし、 APIクライアントを新規登録します。
-    - **アプリケーション名** には任意の名称を入力します
-    - **redirect_uri** には、Authorization Endpoint からのリダイレクト先の URL を入力します。
-3. 登録が終わると、 `client_id`, `client_secret` などが発行されます。公開鍵は `id_token` を検証する際に使用します。
+1. Login in mypage, access to `/mypage/api` 
+2. Click **新規登録**, register new  API client 
+    - Input the optional name for  **アプリケーション名**
+    - In **redirect_uri** , input URL of direct destination from Authorization Endpoint
+3. If the registration has finished, `client_id`, `client_secret` will be issued. The public key will use when verify  `id_token`
 
-### サンプルクライアント
+### Sample client
 
 - [PHP(Symfony2) での実装例](https://github.com/nanasess/eccube3-oauth2-client)
 - [Python(Flask) での実装例](https://github.com/nanasess/eccube3-oauth2-client-for-python)
@@ -284,20 +285,20 @@ EC-CUBE 3 では、 OpenID Connect を使用した
 - [C# での実装例(Web/Wpf)](https://github.com/nanasess/DotNetOpenAuth)
 - [Java での実装例](https://github.com/nanasess/eccube3-oauth2-client-for-java)
 - [Google OAuth 2.0 Playground](https://developers.google.com/oauthplayground/)
-    - OAuth 2.0 Configuration -> OAuth endpoint -> *Custom* にて動作確認済み
-    - Authorization Endpoint に `?state=<random_state>` を付与する必要があります
+    - Confirmed already operation in OAuth 2.0 Configuration -> OAuth endpoint -> *Custom* 
+    - It is necessary to give  `?state=<random_state>` for Authorization Endpoint.
 
 
-## ドキュメント
-Swagger Editorを使ってWeb APIドキュメント(swagger.yml)を記述します。
+## Document
+Use Swagger Editor to describe Web API document (swagger.yml)
 
 [Swagger Editor](http://editor.swagger.io/)
 
-* 参考 [http://qiita.com/weed/items/539f6bbade6b75980468](http://qiita.com/weed/items/539f6bbade6b75980468)
+* Reference  [http://qiita.com/weed/items/539f6bbade6b75980468](http://qiita.com/weed/items/539f6bbade6b75980468)
 
 
-## 参考URL
-この指針は以下のサイトを参考にさせていただきました。
+## Reference URL
+This guidline will refer the following site
 
 [これから始めるエンタープライズ  Web API 開発](https://www.ogis-ri.co.jp/otc/hiroba/technical/WebAPI/part2.html)  
 [Web API設計指針を考えた](http://blog.mmmcorp.co.jp/blog/2015/07/01/web_api_guideline/index.html)  
