@@ -38,8 +38,8 @@ title: Web API β version Plugin startup Guide
     - There us spec which un-support one part (Plan that supports later)
     - There is parameter which is changing into 「推奨→必須」(recommendation ->required) in spec of OpenID Connect in order to strenghthen security.
     - Safety of Authentication depends on  SymfonySecurity, php-oauth2-server, EC-CUBE 3.0のプラグイン機構に依存
-1. シングルサインオンの機能はサポートしない
-1. API ドキュメント生成に使用している swagger-ui は master ブランチの未リリースのものを使用（SHA:b856d6c）
+1. Do not support for Single sign-on function.
+1. swagger-ui that using for generating API document will use things that has not release of  master branch （SHA:b856d6c）
 1. Confirm operation in over PHP5.4
 1. Confirm operation in PostgreSQL9.2, MySQL5.5, SQLite3 
 1. <a href="https://github.com/EC-CUBE/eccube-api/issues" target="_blank">現状把握している課題(Issue)</a>
@@ -52,16 +52,16 @@ Please get from EC-CUBE Owner's store.
   
 ※β version is trial release, so please **本番環境にはインストールしない** (do not install in real environment)
 
-## public アクセス可能なAPIエンドポイントへのアクセス
+Access to API End-Point that can access ## public
 
 - After Install EC-CUBE APIβ version Plugin, access into the following URL to get product info 
 
 	URL： http://<サイトURL> /api/v0/product  
-	レスポンス形式： JSON形式
+	Response format : JSON format
 
-    ※public アクセス可能なAPIの一覧については、本章の`APIエンドポイント一覧`を参照してください。
+    ※AAbout list of API  that can acess public, please refer `APIエンドポイント一覧` of this chapter.
 
-## 認証が必要なAPIエンドポイントへのアクセス
+Access to API End-point that needs for authentication ##
 
 In case use API Endpoint that can not access public, registration and authentication of client are essential.   
 In this document, use Swagger as Client and conduct operating confirmation.  
@@ -82,8 +82,8 @@ Execute `APIクライアントの追加`(add API client) from 管理画面(manag
 
 ---
 
-登録ボタンを押してクライアントの登録を完了します。  
-このドキュメントでは`Swagger`を利用して動作確認をするため、「redirect_uri」の項目は登録画面の最下部の説明のとおりに設定してください。
+Click button 登録(register) and finish registration of Client.
+In this document, please set Item of [redirect_uri] as explanation of lowest part of Registration screen in order to confirm operation by using `Swagger`.
 
 ---
 
@@ -91,11 +91,11 @@ Execute `APIクライアントの追加`(add API client) from 管理画面(manag
 
 ---
 
-### 2. クライアントとしてSwaggerを利用した動作確認
+### 2. Confirm operation which used Swagger as Client
 
-EC-CUBE 3.0 では、認証方法として`OAuth2.0 Authorization`及び`OpenID Connect`をサポートしています。  
-この認証に対応したクライアントとして、`Swagger`を利用して動作確認を行います。  
-「APIドキュメントを開く」をクリックすると`Swagger`の画面にアクセスできます。
+In EC-CUBE 3.0, supporting `OAuth2.0 Authorization` and `OpenID Connect` as authentication method.  
+ Use `Swagger` to conduct operation confirmation as Client who handled for this authentication.
+If click [「APIドキュメントを開く」(open API document), can access to screen `Swagger`
  
 ---
 
@@ -103,12 +103,12 @@ EC-CUBE 3.0 では、認証方法として`OAuth2.0 Authorization`及び`OpenID 
 
 ---
 
-### 3. 認証手順
+### 3. Authentication order
 
-1. 画面右上の「Authorize」ボタンを押下します。
-1. 使用したいスコープのチェックボックスをONにして子画面内の「Authorize」ボタンを押してください。  
-EC-CUBEの管理画面に遷移するので、ここで「許可する」を選択すると、そのスコープにアクセスできるようになります。  
-（内部的にはアクセストークンを取得した状態になります）
+1. Click button 「Authorize」on upper right-hand.
+1. Set checkbox of scope that want to use, into ON and click button 「Authorize」in child screen.  
+Because move to 管理画面(management screen) of EC-CUBE, so if choose 「許可する」(permit) here, you can access to that scope.  
+(Internal will become status got access token)
  
 
 ---
@@ -124,9 +124,9 @@ EC-CUBEの管理画面に遷移するので、ここで「許可する」を選�
 - ご注意
     - Swagger側で選択したスコープに関わらず、全てのスコープに対してリクエストが行われてしまいますが、これはSwagger不具合によるものです。EC-CUBE APIの認証の不具合ではありません。
 
-### 4. 商品情報をGET（取得）する
-1. 「GET /api/v0/product」を選択します。
-1. 「実際に実行」ボタンを押下すると、商品情報を取得できます。
+### 4. GET((acqusition) the product info
+1. Choose 「GET /api/v0/product」
+1. If click 「実際に実行」(run actually), you can get the product info.
 
 ---
 
@@ -134,11 +134,11 @@ EC-CUBEの管理画面に遷移するので、ここで「許可する」を選�
 
 ---
  
-### 5. 商品情報をPOST（作成）する
-1. 「POST /api/v0/product」を選択します。
-1. 画面の①部分にパラメータのサンプルが表示されています。
-1. 画面の①部分をクリックすると、②部分にサンプルが挿入されます。
-1. 「実際に実行」ボタンを押下すると、商品情報を作成できます。
+### 5. POST(create) the product info
+1. Choose 「POST /api/v0/product」
+1. Sample of parameter is displayed in ① part of screen.
+1. If click 画面の① part of screen, sample is inserted in ② part.
+1. If click「実際に実行」(actually run), you can create the product info
 
 ---
 
@@ -147,18 +147,18 @@ EC-CUBEの管理画面に遷移するので、ここで「許可する」を選�
 ---
 
 
-再度、商品情報をGET（取得）すると、商品情報が追加できている事を確認できます。  
+If you GET（acquire）the product info again, you can add the product info  
   
-レスポンスコードが401の場合は認証に失敗しています。  
-認証をやり直すか、それでもうまくいかない場合は本章のトラブルシューティングを確認してください。  
+In case Response code is 401, authentication is failed.  
+In case re-do authentication, but it doesn't run well, please check troubleshooting of this chapter.  
  
-## クライアントの認証フローについて
+## About authentication flow of Client
 
-EC-CUBE 3.0の認証が必要なAPIにアクセスするためには、クライアントにOAuth2.0, OpenID Connectの認証フローを実装する必要あります。  
-詳細は下記のドキュメントをご確認ください。  
+In order to access into API that need authentication of EC-CUBE 3.0, you need itto implement authentication flow of OAuth2.0, OpenID Connect for client.
+About detail, please confirm the following document.  
 [Web API認証 ( Authorization ) ガイド](http://ec-cube.github.io/api_authorization.html)
 
-### 実装サンプル
+### Implementation sample
 <a href="https://github.com/nanasess/eccube3-oauth2-client" target="_blank">PHP(Symfony2) での実装例</a>  
 <a href="https://github.com/nanasess/eccube3-oauth2-client-for-python" target="_blank">Python(Flask) での実装例</a>  
 <a href="https://github.com/nanasess/eccube3-oauth2-client-for-nodejs" target="_blank">Node.js(Express) での実装例</a>  
@@ -168,18 +168,18 @@ EC-CUBE 3.0の認証が必要なAPIにアクセスするためには、クライ
     - OAuth 2.0 Configuration -> OAuth endpoint -> Custom にて動作確認済み  
     - Authorization Endpoint に ```?state=<random_state>``` を付与する必要があります
 
-## 利用できるAPIエンドポイントについて
+## About the usable API End-point
 
-EC-CUBE 3.0では、RESTの原則に基づいたAPIの実装を行っています。  
+In EC-CUBE 3.0, では、RESTの原則に基づいたAPIの実装を行っています。  
 詳細は下記のドキュメントをご確認ください。  
 
-API開発ドキュメント  
+API developing document  
 [http://ec-cube.github.io/api](http://ec-cube.github.io/api)  
-APIエンドポイント一覧  
+API End-point list  
 [https://github.com/EC-CUBE/ec-cube.github.io/blob/master/documents/api/EC-CUBE_API_Endpoint.pdf](https://github.com/EC-CUBE/ec-cube.github.io/blob/master/documents/api/EC-CUBE_API_Endpoint.pdf)
 
-## APIで取得できる情報について
-β版ではEC-CUBE 3.0の各テーブルに対してCRUDアクセスを提供しています。  
+## About info that can get in API
+In β version, supplying CRUD access with each Table of EC-CUBE 3.0  
 そのためAPIから取得したデータの定義は、EC-CUBE 3.0のテーブル定義に依存します。  
 EC-CUBE 3.0のテーブル定義は下記を参照してください。  
   
