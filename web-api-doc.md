@@ -37,7 +37,7 @@ title: Web API β version Plugin startup Guide
 1. Authentication base on OAuth2.0/OpenID Connect 
     - There us spec which un-support one part (Plan that supports later)
     - There is parameter which is changing into 「推奨→必須」(recommendation ->required) in spec of OpenID Connect in order to strenghthen security.
-    - Safety of Authentication depends on  SymfonySecurity, php-oauth2-server, EC-CUBE 3.0のプラグイン機構に依存
+    - Safety of Authentication depends on Plugin mechanism of SymfonySecurity, php-oauth2-server, EC-CUBE 3.0.
 1. Do not support for Single sign-on function.
 1. swagger-ui that using for generating API document will use things that has not release of  master branch （SHA:b856d6c）
 1. Confirm operation in over PHP5.4
