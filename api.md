@@ -38,7 +38,7 @@ In future, in case version up API, part of version of  `/v1` will be change, and
 Version is just interger, do not create minor version.
 
 
-## resource name
+## Resource name
 
 IN REST API, express resource by URL, use HTTP method to express the operation to that resource.
 
