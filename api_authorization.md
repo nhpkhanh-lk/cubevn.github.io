@@ -1,20 +1,20 @@
 ---
 layout: default
-title: Web API認証 ( Authorization ) ガイド
+title: Web API Authentication (Authorization) Guide
 ---
 
 ---
 
-# Web API認証 ( Authorization ) ガイド
+# Web API Authentication (Authorization) Guide
 
-## 概要
+## Summary
 
 EC-CUBE で Web API を実行する際、一般公開された情報を参照する場合は必要ありませんが、顧客情報を参照したり、受注情報を更新する場合などは認証が必要です。
 
-EC-CUBE 3 では、 [OpenID Connect](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html) を使用した認証をサポートしています。
-本認証を使用する場合は、[TLS をサポート](http://openid-foundation-japan.github.io/openid-connect-basic-1_0.ja.html#TLSRequirements)する必要があります。
+In EC-CUBE 3, supporting Authentication that used  [OpenID Connect](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html)
+In case you use this authentication, need [TLS をサポート](http://openid-foundation-japan.github.io/openid-connect-basic-1_0.ja.html#TLSRequirements)
 
-## 対応するフロー
+## The handling Flow
 
 - [Authorization Code Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#CodeFlowAuth) - 主にWebアプリ向け
 - [Implicit Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#ImplicitFlowAuth) - 主にJavaScript、 ネイティブアプリ向け
@@ -25,21 +25,21 @@ EC-CUBE 3 では、 [OpenID Connect](http://openid-foundation-japan.github.io/op
 
 ### 管理者権限での実行
 
-1. 管理画面にログインし、メンバー管理画面へ遷移します。
-2. **APIクライアント一覧** をクリックし、 APIクライアントを新規登録します。
-    - **アプリケーション名** には任意の名称を入力します
-    - **redirect_uri** には、Authorization Endpoint からのリダイレクト先の URL を入力します。
-3. 登録が終わると、 `client_id`, `client_secret` などが発行されます。公開鍵は `id_token` を検証する際に使用します。
+1. Login in Management screen, move to メンバー管理画面(member management screen)
+2. Click **APIクライアント一覧**(API Client list), register new API client
+    -Input the optional name for **アプリケーション名** 
+    -In **redirect_uri**, input URL of direct destination from Authorization Endpoint
+3. If the registration has finished, `client_id`, `client_secret` will be issued. The public key will use when verify `id_token`.
 
-### 顧客(Customer)での実行
+Implement by ### 顧客(Customer)
 
-1. mypage にログインし、 `/mypage/api` へアクセスします。
-2. **新規登録** をクリックし、 APIクライアントを新規登録します。
-    - **アプリケーション名** には任意の名称を入力します
-    - **redirect_uri** には、Authorization Endpoint からのリダイレクト先の URL を入力します。
-3. 登録が終わると、 `client_id`, `client_secret` などが発行されます。公開鍵は `id_token` を検証する際に使用します。
+1. Login in mypage, access to `/mypage/api` 
+2. Click **新規登録**, register new API client
+    - Input the optional name for **アプリケーション名**
+    -In **redirect_uri**,  input URL of direct destination from Authorization Endpoint
+3. If the registration has finished, `client_id`, `client_secret`will be issued. The public key will use when verify `id_token`.
 
-### .htaccess の設定
+Setting of ### .htaccess 
 
 一部のレンタルサーバーや SAPI CGI/FastCGI の環境では、認証情報(Authorization ヘッダ)が取得できず、 401 Unauthorized エラーとなってしまう場合があります。
 この場合は、 `<ec-cube-install-path>/html/.htaccess` に以下を追記してください。
