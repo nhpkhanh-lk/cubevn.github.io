@@ -190,7 +190,8 @@ Table definition of EC-CUBE 3.0
 
 1. Authenticated, but response becomes 401
 
-   In environment of the part of rental server or SAPI CGI/FastCGI, sometimes you can get authentication info (Authorization header) and get errror 401 Unauthorized
+   In environment of the part of rental server or SAPI CGI/FastCGI, sometimes you can not get authentication info (Authorization header) and get errror 401 Unauthorized
+   
    In this case, please add the following part into  <ec-cube-install-path>/html/.htaccess
 
     ```
