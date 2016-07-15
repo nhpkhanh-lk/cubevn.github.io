@@ -9,21 +9,22 @@ title: Web API Authentication (Authorization) Guide
 
 ## Summary
 
-EC-CUBE で Web API を実行する際、一般公開された情報を参照する場合は必要ありませんが、顧客情報を参照したり、受注情報を更新する場合などは認証が必要です。
+In EC-CUBE, when excecute Web API, it is not necessary in case refer the general public info. 
+But it is necessary for authentication in case refer the customer info or update the receiving order info.
 
 In EC-CUBE 3, supporting Authentication that used  [OpenID Connect](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html)
 In case you use this authentication, need [TLS をサポート](http://openid-foundation-japan.github.io/openid-connect-basic-1_0.ja.html#TLSRequirements)
 
 ## The handling Flow
 
-- [Authorization Code Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#CodeFlowAuth) - 主にWebアプリ向け
-- [Implicit Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#ImplicitFlowAuth) - 主にJavaScript、 ネイティブアプリ向け
+- [Authorization Code Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#CodeFlowAuth) - For Web App
+- [Implicit Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#ImplicitFlowAuth) - For JavaScript, Native App 
 
-信頼性の確保された、プライベート環境で使用する場合は、 [OAuth2.0 Authorization](http://openid-foundation-japan.github.io/rfc6749.ja.html) も使用可能です。
+In case you use in Private environment that secured reliability, you can also use [OAuth2.0 Authorization](http://openid-foundation-japan.github.io/rfc6749.ja.html)
 
-## 設定方法
+## Setting method
 
-### 管理者権限での実行
+### Implemenation of Administrator Authority
 
 1. Login in Management screen, move to メンバー管理画面(member management screen)
 2. Click **APIクライアント一覧**(API Client list), register new API client
@@ -41,52 +42,52 @@ Implement by ### 顧客(Customer)
 
 Setting of ### .htaccess 
 
-一部のレンタルサーバーや SAPI CGI/FastCGI の環境では、認証情報(Authorization ヘッダ)が取得できず、 401 Unauthorized エラーとなってしまう場合があります。
-この場合は、 `<ec-cube-install-path>/html/.htaccess` に以下を追記してください。
+In environment of the part of rental server or SAPI CGI/FastCGI, sometimes you can not get authentication info (Authorization header) and get errror 401 Unauthorized
+In this case, please add the follwing part into `<ec-cube-install-path>/html/.htaccess`
 
 ```.htaccess
 RewriteCond %{HTTP:Authorization} ^(.*)
 RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
 ```
 
-## クライアント(OAuth 2.0 Client/Relying Party)の実装方法
+## The implementation method of Client (OAuth 2.0 Client/Relying Party)
 
 *各言語のサンプルは[こちら](/api.html#section-14)*
 
-### 実装する際の注意
+### Notice when implement
 
-#### state パラメータ
+#### state parameter
 
-OAuth2.0 では CSRF を防ぐための state パラメータが[推奨となっています](http://openid-foundation-japan.github.io/rfc6749.ja.html#CSRF)。
-しかし、多くの OAuth2.0 クライアントのサンプルは、 state パラメータに標準では対応していません。
-EC-CUBE 3 では、 **state パラメータは必須** ですので、ご注意ください。
+In OAuth2.0, state parameter using for preventing CSRF, is [推奨となっています](http://openid-foundation-japan.github.io/rfc6749.ja.html#CSRF)。
+However, かし、多くの OAuth2.0 クライアントのサンプルは、 state パラメータに標準では対応していません。
+in EC-CUBE 3, **state パラメータは必須**(state parameter is required), so please pay attention.
 
-### 実装チュートリアル
+### Implementation Tutorial
 
-ここでは curl コマンドによって OpenID Connect Authorization code Flow を実装してみます。
+Here, based on command curl to try implementing OpenID Connect Authorization code Flow
 
-#### 準備
+#### Preparation
 
 [APIクライアントを作成](#section-2)しておきます。
-この例では、 `redirect_uri` を `https://127.0.0.1:8080/Callback` に設定します。
-
+In this example, set `redirect_uri` in `https://127.0.0.1:8080/Callback`
 #### 1. Authorization code の取得
 
-以下の URL にブラウザでアクセスします。 **state パラメータは必須** です。
+Access into the following URL by Browser. **state パラメータは必須** (state parameter is required)
 
 ```
 https://<eccube-host>/admin/OAuth2/v0/authorize?client_id=<client id>&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2FCallback&response_type=code&state=<random_state>&nonce=<random_nonce>&scope=product_read%20product_write%20openid%20offline_access
 ```
 
-ログイン画面が表示されますので、ログインします。
-「このアプリ連携を許可しますか？」という画面が表示されますので、「許可する」をクリックすると、指定したリダイレクト先へリダイレクトします。
+Login screen is display, so Login 
+Because screen 「このアプリ連携を許可しますか？」(permit linking this App?), If click 「許可する」(permit), will direct to the specified Redirect destination.
 
-このとき、ブラウザのアドレスバーのクエリストリングに `code=<authorization code>` が付与されます。
-CSRF 防止のため、リダイレクト前の **state** の値と、アドレスバーのクエリストリングに付与された `state=<state>` の値が同一かどうか確認します。
+This time, `code=<authorization code>` is given in Query string of Address bar of Browser
+In order to prevent CSRF, confirm whether value of  **state** before redirect and
+value of `state=<state>` that was given in Query string of Address bar are same or not?
 
-#### 2. アクセストークンの取得
+#### 2. Get Access token 
 
-1 で取得した Authorization code を使用して、アクセストークンを取得します。
+Use Authorization code  that got at 1 in order to get Access token.
 
 ```
 curl -F grant_type=authorization_code \
@@ -99,7 +100,7 @@ curl -F grant_type=authorization_code \
      -X POST https://<eccube-host>/OAuth2/v0/token
 ```
 
-以下のようなアクセストークン及びリフレッシュトークン、 `id_token` が取得できます。
+It is possibe to get the following Access token and Refresh token, `id_token`
 
 ```
 {
@@ -112,14 +113,14 @@ curl -F grant_type=authorization_code \
 }
 ```
 
-#### 3. id_token の検証
+#### 3. Verification of id_token
 
 2 で取得した `id_token` を[検証](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#SelfIssuedValidation)します。
-[tokeninfo](#tokeninfo) エンドポイントや [jwt.io](https://jwt.io/) を使用することができます。
+It is possibe to use [tokeninfo](#tokeninfo) End-point and [jwt.io](https://jwt.io/).
 
-#### 4. APIアクセス
+#### 4. API Access
 
-アクセストークンを使用して APIアクセスします。
+Use Access token to Access API
 
 ```
 curl -H "Accept: application/json" \
@@ -128,10 +129,10 @@ curl -H "Accept: application/json" \
      -X GET https://<eccube-host>/api/v0/product
 ```
 
-#### 5. アクセストークンの更新
+#### 5. Update Access token 
 
-アクセストークンの有効期限が切れた場合は、リフレッシュトークンを使用して、アクセストークンを更新します。
-`scope=openid` の場合は `offline_access` を scope に追加する必要があります。
+In case valid time of Access Token  expired, use Refresh token to update Acess token.
+In case of `scope=openid`, it is neccessary to add `offline_access` into scope.
 
 ```
 curl -F grant_type=refresh_token \
@@ -141,13 +142,13 @@ curl -F grant_type=refresh_token \
      -X POST https://<eccube-host>/OAuth2/v0/token
 ```
 
-## 実装について
+## About Implementations
 
-### EC-CUBE独自に実装しているもの
+### Things which EC-CUBE's own is implementing
 
 #### tokeninfo
 
-`/OAuth2/tokeninfo?id_token=<id_token>` へ GET リクエストをすると、 `id_token` の詳細情報を JSON 形式で取得できます。
+If you request GET to `/OAuth2/tokeninfo?id_token=<id_token>`, you can get the detail info of `id_token` by JSON format
 
 ```json
 {
@@ -161,22 +162,23 @@ curl -F grant_type=refresh_token \
 }
 ```
 
-- **iss** - ID トークンの発行元。
-- **sub** - ユーザー識別子。 `id_token` の公開鍵から生成される。
-- **aud** - ID トークンの想定されるオーディエンス。 OAuth2.0 Client ID が使用される。
-- **iat** - ID トークン発行時刻の UNIX タイムスタンプ。
-- **exp** - ID トークン有効期限の UNIX タイムスタンプ。
-- **auth_time** - 認証の発生時刻の UNIX タイムスタンプ。
-- **nonce** - クライアントセッションの識別子。リプレイスアタック防止のために使用する。
+- **iss** - The issue source of ID token
+- **sub** - User identifier. It is generated from public key of `id_token`
+- **aud** - Audience that is assumed of token. OAuth2.0 Client ID is used.
+- **iat** - UNIX Time Stamp of  ID token issue time.
+- **exp** - UNIX Time Stamp of ID token valid time
+- **auth_time** - UNIX Time Stamp of time when occurred authentication.
+- **nonce** - Identifier of Client session. Use for preventing Replacement Attack
 
-この情報を元に、以下のような内容を検証する必要があります。[参考](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#SelfIssuedValidation)
+Yoi need based on this info to verify the following contents
+[参考](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#SelfIssuedValidation)
 
-- **iss** の値が API の認証をしたホスト名と一致することを確認します。
-- **sub** の値が `id_token` の公開鍵の *thumbprint* と一致することを確認します。[JOSE_JWK::thumbprint()](https://github.com/gree/jose/blob/master/src/JOSE/JWK.php#L35) などで検証できます。
-- **aud** の値が Client ID と一致することを確認します。
-- **iat** の値が、`現在のUNIXタイムスタンプ値 - 600秒` 以上であることを確認します。
-- **exp** の値が、現在時刻のUNIXタイムスタンプ値より大きいことを確認します。
-- **nonce** の値が、クライアントで保持している `nonce` の値と同一であることを確認します。リプレイスアタック防止のため、セッションで保持している `nonce` を破棄します。
+- Check that value of **iss** is match with Host name that authenticated API
+- Check that value of **sub** is match with *thumbprint* of public key of `id_token` [JOSE_JWK::thumbprint()](https://github.com/gree/jose/blob/master/src/JOSE/JWK.php#L35) などで検証できます。
+- Check that value of **aud**  is match with Client ID
+- Check that value of  **iat** is over `現在のUNIXタイムスタンプ値 - 600秒` (current UNIX Time stamp value - 600 seconds) 
+- Check that value of **exp** is bigger than UNIX Time stamp value of current time
+- Check that value of **nonce** is same with value of `nonce` which is holding in Client. リプレイスアタック防止のため、セッションで保持している `nonce` を破棄します。
 
 #### Member/Customer と OAuth2.0 Client の関係
 
@@ -196,33 +198,33 @@ Authorization Code Flow にて、 `redirect_uri` に `urn:ietf:wg:oauth:2.0:oob`
 
 [RFC6749 Authorization Code Grant](http://openid-foundation-japan.github.io/rfc6749.ja.html#grant-code) を使用しています。
 
-- 本APIでは **state パラメータは必須** となっています。
+- In this API, **state パラメータは必須**  (state paramater is required)
 
 #### OAuth2.0 Implicit Code Flow
 
-[RFC6749 Implicit Grant](http://openid-foundation-japan.github.io/rfc6749.ja.html#grant-implicit) を使用しています。
+Using[RFC6749 Implicit Grant](http://openid-foundation-japan.github.io/rfc6749.ja.html#grant-implicit) を使用しています。
 
-- 本APIでは **state パラメータは必須** となっています。
+- In this API,**state パラメータは必須**  (state paramater is required)
 
 #### OpenID Connect Authorization Code Flow
 
 [OpenID Connect Core Authorization Code Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#CodeFlowAuth) を使用しています。
 
-- 本APIでは **state パラメータは必須** となっています。
+- In this API, **state パラメータは必須** (state paramater is required)
 
 #### OpenID Connect Implicit Code Flow
 
-[OpenID Connect Core Implicit Code Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#ImplicitFlowAuth) を使用しています。
+Using [OpenID Connect Core Implicit Code Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#ImplicitFlowAuth) 
 
-- 本APIでは **state パラメータは必須** となっています。
-- `response_type=id_token 及び response_type=id_token token` の場合、 **nonce パラメータは必須** となっています。
+- In this API, **state パラメータは必須** (state paramater is required)
+- In case of `response_type=id_token and  response_type=id_token token`, **nonce パラメータは必須** (nonce parameter is required)
 
 #### UserInfo Endpoint
 
 [OpenID Connect UserInfo Endpoint](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#UserInfo) を使用しています。
 
-- この Endpoint を使用する場合は `scope=openid` で認証する必要があります。
-- 以下の scope を使用して、 [各種クレーム](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#Claims) の取得が可能です。
+- In case using this Endpoint, you need authentication by `scope=openid` 
+- You can use the following scope to get [各種クレーム](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#Claims)
   - profile
   - email
   - address
