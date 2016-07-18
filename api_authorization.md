@@ -79,7 +79,8 @@ https://<eccube-host>/admin/OAuth2/v0/authorize?client_id=<client id>&redirect_u
 ```
 
 Login screen is display, so Login 
-Because screen 「このアプリ連携を許可しますか？」(permit linking this App?), If click 「許可する」(permit), will direct to the specified Redirect destination.
+Because screen 「このアプリ連携を許可しますか？」(permit linking this App?), 
+If click 「許可する」(permit), will direct to the specified Redirect destination.
 
 This time, `code=<authorization code>` is given in Query string of Address bar of Browser
 In order to prevent CSRF, confirm whether value of  **state** before redirect and
@@ -87,7 +88,7 @@ value of `state=<state>` that was given in Query string of Address bar are same 
 
 #### 2. Acquisition of Access token 
 
-Use Authorization code  that got at 1 in order to get Access token.
+Use Authorization code that got at 1 in order to get Access token.
 
 ```
 curl -F grant_type=authorization_code \
