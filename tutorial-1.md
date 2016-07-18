@@ -1,6 +1,6 @@
 ---
 layout: default
-title: URLを設定しよう
+title: Setting of URL
 ---
 
 ---
@@ -8,40 +8,39 @@ title: URLを設定しよう
 # {{ page.title }}
 
 
-## ルーティングとコントローラープロバイダ
+## Routing and controller Providers
 
-- まずは、基本となるルーティングの設定方法について説明します。
+- Firstly, I would like to explain about setting method of basic routing
 
-### EC-CUBE 3の各設定の基本的な考え方
+### This is basic thingking method about each setting of EC-CUBE 3
 
-- EC-CUBE 3の設定は非常にシンプルです。基本的に設定ファイルへ設定内容を記述する事で、アプリケーションを構築していきます。
+- Setting of EC-CUBE is very simple. By describing the setting contents to setting file basically, we will build Application
+- In setting file, [.php .yml] has been using.
 
-- 設定ファイルには、「.php .yml」が用いられています。
+### Menu of this chapter
 
-### 本章メニュー
+- In this chapter, we will conduct the following part
 
-- 本章では以下を行います。
-
-    1. URLとコントローラーを紐付ける際に、設定するファイルの説明
+    1. This is explanation about the setting file when linking URL and Controller
 
     1. ルーティングの設定
         - コントローラーとURLの紐付け方を説明します。
 
-### URLとコントローラーの紐付けを設定するファイルの説明
+### This is explanation about the setting file when linking URL and Controller
 
-- URLとコントローラーの紐付けを設定する(ルーティング)ファイルは、**ControllerProvider**と呼ばれているファイルに設定されています。
+- File(routing)that sets linking URL and controller,has been setting in file of **ControllerProvider** 
 
-#### コントローラープロバイダーの保存ディレクトリ
+#### Directory which saves Controller Provider
 
-- コントローラープロバイダは以下のディレクトリに保存されています。
+- Controller Provider is saving in the following Directory
 
 ```
 /[インストールディレクトリ]/src/Eccube/ControllerProvider
 ```
 
-#### コントローラープロバイダーファイルの種類
+#### Kind of Controller Provider file
 
-- ディレクトリ内に以下のファイルが保存されています。
+- The following file has been saving in Directory
 
     1. AdminControllerProvider.php
         - 管理画面のルーティングが設定されています。
@@ -53,17 +52,17 @@ title: URLを設定しよう
         - インストール画面のルーティングが設定されています。
         - カスタマイズにおいて**本設定ファイルを使用することはありません。**
 
-### ルーティングの設定
+### Setting of Routing
 
-#### FrontControllerProviderの設定
+#### Setting of FrontControllerProvider
 
-- ユーザー画面のルーティングの設定は、**FrontControllerProvider**に行なっていきますので、前項で説明した場所から、該当ファイルを開いてください。
+- Setting of Routing of ユーザー画面(User screen) is executed in **FrontControllerProvider**, so please open the corresponding file from place where explained in the previous Item
 
-#### **FrontControllerProvider**の中身
+#### Content of **FrontControllerProvider**
 
-- ファイルを開いたら、分かり易い項目を例としますので、まず「mypage」を検索してみてください。
+- After open file,set Item that is easy to understand,to be example,and first try searching [mypage]
 
-- mypageのルーティングの設定を下記に抜粋しました。
+-Extract setting of routing of mypage into the follwing part
 
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_1/FrontControllerProvider_mypage.php"></script>
@@ -79,31 +78,31 @@ title: URLを設定しよう
 ```
 -->
 
-#### メソッドについての説明
+#### Explanation about method
 
-- 引数部を日本語で記述すると以下の様になります。
+- If describe parameter part,it will be as below
 
 ```
 $c->match([ドキュメントルートからのurl], [紐付けるコントローラークラス・メソッド])->bind([ルーティング名称])
 ```
 
-1. ドキュメントルートからのURL
+1. URL from Document route
     - /(スラッシュ)ではじめ、任意のURL名称を作成します。
         - 名前からページでの処理が推測しやすい名前をつけます。
 
-1. 紐付けるコントローラークラス・メソッド
+1. the linking Controller class/method
     - /src/Eccube/Controller内に作成した、コントローラーのファイル名(クラス名)とメソッド名を、インストールディレクトリからのフルパスで指定します。
-    - クラス名とメソッド名の間は「::」コロン２つでつなぎます。
+    - Between class name and method name will connect by 2 colon [::]
 
-1. ルーティング名称
-    - 設定したルーティング名称に「名前」をつけておきます。
-    - リダイレクトの際などに、「名前」を利用します。
+1. Routing name
+    - Put 「名前」(name)]  in the setted routing name
+    - Use 「名前」(name)] when re-direct
 
-#### 実際の記述内容
+#### The actual description contents
 
-1. **FrontControllerProvider**へのソースの追記
+1. Add source to **FrontControllerProvider**
 
-- ファイル内最下部の「return」の前に以下の様に追記します。
+- Add in before「return」of the lowest part of file as below
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_1/FrontControllerProvider_add_source.php"></script>
 
@@ -121,18 +120,18 @@ $c->match([ドキュメントルートからのurl], [紐付けるコントロ�
 
 - 以上でルーティングの設定は完了です。
 
-### ブラウザでアクセス
+### Access by Browse
 
-- ルーティングの設定が終わったのでブラウザでアクセスしてみましょう。
+- Setting of Routing finshed already, so we try accessing by browser
 
-    1. ブラウザのURLに「http://[ドメイン + インストールディレクトリ]/tutorial/crud」を入力してください。
+    1.Please input「http://[ドメイン + インストールディレクトリ]/tutorial/crud」in URL of browser
 
-    1. エラーメッセージの表示
+    1. Display error message
 
-- 以下のエラーメッセージが表示されれば成功です。
-- エラーの内容はルーティングで指定している、コントローラーが見つからないエラーです。
-- 現状ではコントローラーを作成していないため、正しい挙動です。
-- コントローラーとメソッドは次章で作成します。
+- If the following message is displayed, you succeeded.
+- Content of error is error that can not find Controller which is specifying by routing.
+- Currently, because we have not creating Controller, so this is right action.
+- Controler and method will create in next chapter.
 
 ---
 
