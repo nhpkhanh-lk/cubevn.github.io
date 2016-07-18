@@ -58,9 +58,9 @@ RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
 
 #### state parameter
 
-In OAuth2.0, state parameter using for preventing CSRF, is [推奨となっています](http://openid-foundation-japan.github.io/rfc6749.ja.html#CSRF)。
-However, かし、多くの OAuth2.0 クライアントのサンプルは、 state パラメータに標準では対応していません。
-in EC-CUBE 3, **state パラメータは必須**(state parameter is required), so please pay attention.
+In OAuth2.0, state parameter using for preventing CSRF, is [推奨となっています](http://openid-foundation-japan.github.io/rfc6749.ja.html#CSRF)(recommendation)
+However, samples of many OAuth2.0 Clients have not handled for state paramter in standard,
+In EC-CUBE 3, **state パラメータは必須**(state parameter is required), so please pay attention.
 
 ### Implementation Tutorial
 
@@ -68,7 +68,7 @@ Here, based on command curl to try implementing OpenID Connect Authorization cod
 
 #### Preparation
 
-[APIクライアントを作成](#section-2)しておきます。
+[APIクライアントを作成](#section-2)(Create API client)
 In this example, set `redirect_uri` in `https://127.0.0.1:8080/Callback`
 #### 1. Acquisition of Authorization code 
 
