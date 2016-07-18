@@ -52,7 +52,7 @@ RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
 
 ## The implementation method of Client (OAuth 2.0 Client/Relying Party)
 
-*各言語のサンプルは[こちら](/api.html#section-14)*
+*Sample of each Language is [こちら](/api.html#section-14)*
 
 ### Notice when implement
 
@@ -70,7 +70,7 @@ Here, based on command curl to try implementing OpenID Connect Authorization cod
 
 [APIクライアントを作成](#section-2)しておきます。
 In this example, set `redirect_uri` in `https://127.0.0.1:8080/Callback`
-#### 1. Authorization code の取得
+#### 1. Acquisition of Authorization code 
 
 Access into the following URL by Browser. **state パラメータは必須** (state parameter is required)
 
@@ -85,7 +85,7 @@ This time, `code=<authorization code>` is given in Query string of Address bar o
 In order to prevent CSRF, confirm whether value of  **state** before redirect and
 value of `state=<state>` that was given in Query string of Address bar are same or not?
 
-#### 2. Get Access token 
+#### 2. Acquisition of Access token 
 
 Use Authorization code  that got at 1 in order to get Access token.
 
@@ -115,7 +115,7 @@ It is possibe to get the following Access token and Refresh token, `id_token`
 
 #### 3. Verification of id_token
 
-2 で取得した `id_token` を[検証](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#SelfIssuedValidation)します。
+[検証](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#SelfIssuedValidation)(verify)`id_token` that got in 2
 It is possibe to use [tokeninfo](#tokeninfo) End-point and [jwt.io](https://jwt.io/).
 
 #### 4. API Access
@@ -144,7 +144,7 @@ curl -F grant_type=refresh_token \
 
 ## About Implementations
 
-### Things which EC-CUBE's own is implementing
+### Things which EC-CUBE's own has been implementing
 
 #### tokeninfo
 
@@ -170,45 +170,44 @@ If you request GET to `/OAuth2/tokeninfo?id_token=<id_token>`, you can get the d
 - **auth_time** - UNIX Time Stamp of time when occurred authentication.
 - **nonce** - Identifier of Client session. Use for preventing Replacement Attack
 
-Yoi need based on this info to verify the following contents
-[参考](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#SelfIssuedValidation)
+You need based on this info to verify the following contents [参考](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#SelfIssuedValidation)
 
 - Check that value of **iss** is match with Host name that authenticated API
-- Check that value of **sub** is match with *thumbprint* of public key of `id_token` [JOSE_JWK::thumbprint()](https://github.com/gree/jose/blob/master/src/JOSE/JWK.php#L35) などで検証できます。
+- Check that value of **sub** is match with *thumbprint* of public key of `id_token`. It is possible to verify such as  [JOSE_JWK::thumbprint()](https://github.com/gree/jose/blob/master/src/JOSE/JWK.php#L35) 
 - Check that value of **aud**  is match with Client ID
 - Check that value of  **iat** is over `現在のUNIXタイムスタンプ値 - 600秒` (current UNIX Time stamp value - 600 seconds) 
 - Check that value of **exp** is bigger than UNIX Time stamp value of current time
-- Check that value of **nonce** is same with value of `nonce` which is holding in Client. リプレイスアタック防止のため、セッションで保持している `nonce` を破棄します。
+- Check that value of **nonce** is same with value of `nonce` which is holding in Client. In order to prevent Replace Attack, dsicard `nonce` which is stored in session.
 
-#### Member/Customer と OAuth2.0 Client の関係
+#### Relation between Member/Customer and OAuth2.0 Client 
 
-- ログイン中の Member/Customer と OAuth2.0 Client の ID が相違している場合は、認可リクエスト時に `access_denied` エラーとなります。
+- In case Member/Customer and OAuth2.0 Client are different when logging in, when request authorization, it will be error  `access_denied`.
 
-#### redirect_uri の指定
+#### Specification of redirect_uri
 
-Authorization Code Flow にて、 `redirect_uri` に `urn:ietf:wg:oauth:2.0:oob` を指定することで、 ブラウザの画面に Authorization code を表示されます。 curl を使用したテスト用途や、ネイティブアプリケーションなどに利用可能です。
+In Authorization Code Flow, by specifying  `redirect_uri` に `urn:ietf:wg:oauth:2.0:oob`,Authorization code is displayed in screen of Browser. It is possible to use for Test purpose that used curl, and Native Application.
 
-### 標準仕様に準拠しているもの
+### Things that base on standard specification
 
 #### ID Token
 
-[RFC7519 JSON Web Token](http://openid-foundation-japan.github.io/draft-ietf-oauth-json-web-token-11.ja.html) を使用しています。
+Using [RFC7519 JSON Web Token](http://openid-foundation-japan.github.io/draft-ietf-oauth-json-web-token-11.ja.html)
 
 #### OAuth2.0 Authorization Code Flow
 
-[RFC6749 Authorization Code Grant](http://openid-foundation-japan.github.io/rfc6749.ja.html#grant-code) を使用しています。
+Using [RFC6749 Authorization Code Grant](http://openid-foundation-japan.github.io/rfc6749.ja.html#grant-code) 
 
 - In this API, **state パラメータは必須**  (state paramater is required)
 
 #### OAuth2.0 Implicit Code Flow
 
-Using[RFC6749 Implicit Grant](http://openid-foundation-japan.github.io/rfc6749.ja.html#grant-implicit) を使用しています。
+Using [RFC6749 Implicit Grant](http://openid-foundation-japan.github.io/rfc6749.ja.html#grant-implicit) を使用しています。
 
 - In this API,**state パラメータは必須**  (state paramater is required)
 
 #### OpenID Connect Authorization Code Flow
 
-[OpenID Connect Core Authorization Code Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#CodeFlowAuth) を使用しています。
+Using [OpenID Connect Core Authorization Code Flow](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#CodeFlowAuth) 
 
 - In this API, **state パラメータは必須** (state paramater is required)
 
@@ -221,10 +220,10 @@ Using [OpenID Connect Core Implicit Code Flow](http://openid-foundation-japan.gi
 
 #### UserInfo Endpoint
 
-[OpenID Connect UserInfo Endpoint](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#UserInfo) を使用しています。
+Using [OpenID Connect UserInfo Endpoint](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#UserInfo) 
 
 - In case using this Endpoint, you need authentication by `scope=openid` 
-- You can use the following scope to get [各種クレーム](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#Claims)
+- You can use the following scope to get [各種クレーム](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#Claims)(claims of each kind)
   - profile
   - email
   - address
