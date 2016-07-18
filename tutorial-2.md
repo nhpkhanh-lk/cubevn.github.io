@@ -1,6 +1,6 @@
 ---
 layout: default
-title: コントローラーからビューを表示してみよう
+title: Try displaying View from Controller
 ---
 
 ---
@@ -8,44 +8,44 @@ title: コントローラーからビューを表示してみよう
 # {{ page.title }}
 
 
-## ビューのレンダリング
+## Rendering of View
 
-- 前章でルーティングの設定が完了しました。
+- Setting of Routing has finished in previous chapter
 
-- 本章では、作成したルーティングに対してビューを表示してみましょう。
+- In this chapter,try displaying View with the created Routing
 
-### 本章メニュー
+### Menu of this chapter
 
-- 本章では以下を行います。
+- In this chapter,conduct the following part
 
-    1. コントローラーの作成とビューのレンダリング方法を説明します。
+    1. Explanation about creating Controller and Rending method of View
 
-    1. ビュー ( Twig ) の作成と役割の説明を行います。
+    1. Conduct explanation about creation and role of View (Twig)
 
-### コントローラーの作成
+### Create Controller
 
-#### フォルダの作成
+#### Create Folder
 
-- まずは以下フォルダを作成してください。
+- First, please create the following folder
 
 1. /src/Eccube/Controller/Tutorial
-    - 関連するコントローラーは一つのフォルダにまとめます。
-    - 作成方法はそれぞれの環境で異なると思いますので、割愛いたします。
-    - 以下の様にディレクトリを作成してください。
+    - Relevant Controller will gather into one folder.
+    - Creation method will be different in each
+    - Please create Directory as below
 
 ---
 
-![フォルダの作成](/images/img-tutorial2-make-dir.png)
+![フォルダの作成](/images/img-tutorial2-make-dir.png)(Create folder)
 
 ---
 
-#### ファイルの作成
+#### Create file
 
-- 次に**CrudController.php**を作成します。
+- Next,create **CrudController.php**
 
-- TopControllerをコピー、リネームします。
+- Copy TopController, re-name
 
-- **CrudController.php**( 中身はTopController.phpのコピー )
+- **CrudController.php**( contents will copy TopController.php)
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_2/CrudController_before.php"></script>
 
@@ -90,7 +90,7 @@ class TopController
 ```
 -->
 
-- 下記の様に修正を行います。
+- Modify as below
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_2/CrudController_after.php"></script>
 
@@ -138,13 +138,13 @@ class CrudController extends AbstractController ★クラス名を修正 + 親�
 ```
 -->
 
-#### ルーティングの確認
+#### Confirm routing
 
-- 一度確認のためにブラウザにアクセスしてみましょう。
+- Try accessing into browser in order to check again
 
-    1. ブラウザのURLに「http://[ドメイン + インストールディレクトリ]/tutorial/crud」を入力してください。
+    1. Please input「http://[ドメイン + インストールディレクトリ]/tutorial/crud」を入力してください。
 
-    1. 次はエラーではなく、以下が表示されているはずです。
+    1. Perhaps,next is not error, the following part will be displayed.
 
 ---
 
@@ -152,9 +152,9 @@ class CrudController extends AbstractController ★クラス名を修正 + 親�
 
 ---
 
-- ルーティングの設定とコントローラーには問題がなさそうです。
+- Perhaps, there is no problem in setting of routing and Controller. 
 
-### ビューの作成
+### Create view
 
 - 以下フォルダにTwigファイルを追加します。
 
@@ -336,49 +336,50 @@ class CrudController extends AbstractController
 ```
 -->
 
-- コントローラーとメソッドについて簡単な説明を行います。
+-  I will explain simply about Controller and Method  
 
-    1. 引数 : $app
-        - $appにはEC-CUBEで用いるあらゆるクラスが格納されています。
-        - 正しくはApplication.php/ServiceProviderで設定した内容が、実行時にインスタンス化されて利用できる構造になっています。
-        - ここでは詳細に解説は行いませんが、**「$app」からいろいろな機能を呼び出してアプリケーションを構築していく**とだけ覚えてください。
-    1. 名前空間 : use Eccube\Application;
-        - 1.で説明した「$app」を利用するためには、クラスのスコープ外に必ず、名前空間を指定しなければなりません。
-        - 簡単にいうと、コントローラーに利用するクラスの保管場所を教えてあげるという事です。
-        - 名前空間で指定するパスは、使用するクラスによって変わりますが、「/src/Eccube」以下にあるクラスを利用する場合は、「Eccube」からの相対パスを指定してください。(先頭に「\\」は必要ありません)
-    1. 名前空間 : use Eccube\Controller\AbstractControler;
-        - コントローラーの親クラスを上記と同じ理由により設定いたします。
-    1. $app->render([表示したいTwigのパス])
-        - 「render」にTwigのパスを引数として渡すと、対象のTwigが解析され、htmlに変換されます。
-        - 通常はコントローラーのメソッドの戻り値として、renderの戻り値をそのまま「return」すると、変換されたhtmlが返却され、画面が表示されます。
-        - 「引数」として指定するパスは「/src/Eccube/Resource/template/」がルートパスとして設定されています。
-        - ルートパスはApplication.phpの初期化が終わった時点で設定されます。
-        - 管理者側のコントローラーであれば、上記フォルダの「/admin/」が対象、ユーザー画面であれば「/default/」がルートフォルダになります。
+    1. Paramter : $app
+        - In $app,class that is used in EC-CUBE, has been storing.
+        - Correction is that content which is set in Application.php/ServiceProvider become structure, which is instanted, used when implementing.
+        - Here,I don't explain in detail, but remember that you just call many functions from [$app] to structure Application
+    1. Name space : use Eccube\Application;
+        - In order to use [$app] that explained in 1., you have to specify name space out of scope of class
+        - If say simply, I will tell you place for storing class that use for controller. を教えてあげるという事です。
+        - Path that specify in Name space will be different based on class which use, but in case use class that exist in [/src/Eccube], please specify relative path from [Eccube] (At the beginning, no need [\])
+    1. Name space : use Eccube\Controller\AbstractControler;
+        - I will set parent class of controller based on reason same above
+    1. $app->render([表示したいTwigのパス] (path of Twig which want to display)
+        - If transfer path of Twig into [render] as parameter, Twig of target will be analyzed, and converted into html.
+        - Normally,as return value of method of controller, if let return value of render as like that and [return],html that was converted, will be returned, screen is displayed.
+        - About path that specify as [引数(parameter)], [/src/Eccube/Resource/template/] is setting as route path
+        - Route path is setting when finished initialization of Application.php
+        - In case of Controller of Admin side,[/admin/] of folder above becomes target, 
+           In case of User screen, [/default/] becomes route folder.
 
-#### 表示内容の確認
+#### Confirm the display content
 
-- 最後に確認のためにブラウザにアクセスしてみましょう。
+- Try accessing in browser i
 
-    1. ブラウザのURLに「http://[ドメイン + インストールディレクトリ]/tutorial/crud」を入力してください。
+    1. Please input「http://[ドメイン + インストールディレクトリ] into URL of browser 
 
-    1. Twigに記載した内容が表示されます。
+    1. Contents which was described in
 
-        - ヘッダーやフッターが表示されていませんが、現状はこれで正しい状態です。
-        - ヘッダーやフッターの表示設定は後で行います。
-
----
-
-![twigで文字表示](/images/img-tutorial2-view-rendar.png)
+        - Header and Footer has not displayed yet, but current status is exactly.
+        - The display setting of Header and footer will conduct later.
 
 ---
 
-### 本章のまとめ
+![twigで文字表示](/images/img-tutorial2-view-rendar.png)(Display text by twig)
+
+---
+
+### Gather this chapter
 
 - 内容量も増えてきたので、章の内容をまとめておきます。
 - 本章で以下を行いました。
 
-1. 既存コントローラーをコピーして新しいコントローラーを作成しました。
-1. 既存Twigをコピーして新しいTwigを作成しました。
-1. コントローラー・Twigともに、関連するフォルダにまとめる事を説明しました。
-1. $appは各コントローラーのメソッドの引数として渡され、いろいろな機能が格納されている事を説明しました。
-1. renderでTwigをhtmlに変換しメソッドの戻り値とする事で画面が描画される事を説明しました。
+1. Copy the existing Controller to create new controller
+1. Copy the existing Twig to create new Twig
+1. I explained the thing that based on Controller /Twig to gather into the relating folder.
+1. I explained that $app is transfered as parameter of method of controller,many functions have been stored.
+1. I explained that by converting Twig into html by render,set to be returned value of method, screen will be drawn.
