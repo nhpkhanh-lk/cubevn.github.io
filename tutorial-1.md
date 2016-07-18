@@ -23,8 +23,8 @@ title: Setting of URL
 
     1. This is explanation about the setting file when linking URL and Controller
 
-    1. ルーティングの設定
-        - コントローラーとURLの紐付け方を説明します。
+    1. Set routing
+        - Explain linking method between Controller and URL.
 
 ### This is explanation about the setting file when linking URL and Controller
 
@@ -43,14 +43,14 @@ title: Setting of URL
 - The following file has been saving in Directory
 
     1. AdminControllerProvider.php
-        - 管理画面のルーティングが設定されています。
+        - Routing of 管理画面(management screen) is displayed.
 
     1. FrontControllerProvider.php
-        - ユーザー画面(フロント画面)のルーティングが設定されています。
+        - Routing of ユーザー画面(フロント画面)(User screen (Front screen) is displayed.
 
     1. InstallControllerProvider.php
-        - インストール画面のルーティングが設定されています。
-        - カスタマイズにおいて**本設定ファイルを使用することはありません。**
+        - Routing of インストール画面(Install screen) is displayed.
+        - In customize, **本設定ファイルを使用することはありません。**(this setting file will not be used)
 
 ### Setting of Routing
 
@@ -87,11 +87,11 @@ $c->match([ドキュメントルートからのurl], [紐付けるコントロ�
 ```
 
 1. URL from Document route
-    - /(スラッシュ)ではじめ、任意のURL名称を作成します。
-        - 名前からページでの処理が推測しやすい名前をつけます。
+    - Begin with /(slash), create the optional URL name.
+        - Process in page from name, will name that easy to guess
 
 1. the linking Controller class/method
-    - /src/Eccube/Controller内に作成した、コントローラーのファイル名(クラス名)とメソッド名を、インストールディレクトリからのフルパスで指定します。
+    - Specify file name (class name)) and method name of Controller which created in /src/Eccube/Controller by full path from Install Directory
     - Between class name and method name will connect by 2 colon [::]
 
 1. Routing name
@@ -118,7 +118,7 @@ $c->match([ドキュメントルートからのurl], [紐付けるコントロ�
 ```
 -->
 
-- 以上でルーティングの設定は完了です。
+- With operating above,setting of Routing has finished.
 
 ### Access by Browse
 
