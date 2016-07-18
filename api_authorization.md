@@ -69,6 +69,7 @@ Here, based on command curl to try implementing OpenID Connect Authorization cod
 #### Preparation
 
 [APIクライアントを作成](#section-2)(Create API client)
+
 In this example, set `redirect_uri` in `https://127.0.0.1:8080/Callback`
 #### 1. Acquisition of Authorization code 
 
