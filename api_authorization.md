@@ -116,6 +116,7 @@ It is possibe to get the following Access token and Refresh token, `id_token`
 #### 3. Verification of id_token
 
 [検証](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#SelfIssuedValidation)(verify)`id_token` that got in 2
+
 It is possibe to use [tokeninfo](#tokeninfo) End-point and [jwt.io](https://jwt.io/).
 
 #### 4. API Access
