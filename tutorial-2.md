@@ -160,13 +160,13 @@ class CrudController extends AbstractController ★クラス名を修正 + 親�
 
     1. /src/Eccube/Resource/template/default/Tutorial
 
-        - 関係するコントローラーのビューをフォルダ毎にまとめます。
-        - 作成方法はそれぞれの環境で異なるため、割愛します。
-        - 以下の様にディレクトリを作成してください。
+        - Gather View of the relating Controller for each Folder.
+        - The creating method will be different in each environment, so I will separate.
+        - Please create Directory as below.
 
 ---
 
-![ビューフォルダの作成](/images/img-tutorial2-make-dir.png)
+![ビューフォルダの作成](/images/img-tutorial2-make-dir.png)(create View folder)
 
 ---
 
