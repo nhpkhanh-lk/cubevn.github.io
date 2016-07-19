@@ -1,35 +1,35 @@
 ---
 layout: default
-title: 画面に変数を渡してみよう
+title: Try transferring variable to screen
 ---
 
 ---
 
 # {{ page.title }}
 
-## Twig構文とView変数
+## TTwig structure and View variable
 
-- 前章でコントローラー、Twigの作成・レンダリングを行いました。
+- In the previous chapter, I conducted Controller and creating/rendering Twig
 
-- WEBアプリケーションの構築のためには、コントローラーから、ビューへ情報を渡す必要があります。本章ではその基本的な部分のみ扱います。
+- In oder to build WEB Application,you need to transfer info from Controller to View. In this chapter,just use the basic parts.
 
-### 本章メニュー
+### Menu of this c
 
-- 本章では以下を行います。
+- In this chapter, conduct the following part
 
-    1. コントローラーにビュー変数を定義する説明を行います。
+    1. Explain about defining View variable for Controller
 
-    1. コントローラーレンダリング時に、変数を渡す方法を説明します。
+    1. Explain how to transfer variable when rendering Controller
 
-    1. Twigでコントローラーから受けた変数を表示する方法を説明します。
+    1. Explain how to display varible that received from Controller by Twig
 
-### コントローラーの修正
+### Mofication Controller
 
-- コントローラー内で変数を定義し、「render」メソッドで定義済みの変数を、連想配列で引数として与えます。
+- Define variable in Controller,give variable that defined already in method [render] as parameter by associative array
 
-- その際、「key」は任意の文字列となりますが、Twig側で変数を呼び出す際の、名称となります。
+- In this time,「key」 becomes the optional character string,but when call variable in Twig side, it becomes the name
 
-- 早速以下の様に**CrudController.php**を修正します。
+- Modify **CrudController.php** as below quickly
 
     - /src/Eccube/Controller/Tutorial/CrudController.php
 
@@ -84,17 +84,17 @@ class CrudController extends AbstractController
 ```
 -->
 
-- 修正の説明を行います。
+- Eplain the modification
 
-    1. **render**メソッドの第二引数に連想配列を渡すと、**twig**内で渡した変数の操作が可能となります。その際、連想配列のキーを元に変数操作を行います。
+    1. If transfer associative array for the second paramter of **render** method, you will be able to operate variable that transferred in **twig**. In this time, based on key of associative array to conduct operation of variable
 
-    1. 連想配列のキーは任意です。
+    1. Key of associative array is optional.
 
-### Twigの修正
+### Modify Twig
 
-- コントローラで連想配列で引き渡した変数の表示をTwigに追記します。
+- Add the display of variable that transferred by associative array in Controller, into Twig 
 
-- 以下の様に修正します。
+- Modify as below
 
 	- Tutorial/crud_top.twig
 
@@ -147,11 +147,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 ```
 -->
 
-- 今回追記内容について簡単な説明を行います。
+- Explain simply about the addition contents of this time
 
-    1. ｛｛｝｝Twigにコントローラーで設定した変数を表示しています。
+    1. Display variable that set in ｛｛｝｝Twig by Controller
 
-    2. Twigのブロック(1.の｛｛｝｝)は3種類あります。
+    2. There are 3 kinds of block(1.の｛｛｝｝) of Twig
 
         ---
 
@@ -163,15 +163,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
         ---
 
-    3. 上記の3種類を使い分けてViewを構築していきます。
+    3. Use separately 3 kinds above in order to structure View
 
-### 表示内容の確認
+### Confirm the display contents
 
-- 最後に確認のためにブラウザにアクセスしてみましょう。
+- Try accessing into Browser to confirm finally
 
-    1. ブラウザのURLに「http://[ドメイン + インストールディレクトリ]/tutorial/crud」を入力してください。
+    1. Please input「http://[ドメイン + インストールディレクトリ]/tutorial/crud」in URL of browser
 
-    1. コントローラーで定義した変数の内容が表示されています。
+    1. Contents of variable that defined in Controller, is displayed.
 
 ---
 
@@ -179,31 +179,32 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 ---
 
-### 本章のまとめ
+### Collect this chapter
 
-- 本章では以下を学びました。
+- In this chapter, I studied the following part 
 
-    1. コントローラー内、renderメソッドへのView変数追加の方法を説明しました。
+    1. I explained how to add View variable to render method in Controller
 
-    1. Twigの変数表示を行いました。
+    1. I conducted the display of varible of Twig
 
-    1. Twigのブロックの種類を説明しました。
+    1. I explained kind of Block of Twig
 
-### Viewのグローバル変数
 
-- 以下の変数は「Application.php」で初期化、格納されているため、全てのTwigから直接呼び出す事が可能です。
+### Global variable of View
+
+- The following variable has been intialized by 「Application.php」, storing, so you can call directly from all Twigs
 
 | 変数名 | 詳細情報 |
 |------ |-----|
 | BaseInfo | 管理画面 > 設定 > 基本情報設定 > ショップマスターで保存した内容 |
 | title | ページタイトル |
 
-- 呼び出し方は以下の様に呼び出せます。
+- About the call method will make call as below.
 
 例. ｛｛ BaseInfo.カラム名 ｝｝
 
-- 詳細なTwig構文については後の章で説明を行います。
+- About the detail Twig structure, I will explain in next chapter
 
-### 参考
+### Reference
 
 <a href="http://qiita.com/poego/items/81628dcd0f8e4d4a2d9d" target="_blank">EC-CUBE 3のTwigのタグ覚え書き（一部EC-CUBE2系のSmarty比較）<a/>
