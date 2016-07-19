@@ -142,7 +142,7 @@ class CrudController extends AbstractController ★クラス名を修正 + 親�
 
 - Try accessing into browser in order to check again
 
-    1. Please input「http://[ドメイン + インストールディレクトリ]/tutorial/crud」を入力してください。
+    1. Please input「http://[ドメイン + インストールディレクトリ]/tutorial/crud」
 
     1. Perhaps,next is not error, the following part will be displayed.
 
@@ -156,7 +156,7 @@ class CrudController extends AbstractController ★クラス名を修正 + 親�
 
 ### Create view
 
-- 以下フォルダにTwigファイルを追加します。
+- Add Twig file into the following folder
 
     1. /src/Eccube/Resource/template/default/Tutorial
 
@@ -170,13 +170,13 @@ class CrudController extends AbstractController ★クラス名を修正 + 親�
 
 ---
 
-#### ファイルの作成
+#### Create file
 
-- 次に、**crud_top.twig**を作成します。
+- Next, create **crud_top.twig**
 
-- index.twigをコピー、リネームします。
+- Copy index.twig, and rename
 
-- **crud_top.twig**( 中身はindex.twigのコピー )
+- **crud_top.twig**( contents will copy index.twig)
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_2/crud_top_before.twig"></script>
 
@@ -241,7 +241,7 @@ $(function(){
 ```
 -->
 
-- 下記の様に修正を行います。
+- Conduct modification as below
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_2/crud_top_after.twig"></script>
 
@@ -288,9 +288,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 ```
 -->
 
-#### コントローラーの修正
+#### Modify Controller
 
-- コントローラーで「echo」していた箇所を以下の内容に修正します。
+- Modify the place where did 「echo」by controller in the following content
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_2/CrudController_modified.php"></script>
 
@@ -375,8 +375,8 @@ class CrudController extends AbstractController
 
 ### Gather this chapter
 
-- 内容量も増えてきたので、章の内容をまとめておきます。
-- 本章で以下を行いました。
+- Contents volume had also increased, so I will gather content of chapter
+- I conducted the following part in this chapter
 
 1. Copy the existing Controller to create new controller
 1. Copy the existing Twig to create new Twig
