@@ -13,7 +13,7 @@ title: Try transferring variable to screen
 
 - In oder to build WEB Application,you need to transfer info from Controller to View. In this chapter,just use the basic parts.
 
-### Menu of this c
+### Menu of this chapter
 
 - In this chapter, conduct the following part
 
