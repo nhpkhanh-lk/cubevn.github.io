@@ -345,11 +345,11 @@ class CrudController extends AbstractController
         - Here,I don't explain in detail, but remember that you just call many functions from [$app] to structure Application
     1. Name space : use Eccube\Application;
         - In order to use [$app] that explained in 1., you have to specify name space out of scope of class
-        - If say simply, I will tell you place for storing class that use for controller. を教えてあげるという事です。
+        - If say simply, I will tell you place for storing class that use for controller.
         - Path that specify in Name space will be different based on class which use, but in case use class that exist in [/src/Eccube], please specify relative path from [Eccube] (At the beginning, no need [\])
     1. Name space : use Eccube\Controller\AbstractControler;
         - I will set parent class of controller based on reason same above
-    1. $app->render([表示したいTwigのパス] (path of Twig which want to display)
+    1. $app->render([表示したいTwigのパス])
         - If transfer path of Twig into [render] as parameter, Twig of target will be analyzed, and converted into html.
         - Normally,as return value of method of controller, if let return value of render as like that and [return],html that was converted, will be returned, screen is displayed.
         - About path that specify as [引数(parameter)], [/src/Eccube/Resource/template/] is setting as route path
@@ -370,7 +370,7 @@ class CrudController extends AbstractController
 
 ---
 
-![twigで文字表示](/images/img-tutorial2-view-rendar.png)(Display text by twig)
+![twigで文字表示](/images/img-tutorial2-view-rendar.png)
 
 ---
 
