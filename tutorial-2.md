@@ -35,7 +35,7 @@ title: Try displaying View from Controller
 
 ---
 
-![フォルダの作成](/images/img-tutorial2-make-dir.png)(Create folder)
+![フォルダの作成](/images/img-tutorial2-make-dir.png)
 
 ---
 
@@ -91,9 +91,7 @@ class TopController
 ```
 -->
 
-
 - Modify as below
-
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_2/CrudController_after.php"></script>
 
