@@ -167,7 +167,7 @@ class CrudController extends AbstractController ★クラス名を修正 + 親�
 
 ---
 
-![ビューフォルダの作成](/images/img-tutorial2-make-dir.png)(create View folder)
+![ビューフォルダの作成](/images/img-tutorial2-make-dir.png)
 
 ---
 
