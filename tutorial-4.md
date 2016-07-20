@@ -1,6 +1,6 @@
 ---
 layout: default
-title: フォームを表示してみよう
+title: Try displaying Form
 ---
 
 ---
@@ -8,33 +8,33 @@ title: フォームを表示してみよう
 # {{ page.title }}
 
 
-## Formとフォームビルダー
+## Form and Form builder
 
-- 前章までは、ルーティング、レンダリングの簡単な例を示しました。
+- In previous chapter, I gave simple example about Routing, rendering 
 
-- 本章では、画面入力のためにフォームを作成します。
+- In this chapter, I will create Form for inputting screen
 
 - EC-CUBE 3ではフォームの作成はフォームビルダーを用いて行います。
 
-### 本章メニュー
+### Menu of this chapter
 
-- 本章では以下を行います。
+- In this chapter, I will conduct the following part
 
-    1. コントローラーからフォームビルダを利用します。
+    1. Use Form builder from Controller
 
-    1. フォームビルダーでフォーム要素を構築します。
+    1. Build Form element by Form Builder
 
-    1. フォームビルダーの概要を説明します。
+    1. Explain summary of Form Builder
 
-    1. フォームビルダーからフォームビューを作成し、Twigに渡す方法を説明します。
+    1. Explain about how to create Form View from Form builder, and how to transfer for Twig
 
-    1. Twigで受け取ったフォームビューの表示方法を説明します。
+    1. Explain the display method of Form View that accepted in Twig
 
-## コントローラーファイルにForm定義を追加する
+## Add Form definition into Controller file
 
-- まずコントローラーにFormを定義します。
+- First, define Form in Controller
 
-- 以下の修正をコントローラーに行います。
+- Conduct the following modifications in Controller
 
     - CrudController.php
 
@@ -128,25 +128,25 @@ class CrudController extends AbstractController
 ```
 -->
 
-### フォームビルダーを用いた項目の追加
+### Add Item that used Form builder
 
-- Silex(Symfony2)では前述の通り、**フォームビルダー**でフォーム項目を定義します。
+- In Silex(Symfony2),define Form Item by **フォームビルダー** as the previous description
 
-#### フォーム項目追加メソッド
+#### Method of adding Form Item
 
 -  [フォームビルダー]->**add([name属性], [type属性], [オプション])**
 
-#### 引数の説明
+#### Explain parameter
 
-- addメソッドの引数の説明を行います。
+- Explain parameter of add method
 
     1. [name属性]
-        - html上で識別される、フォームの項目名です。
+        - This is Item name of Form that is identified on html
 
     1. [type属性]
-        - フォーム項目の種類です(text、checkbox、textareaなど)
+        - This is kind(text, checkbox, textarea...) of Form Item 
 
-    1. [オプション]は以下の内容を、適宜連想配列で設定します。
+    1. [オプション] will set the following contents by associative array accordingly 
 
         1. 必須の設定
           - 項目の入力必須の設定
