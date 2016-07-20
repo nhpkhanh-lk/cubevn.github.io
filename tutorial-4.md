@@ -14,7 +14,7 @@ title: Try displaying Form
 
 - In this chapter, I will create Form for inputting screen
 
-- EC-CUBE 3ではフォームの作成はフォームビルダーを用いて行います。
+- In EC-CUBE 3, creating Form will use Form builder to conduct.
 
 ### Menu of this chapter
 
@@ -148,17 +148,17 @@ class CrudController extends AbstractController
 
     1. [オプション] will set the following contents by associative array accordingly 
 
-        1. 必須の設定
-          - 項目の入力必須の設定
+        1. Mandatory setting
+          - Setting of Mandatory input of Item
 
-        1. デフォルト値
-          - value値の初期値
+        1. Default value
+          - Initial value of value value
 
-        1. **バリデーション**(次章で説明)
-          - 入力値の精査
+        1. **バリデーション**(Validation) (explain in following chapter)
+          - Examine th einputting value
 
-        1. value属性の設定
-          - ユーザー入力値(hiddenを除く)
+        1. Setting of value property
+          - Ths input value of User (exclude hidden)
 
         1. htmlでformに対して指定出来る属性全て
           - id、class、placeholderなど、htmlで指定出来るものは全て
@@ -285,26 +285,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 ```
 -->
 
-- ここで重要なのは以下2行です。
+- Here, the important rows are as below
 
     - ｛｛ form_widget(forms._token) ｝｝
     - ｛｛ form_widget(forms)｝｝
 
-- 上記の設定によって、フォームオブジェクトがビューに書きだされます。
+- Based on setting above, Form Object will be written out for View
 
-    - 本当は1項目づつ表示することも可能ですが、本チュートリアルでは全項目を一度に書き出しています。
-    - **forms._token**は本画面から、サーバーへアクセスした事をサーバーで判断するために、必ず記述します。
-    - 上記はセキュリティのために行います。
-    - サーバー側での判断はフォームオブジェクトが自動で行なってくれます。
+    - The truth is that you can display each 1 Item, but in this Tutorial, I am writing all Items once.
+    - **forms._token** will judge the thing that Accessed from this screen to server, so must describe.
+    - Conduct part above for security
+    - About Judgement of server side, Form Object will conduct automatically
 
-### 表示内容の確認
+### Confirm the display contents
 
-- 最後に確認のためにブラウザにアクセスしてみましょう。
+- Try accessing into Browser to confirm finally
 
-    1. ブラウザのURLに「http://[ドメイン + インストールディレクトリ]/tutorial/crud」を入力してください。
+    1. Please input 「http://[ドメイン + インストールディレクトリ]/tutorial/crud」 into URL of Browser.
 
-    1. フォームビルダーで構築したフォームが表示されています。
-
+    1. Form that structured in Form Builder,is displayed.
 ---
 
 ![フォームのレンダリング](/images/img-tutorial4-view-rendar.png)
@@ -312,9 +311,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 ---
 
 
-## この章のまとめ
+## Collect this chapter
 
-1. コントローラーでFormを定義しました。
-1. フォームビルダーでフォーム項目を構築しました。
-1. フォームビルダーからフォームオブジェクト、そこからビューオブジェクトを取得しました。
-1. フォームのビューオブジェクトをTwigで表示しました。
+1. I defined Form by Controller
+1. I builded Form Item in Form Builder
+1. I got Form Object from Form Builder, and got View Object from there
+1. I displayed View Oject of Form by Twig
