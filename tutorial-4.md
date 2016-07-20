@@ -177,54 +177,54 @@ class CrudController extends AbstractController
 - エンティティを用いない場合は必ず**false**を設定してください。
 - 設定が**true**の場合、ビルダーが項目とエンティティのマッピングを行うためエラーとなります。
 
-#### 特殊な項目
+#### Special Items
 
-- 以下のフォーム項目については、通常のhtmlを作成する際と、概念が違います。
+- About the following Form Item, when create the normal html, general Ideas will be different
 
-    1. セレクトボックス
+    1. Selectbox
 
-    1. チェックボックス
+    1. Checkbox
 
-    1. ラジオボックス
+    1. Radiobox
 
-    - 上記に示したものは、選択値をフォームビルダーの設定項目によって設定します。
+    - Things that expressed above, will set the chosen value based on setting Item of Form Builder
 
         - 上記の場合は、**addメソッド第二引数の[type属性]**に「choices」を指定し、連想配列を与える事で実現できます。
 
-#### ビルダーの取得
+#### Get Builder
 
-- フォームビルダーは以下で取得が出来ます。
+- Form Builder can get in below
 
-  - **$app['form.factory']**から以下メソッドを呼び出します。
+  - CAll the following method from **$app['form.factory']**
 
     - **createBuilder([タイプ名称], [エンティティ(データーモデルオブジェクト)], [オプション])**
 
-      1. [タイプ名称] : 次章で説明する「FormType」のメソッド**getName**で定義した名前を指定します。
-        - あまりおすすめしませんが、FormTypeがなくビルダーのみで生成する際は、「form」を指定してください。
+      1. [タイプ名称] : Specify name that defined by **getName** of method 「FormType」which explains in next chapter.
+        - I don't recommend, but when generate just Builder without FormType, please specify 「form」
 
-      1. [エンティティ(データーモデルオブジェクト)] : 通常は内部で利用するエンティティを設定します。
-        - エンティティを用いない際は、「null」を指定してください。
+      1. [エンティティ(データーモデルオブジェクト)] : Normally, set Entity that is used in Internal
+        - When do not use Entity, please specify [null]
 
-      1. [オプション] : フォーム生成時オプションを設定します。
-        - 使用頻度も少ないため、本チュートリアルでは割愛いたします。
+      1. [オプション] : Set Option when generating Form
+        - Because this is not used frequently, so I will separate in this Tutorial
 
-### フォームビルダーからフォームのビューオブジェクトを取得する
+### Get View object of Form from Form Builder
 
 - フォームビルダーで項目の定義が完了したら、以下の順で「フォームのビューオブジェクト」生成を行います。
 
-    1. フォームの取得
+    1. Get Form
         - [フォームビルダー]->getForm();
 
-    1. フォームのビューオブジェクト取得
+    1. Get View Object of Form
         - [フォームオブジェクト]->createView()
 
-## Twigファイルでフォームビューオブジェクトの内容を表示する
+## Display contents of Form View Object by Twig file
 
-- コントローラー側の実装が完了しました。
+- Implementation of Controller side has finished.
 
-- 次はTwigに以下修正を加え、フォームのビューオブジェクトをhtmlとして表示出来る様にしましょう。
+- Next,add the following modification into Twig, in order to be able to display View object of Form as html
 
-- 以下の様に**crud_test.twig**を修正します。
+- Modify **crud_test.twig** as below
 
     - crud_test.twig
 
