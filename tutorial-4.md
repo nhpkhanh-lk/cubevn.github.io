@@ -163,9 +163,9 @@ class CrudController extends AbstractController
         1. htmlでformに対して指定出来る属性全て
           - id、class、placeholderなど、htmlで指定出来るものは全て
 
-#### エンティティとフォーム項目のマッピング
+#### Mapping Entity with Form Item
 
-- 上記のオプション項目に以下が設定されていると思います。
+- I think that the following part is set in Option Item above
 
 ```
 
@@ -173,9 +173,10 @@ class CrudController extends AbstractController
 
 ```
 
-- 上記は後の章でてくるエンティティとフォーム項目を紐付けるかどうかを設定します。
-- エンティティを用いない場合は必ず**false**を設定してください。
-- 設定が**true**の場合、ビルダーが項目とエンティティのマッピングを行うためエラーとなります。
+- The part above will set whether linking Form Item with Entity that appears in next chapters or not?
+- In case not using Entity, please set **false**
+- In case setting is **true**, it will be error due to Builder conducts mapping Item with Entity.
+
 
 #### Special Items
 
@@ -189,7 +190,8 @@ class CrudController extends AbstractController
 
     - Things that expressed above, will set the chosen value based on setting Item of Form Builder
 
-        - 上記の場合は、**addメソッド第二引数の[type属性]**に「choices」を指定し、連想配列を与える事で実現できます。
+        - In case above,you can execute by specifying [choices] for **addメソッド第二引数の[type属性]**(type attribute of the second parameter
+of add method), give associative arrays.
 
 #### Get Builder
 
@@ -210,7 +212,8 @@ class CrudController extends AbstractController
 
 ### Get View object of Form from Form Builder
 
-- フォームビルダーで項目の定義が完了したら、以下の順で「フォームのビューオブジェクト」生成を行います。
+- When finished definition of Item in Form Builder, conduct generating [フォームのビューオブジェクト(View Object of Form)] by the following order.
+
 
     1. Get Form
         - [フォームビルダー]->getForm();
