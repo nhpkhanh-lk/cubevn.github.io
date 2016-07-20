@@ -160,8 +160,8 @@ class CrudController extends AbstractController
         1. Setting of value property
           - Ths input value of User (exclude hidden)
 
-        1. htmlでformに対して指定出来る属性全て
-          - id、class、placeholderなど、htmlで指定出来るものは全て
+        1. All attributes that can specify with form in html
+          - Can specify alls in html such as id, class, placeholder...
 
 #### Mapping Entity with Form Item
 
