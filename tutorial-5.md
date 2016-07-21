@@ -627,16 +627,16 @@ class CrudController extends AbstractController
 - Conduct explanation of contents above
 
 
-    1. まずはじめに、リクエストを受け取るために「名前空間」とメソッドの引数を設定します。
-    - 名前空間に「Silex(Symfony2)」の**リクエストクラスの読み込み宣言**を行います。
-    - メソッドの引数に、タイプヒンティングを設定、Request型を指定し、リクエストオブジェクトを受け取れるようにします。
-    - **リクエストオブジェクト**は「Silex(Symfony2)」が**自動で処理**を行い、クライアントからのリクエスト内容を渡してくれます。
-    1. 次にフォーム生成のために、**$app[form.factory]**の**createBuilder**メソッドで**フォームオブジェクト**を生成します。
-    - CrudTypeの**getName**メソッドで定義した、FormType名称**crud**を**createBuilder**の第一引数として渡します。
-    - 第二引数には、今回は関連エンティティがないため「null」を指定します。
-    - オプションは指定しません。
+    1. Firstly, set [名前空間(name space)] and parameter of Method in order to receive Request.
+    - Conduct **リクエストクラスの読み込み宣言**(declaration of loading Request class) of [Silex(Symfony2)] in name space
+    - Try to set Type-hinting in parameter of method, specify Request type, receice Request Object.
+    - About **リクエストオブジェクト**(request  Object), [Silex(Symfony2)] will conduct **自動で処理** (automatically process), and transfer Request contents from Client.
+    1. Next, generate **フォームオブジェクト**(Form Object) by method **createBuilder** of **$app[form.factory]** in order to generate Form.
+    - Transfer FormType name **crud** that defined by method **getName** of CrudType as the first parameter of createBuilder
+    - In the second parameter, this time doesn’t have revelant Entity, so specify [null].
+    - Option will not specify.
 
-    1. 次に**handleRequest**で取得した**リクエストオブジェクト**と**FormType**を**関連**付けます。
+    1. Next, **関連**(associate) **FormType** with **リクエストオブジェクト**(Request Object) that got by handleRequest 
     - 厳密にはサブミット値とFormType値の突き合わせが行われています。
 
     1. 次に入力値チェックですが、以下の様に記述しているかと思います。
