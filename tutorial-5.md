@@ -637,30 +637,30 @@ class CrudController extends AbstractController
     - Option will not specify.
 
     1. Next, **関連**(associate) **FormType** with **リクエストオブジェクト**(Request Object) that got by handleRequest 
-    - 厳密にはサブミット値とFormType値の突き合わせが行われています。
+    - Conduct comparision submit value and FormType value carefully.
 
-    1. 次に入力値チェックですが、以下の様に記述しているかと思います。
+    1. Next is the input value check, I think whether I will describe as below or not.
 
         ```
         if ($form->isSubmitted() && $form->isValid()) { 
         ```
 
-    - 以下入力値チェックの説明です。
+    - This is explanation of the input value check as below
 
-    - まず「isSubmitted」でFormからサブミットされた値かどうかチェックしています。
-      - セキュリティのためです
-    - 次に「isValid」でFormTypeの内容に基づき、入力値チェックを行います。
-      - 入力値に問題がなければ、**true**を、内容に問題あれば**false**が返却されます。
-      - またフォームオブジェクト内で、エラーがあった項目と、それに対して設定されていたエラーメッセージも格納されているため、ビューの設定でエラーメッセージが表示されます。
-      - ※ただし、**バリデーションエラー**が保持されるためには、**エンティティが必要ですが**、本章では、エンティティを保持していないため、ビューで自動でエラーが表示されるわけではありません。そのため今回は、コントローラーで判定し、判定に応じたメッセージをビューに渡しています。
+    - First, check whether it is value that is submitted from Form by  [isSubmitted] or not
+      - For Security
+    - Next, base on contents of FormType in [isValid] to conduct the input value check
+      - If there is no problem in the input value, return **true**, if there os problem in contents, return **false**.
+      - In Form Object,about Item that there is error, its error message is also stored so we can display error message by setting of View.
+      - ※However,in order to **バリデーションエラー**(Validation error) is stored,**エンティティが必要ですが**(Entity is required). In this chapter, Entity is not stored, so maybe error will not be displayed automatically in View. Thus, this time will judge by Controller, and transfer message according to judgement for View.
 
-### Twigファイルの修正
+### Modification of Twig file
 
-- 最後にTwigファイルを修正しましょう
+- Finally, lets modify Twig file
 
     - **crud_top.twig**
 
-    - 現状では以下表示となります。
+    - Currently, this is display as below
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_5/crud_top_add_form_before.twig"></script>
 
