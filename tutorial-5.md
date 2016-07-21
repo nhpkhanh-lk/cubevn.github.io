@@ -10,56 +10,56 @@ title: フォーム情報を整理して入力値チェックも追加しよう
 
 ## FormType
 
-- 前章で作成した、フォーム定義の内容を、FormTypeに切り分けます。
+- Divide contents of Form definition that created in previous chapter in FormType
 
-- 目的としては、フォームの定義が一箇所に集まっているとメンテナンスが容易になるからです。
+- Purpose is that if definition of Form is collected in one place, Maintenance becomes easy.
 
-- EC-CUBE 3でフォームを作成する際は、通常本章の方法を用います。
+- When create Form in EC-CUBE 3, normally use method of this chapter. 
 
-### 本章メニュー
+### Menu of this chapter
 
-- 本章では以下を行います。
+- In this chapter, conduct the following part
 
-    1. FormTypeファイルの作成します。
+    1. Create FormType file
 
-    1. バリデーションの定義方法を説明します。
+    1. Explain definition method of Validation
 
-    1. FormTypeをコントローラーから利用するために、サービスプロバイダへの登録方法を説明します。
+    1. Explain about registration method to Service Provider in order to use FormType from Controller.
 
-    1. コントローラーメソッドにRequestを渡す方法を説明します。
+    1. Explain about method of transferring Request for Controller method.
 
-    1. ビルダーからFormTypeファイルを用い、フォームオブジェクトを作成する方法を説明します。
+    1. Explain about method that use FormType file from Builder to create Form Object
 
-    1. Requestとフォームオブジェクトの連携を説明します。
+    1. Explain about connection of Request and Form Object
 
-    1. バリデーションの判定方法を説明します。
+    1. Explain about judgement method of Validation
 
-    1. バリデーション機構の簡単な説明を行います。
+    1. Explain in brief about Validation mechanism
 
-    1. Twigファイルの修正します。
+    1. Modify Twig file
 
-    1. Twigファイルでの判定方法を説明します。
+    1. Explain about judgement in Twig file
 
-    1. Twigファイルの判定による表示内容の変更方法を説明します。
+    1. Explain about the change method of the display contents based on judgement of Twig file
 
-### FormTypeの作成
+### Creation of FormType
 
-#### ファイルの作成
+#### Creation of File
 
-- 以下にFormTypeが保存されています。
+- FormType is saved in below
 
 1. /src/Eccube/Form/Type/Front
     - 「Type」フォルダまでは、「管理画面」「ユーザー画面」共通です
       1. 管理画面 : Admin
       1. ユーザー画面 : Front
 
-#### ファイルのリネーム
+#### Rename file 
 
-- 次にCrudType.phpを作成します。
+- •	Next, create CrudType.php
 
-- ContactType.phpをコピー、リネームします。
+- •	Copy ContactType.php, rename
 
-    - **CrudType.php**( 中身はContactType.phpのコピー )
+    - **CrudType.php**(contents will copy ContactType.php)
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_5/CrudType_before.php"></script>
 
@@ -152,9 +152,9 @@ class ContactType extends AbstractType  ★名称の変更
 ```
 -->
 
-#### CrudTypeの作成
+#### Creation of CrudType
 
-- 上記を以下に変更します。
+- Change above as below
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_5/CrudType_after.php"></script>
 
@@ -258,13 +258,12 @@ class CrudType extends AbstractType  ★CrudTypeに変更
 ```
 -->
 
-- 上記でコントローラーに記述していた、フォーム構成を「FormType」へ転記を行いました。
+- Transfer Form structure that described in Controller above, to [FormType] 
 
-#### 入力値チェック(バリデーション)の定義
+#### Definition of the input value check (Validation)
 
-- 上記でFormTypeを作成しましたが、ここで、フォームの各項目の入力値チェック(以後、バリデーションと呼びます)を定義していきます。
-
-- 作成した「CrudType」の各項目のオプション欄に追記していきます。
+- I created FormType already above, here, I will define the input value check (is called that Validation) of each Item of Form.
+- I will add in Option column of each Item of the created [CrudType] 
 
     - CrudType.php
 
@@ -403,9 +402,9 @@ class CrudType extends AbstractType
 ```
 -->
 
-#### バリデーションの記述方法
+#### The description method of Validation
 
-- 上記で記述した通り、バリデーションは以下構文で追加します。
+- As describing above, Validation will add by the following syntax
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_5/CrudType_example.php"></script>
 
@@ -430,21 +429,21 @@ class CrudType extends AbstractType
 ```
 -->
 
-#### 今回利用しているバリデーション
+#### Validation that is using this time
 
 <a href="http://symfony.com/doc/current/reference/constraints/Length.html" target="_blank">Length</a>
 
 <a href="http://symfony.com/doc/current/reference/constraints/Regex.html" target="_blank">Regex</a>
 
-#### バリデーションの種類
+#### Kind of Validation
 
-- Symfony2のサイトで確認してください。
+- Please confirm on Site of Symfony2
 
 <a href="http://symfony.com/doc/current/book/validation.html#basic-constraints" target="_blank">Validation</a>
 
 #### 補足
 
-- 上記ソース内のフォームビルダーの最後に以下が定義されています。
+- The following part has been defining at the end of Form Builder in source above
 
 ```
 
@@ -455,22 +454,20 @@ class CrudType extends AbstractType
 - 上記はフォームの処理に対して割り込むイベントを定義していますが、慣例的なものとして、記述を削除しないでくだい。
 - 通常は利用の必要がないため、ここでの説明は割愛させていただきます。
 
-### FromTypeのサービス登録
+### FromTypeのサービス登録Register service of FromType
 
 - FormTypeの定義が完了したら、コントローラー内「$app」で呼び出せる様に、**サービスプロバイダー**への登録が必要です。
 
-#### サービスプロバイダの修正
+#### Modify Service Provider 
 
-- 以下に**ServiceProvider**が保存されています。
+- **ServiceProvider**has been saving in below
 
     1. /src/Eccube/ServiceProvider
 
-        - フォルダの中の**EccubeServiceProvider.php**が該当ファイルです。
+        - **EccubeServiceProvider.php**in folder is the corresponding file.
 
-        - 今回はユーザー画面(フロント画面)に関する「FormType」です。そのために、ファイルを開いたら「front」を検索してください。
-
-        - 「front」を検索すると、ユーザー画面に関する、「Type定義」がまとまっているはずですので、その最下部に以下の様に、作成した「CrudType」の定義を行いましょう。
-
+        - This time is [FormType] that relates to User screen (Front screen). Thus, when you open file, please search [front].
+        - If you search, [Type定義](Type definition) that relates to User screen is collected, so define the created [CrudType] in the that lowest part as below.
             - EccubeServiceProvider.php
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_5/EccubeServiceProvider_add_type.php"></script>
@@ -489,15 +486,15 @@ $types[] = new \Eccube\Form\Type\Front\CrudType($app['config']); ★追記
 ```
 -->
 
-- 今回は必要ありませんが、引数にコンフィグ情報を渡しています。
+- This time is not required, but I am transferring Config into in parameter.
 
-### コントローラーの修正
+### Modification of Controller
 
-- 次はコントローラーに記述していた、Form項目の設定を削除し、CrudTypeの読み込みを記述していきます。
+- Next, remove setting of Form Item that described on Controller, and describe loading of CrudType.
 
-- まず**createBuilder**でビルダーを生成している箇所から、Form定義部を全て削除します。
+- First, remove all of Form definition parts from place that generating Builder by **createBuilder**
 
-- 以下の通りになります。
+- Become as below
 
     - CrudController.php
 
@@ -555,12 +552,11 @@ class CrudController extends AbstractController
 ```
 -->
 
-#### FormTypeの呼び出しとサブミット値のバリデーション
+#### Validation of call of FormType and submit value
 
-- 次はコントローラーに「FormType」の呼び出しと、サブミットされた値に対して、入力値チェックを行います。
+- Next, check the inputting value for call of FormType in Controller and submitted value.
 
-- コントローラーに以下を追加します。
-
+- Add the following part in Controller 
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_5/CrudController_call_form.php"></script>
 
@@ -628,7 +624,7 @@ class CrudController extends AbstractController
 ```
 -->
 
-- 上記内容の説明を行います
+- Conduct explanation of contents above
 
 
     1. まずはじめに、リクエストを受け取るために「名前空間」とメソッドの引数を設定します。
