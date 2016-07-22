@@ -826,7 +826,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 - Confirm the display in case there is error in inputting value 
 
-    1. 投稿ハンドルネームに「あ」、投稿のタイトルに「あ」を入力i.	Input 「あ」in submission Handle name, 「あ」in Title of submission
+    1. Input 「あ」in 投稿ハンドルネーム(submission hande name),「あ」in Title of 投稿(submission)
 
     1. Click 登録する(register) by this contents.
 
