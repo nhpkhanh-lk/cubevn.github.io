@@ -1,6 +1,6 @@
 ---
 layout: default
-title: フォーム情報を整理して入力値チェックも追加しよう
+title: Arrange Form info and add the check input value
 ---
 
 ---
@@ -49,9 +49,9 @@ title: フォーム情報を整理して入力値チェックも追加しよう
 - FormType is saved in below
 
 1. /src/Eccube/Form/Type/Front
-    - 「Type」フォルダまでは、「管理画面」「ユーザー画面」共通です
-      1. 管理画面 : Admin
-      1. ユーザー画面 : Front
+    - Until folder [Type], [管理画面][ユーザー画面] are common.
+      1. 管理画面(management screen): Admin
+      1. ユーザー画面(User screen) : Front
 
 #### Rename file 
 
@@ -441,7 +441,7 @@ class CrudType extends AbstractType
 
 <a href="http://symfony.com/doc/current/book/validation.html#basic-constraints" target="_blank">Validation</a>
 
-#### 補足
+#### Addition
 
 - The following part has been defining at the end of Form Builder in source above
 
@@ -451,12 +451,12 @@ class CrudType extends AbstractType
 
 ```
 
-- 上記はフォームの処理に対して割り込むイベントを定義していますが、慣例的なものとして、記述を削除しないでくだい。
-- 通常は利用の必要がないため、ここでの説明は割愛させていただきます。
+- The part above has defined the interrupt Event, but see it as customary thing so do not delete description.
+- Normally, it is not required for for use, so explaination will be omitted here.
 
-### FromTypeのサービス登録Register service of FromType
+### Register service of FromType
 
-- FormTypeの定義が完了したら、コントローラー内「$app」で呼び出せる様に、**サービスプロバイダー**への登録が必要です。
+- When definition of FormType has finished, you need to register to **サービスプロバイダー** in order to be able to call by [$app] in Controller.
 
 #### Modify Service Provider 
 
@@ -718,7 +718,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 ```
 -->
 
-- コントローラーの修正にあわせて以下の様に追記、変更を行います。
+- Add, change as below in order to match with modification of Controller.
 
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_5/crud_top_add_form_after.twig"></script>
@@ -779,29 +779,28 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 ```
 -->
 
-- 上記の説明を行います。
+- Explain about part above.
 
-    1. Twigでのif文
-        - メッセージ表示箇所で、変数の有無を判定しています。
-        - **if [変数] is defined**がそうですが、この記述中の**defined**はPHPの**issetと同義**です。
-        - Twigの**ロジック部は｛％％｝**で囲っています。
-        - 条件により、表示されるタグが異なります。
+    1. if statement in Twig
+        - Judge there is (or no) variable in place of display message.
+        - **if [変数] is defined** is like that, but **defined**of this description is **issetと同義**(same meaning with isset) of PHP.
+        - Surrouding by **ロジック部は｛％％｝**(Block part  is ｛％％｝) of Twig
+        - The displayed Tag will be different according to condition.
 
-    1. フォームの追加
-        - 次にhtmlのフォームを定義します。
-        - **action属性**以外は通常のフォーム定義と同様です。
-        - **action属性**に記載されているのが、Twig構文で**url([ルーティング名])**、指定したURLを取得できます。
-          - ここで云う**ルーティング名**とは**FrontControllerProvider**でルーティングの設定を行なった際に、**bind()に設定した値**です。
+    1.  Add Form
+        - Next, define Form of html
+        - Out of **action属性**will be same with normal Form definition. 
+        - It is described in　**action属性**but can get **url([ルーティング名])**, the specified URL by Twig syntax.
+          - Here, routing name means value that set in bind() when conduct setting of routing in **FrontControllerProvider**.
 
-### 表示内容の確認
+### Confirm the display contents
 
-#### 通常表示
+#### Normal display
 
-- 最後に確認のためにブラウザにアクセスしてみましょう。
+- Try accessing in browser to check finally.
+    1. Please input [http://[ドメイン + インストールディレクトリ]/tutorial/crud] in URL of Browser.
 
-    1. ブラウザのURLに「http://[ドメイン + インストールディレクトリ]/tutorial/crud」を入力してください。
-
-    1. フォームビルダーで構築したフォームが表示されています。
+    1. Form that is builded by Form Builder, is displayed.
 
 ---
 
@@ -809,13 +808,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 ---
 
-#### 入力値正常表示
+#### Display in case input value is normal
 
-- 入力値が正常な場合の表示を確認します。
+- Confirm the display in case the inputting value is normal.
 
-    1. 投稿ハンドルネームに「a」、投稿のタイトルに「a」を入力
+    1. Input 「a」in 投稿ハンドルネーム(submission hande name), 「a」in  Title of 投稿(submission)
 
-    1. この内容で登録するをクリック
+    1. Click 登録する(register) by this contents.
 
 ---
 
@@ -823,13 +822,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 ---
 
-#### 入力値エラー表示
+#### Display in case the inputting value is error
 
-- 入力値にエラーがある場合の表示を確認します。
+- Confirm the display in case there is error in inputting value 
 
-    1. 投稿ハンドルネームに「あ」、投稿のタイトルに「あ」を入力
+    1. 投稿ハンドルネームに「あ」、投稿のタイトルに「あ」を入力i.	Input 「あ」in submission Handle name, 「あ」in Title of submission
 
-    1. この内容で登録するをクリック
+    1. Click 登録する(register) by this contents.
 
 ---
 
@@ -837,15 +836,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 ---
 
-## この章のまとめ
+## Collection of this chapter
 
-1. コントローラーに記述された、Form定義情報をFormTypeに移設しました。
-1. FormTypeで、バリデーションを設定しました。
-1. サービスプロバイダに作成したFormTypeを登録しました。
-1. Twigにformを記述する際、「action」で「url構文」を利用しルーティング名により「URL」の取得を行いました。
-1. $app['form.factory']の「createBuilder」の第一引数にフォームタイプ名を記述し、フォーム定義を取得しました。
-1. フォーム定義をフォームオブジェクトへ変換した後に、リクエストオブジェクトに紐付けしました。
-1. コントローラーのメソッドからリクエストオブジェクトを取得しました。
-1. リクエストがサブミット値か、さらに入力値に異常がないかの判定を行いました。
-1. 取得結果で、表示文言がかわるように、Twigで「if文」を用いました。
-1. Twigの構文「defined」を利用して、変数の有無を判定しました。
+1. Move Form definition info that described in Control, to FormType
+1. In FormType, set Validation
+1. Register the created FormType in Service Provider.
+1. When describe form in Twig, I used [url構文](url syntax) by [action] to get [URL] based on Routing name
+1. Describe Form type name in the first parameter of [createBuilder] of $app['form.factory'], get Form definition.
+1. After converting Form definition into Form Object,linking with Request Object.
+1. Get Request Object from method of Controller.
+1. Conduct the judgement that Request is submit value or not, and there is no abnormal in the input value?
+1. In acquisition result, use [if文](if statement) by Twig to know the display wordings.
+1. Use syntax 「defined」of Twig to judge there is/ (no) varible?
