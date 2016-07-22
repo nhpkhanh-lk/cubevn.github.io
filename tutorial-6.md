@@ -5,42 +5,42 @@ title: データーベースを作成しよう
 
 ---
 
-# データーベースを作成しよう
+# Let's create Database
 
-## 本章メニュー
+## Menu of this chapter
 
-- 本章では以下を行います。
+- In this chapter, conduct the following par
 
-    1. テーブル定義を記述するマイグレーションファイルの作成方法を説明します。
+    1. Explain about the creation method of Migration file that describe Table definition
 
-    1. 本チュートリアルで利用するテーブルの定義を説明します。
+    1. Explain about definition of Table that uses in this Tutorial
 
-    1. **エンティティマネージャー**を利用し、テーブルを作成する方法を説明しています。
+    1. Explain about method that use **エンティティマネージャー** to create Table
 
-    1. テンプレートファイルの**ヘッダー・フッター表示**のために**dtb_page_layout**にデータの登録が必要な事を説明しています。
+    1. Explain about the thing that needs to register data in dtb_page_layout to display Header Footer of Template file
 
-    1. **dtb_page_layout**に対して画面情報を登録する方法について説明しています。
+    1. Explain about method that register screen info with **dtb_page_layout**
 
-## 本チュートリアルのテーブル定義
+## Table definition of this tutorial
 
-- 本章メニューで示した様に、本章ではテーブル定義の内容についてのみ説明をおこいます。
+- As described in Menu of this chapter,I will explain about contents of Table definition
 
 <!-- テーブル定義は**マイグレーションファイル**に記述していきます。 -->
-- **マイグレーションファイル**でエンティティマネージャーを用い、エンティティからテーブルスキーマを抽出し、テーブルを作成します。
+- Use Entity Manager in **マイグレーションファイル**(Migration file) to extract Table schema from Entity, create Table
 
-## マイグレーションファイルの準備
+## Preparation of Migration file
 
-1. トップページに記述されている「マイグレーションガイド」の「マイグレーション作成手順」の内容に基づき、新しいマイグレーションファイルを作成します。
+1. Based on contents of [マイグレーション作成手順(Migration creating Manual)] of [マイグレーションガイド](Migration Guide) that is described in TOP-PAGE, to create new Migration file. 
 
-    - 内容に基づき生成を行うと以下フォルダに作成されます。
-    - 保存フォルダ
+    - If conduct generation based on contents,it will be created in the following folder.
+    - The store folder
       - /src/Eccube/Resource/doctrine/migration
 
-1. 以下ファイルが出来ているか確認してください。
+1. Please confirm whether the following file has finished or not?
     - **Version20160607155514.php**
 
-    - 下記に内容を記述します。
-    - 「up」メソッドと「down」メソッドが記載されています。
+    - Describe contents in below
+    - Method of [up] and [down] has been describing
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_6/migration_before.php"></script>
 
@@ -81,9 +81,9 @@ class Version20160607155514 extends AbstractMigration
 ```
 -->
 
-## 今回チュートリアルのテーブル定義
+## Table definition of Tutorial of this time
 
-- テーブル名 : dtb_crud
+- Table name: dtb_crud
 
 | 論理名 | 物理名 | フィールドタイプ | その他 |
 |------|------|------|------|
@@ -95,7 +95,7 @@ class Version20160607155514 extends AbstractMigration
 | 投稿登録時間 | created_date | datetime | NOT NULL |
 | 投稿編集時間 | updated_date | datetime | NOT NULL |
 
-- 上記が作成されるテーブルです。
+- This is table that created part above
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_6/migration_after.php"></script>
 
@@ -150,30 +150,30 @@ class Version20160607155514 extends AbstractMigration
 ```
 -->
 
-- 上記の説明を行います。
+- I will explain about above
 
     1. メソッドの引数に**$schema**変数が存在しますが、テーブル操作を行うためのオブジェクトです。
 
-    1. 本内容は次章以降で説明する内容を多数含んでいますが、今回は説明のみ行います。
-        - 詳細は次章以降を確認してください。
-    1. 次に「Application」のインスタンスを取得しています。
-        - 以前説明した通り、**「$app」**のメソッドを呼び出しアプリケーションを構築していきますが、今回も同様です。
-    1. アプリケーションのインスタンスから、エンティティマネージャーを取得しています。
-    1. **hasTable**メソッドを用いて、**今回テーブルの有無**を確認しています。
-    1. テーブル作成対象のエンティティのパスを配列に格納しています。
+    1. This contents includes many contents that explain in next chapter, so I just explain this time.
+        - Detail will check below of next chapter
+    1. iii.	Next, get Instance of 「Application」
+        - As explained before, call method of **「$app」** and build Application, this time is also similary.
+    1. Get Entity Manager from Instance of Application.
+    1. Use method **hasTable** to check **今回テーブルの有無**(there is/no table this time)
+    1. Store path of Entity of Table creating target in array. 
         - 今回作成テーブル該当が一件のために、配列にエンティティ名を格納する必要性はありませんが、今回説明内容が、汎用的なために、あえて配列に格納しています。
     1. エンティティマネージャーの**getMetadataFactory**と、そのメソッド**getMetadataFor**に今回該当のエンティティのパスを指定して、エンティティから、カラム情報を取得します。
-    1. **SchemaTool**にエンティティマネージャを引数で渡し、インスタンスを取得します。
-    1. **SchemaTool**のメソッド**createSchema**に取得済みのカラム情報を渡し、テーブルを生成します。
-    1. 次に「down」メソッドの説明ですが、「down」メソッドは**dropTable**メソッドでテーブルを削除しています。
+    1. Transfer Entity Manager to **SchemaTool** by parameter, get Instance.
+    1. Transfer the gotten column info to method **createSchema** of  **SchemaTool**, generate table
+    1. Next, explain about method [down], method [down] has been deleting table by method **dropTable**
 
-## dtb_page_layoutへの画面情報の登録
+## Registration of screen info to dtb_page_layout
 
-- EC-CUBE 3のテンプレートの**ヘッダー・フッター**は、**dtb_page_layout**に画面情報が**登録されていないと表示されません**。
+- If screen info **登録されていないと表示されません**(has not been registered) in **dtb_page_layout**, **ヘッダー・フッター**(Header Footer) of Template of EC-CUBE 3 will not be displayed.
 
-- 以下に**dtb_page_layout**に保存する情報を記載します。
+- Describe into that saves in **dtb_page_layout** in below
 
-- テーブル名 : dtb_page_layout
+- Table name:  dtb_page_layout
 
 | 物理名 | 登録情報 | 登録値 |
 |------|------|------|
@@ -183,7 +183,7 @@ class Version20160607155514 extends AbstractMigration
 | file_name | 該当Twigのルートからのパスと名称 | Tutorial/crud_top |
 | edit_flg | 管理画面から編集可能かどうか | 2 |
 
-- 上記のレコード追加を以下に記述していきます
+- Describe the record addition of above into below.
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_6/migration_add_dtb_layout.php"></script>
 
@@ -280,9 +280,9 @@ class Version20160607155514 extends AbstractMigration
 ```
 -->
 
-- 上記が完了したら、「マイグレーションガイド」の「マイグレーション受け入れ手順」の章を参照しその内容を実行してください。
+- When finished above, refer chapter of [マイグレーション受け入れ手順(Migration acceptance manual)] of [マイグレーションガイド(Migration Guide)], and execute that contents.
 
-- 成功すれば以下の様にテーブルが作成されているはずです。
+- If operation succeeded, table has been creating as below.
 
 
 ---
@@ -291,14 +291,14 @@ class Version20160607155514 extends AbstractMigration
 
 ---
 
-## 本章で学んだこと
+## Study in this chapter
 
-1. コンソールから空の「マイグレーションファイル」を作成しました。
-1. テーブル構造を検討しました。
-1. エンティティマネージャーからエンティティのカラム情報を取得する方法を説明しました。
-1. **SchmeTool**でカラム情報からテーブルを作成する方法を説明しました。
-1. 「マイグレーションファイル」の「schemaオブジェクト」でデーターベース操作をおこないました。
-1. 「schema」オブジェクトで「hasTable」「dropTable」のメソッドを使いテーブルの削除を行いました。
-1. dtb_page_layoutに画面情報を登録しない限り作成した画面には、ヘッダー・フッターなどが表示されない事を説明しました。
-1. dtb_page_layoutへ登録する情報の説明を行いました。
-1. dtb_page_layoutに情報の登録を行いました。
+1. Create empty [マイグレーションファイル(migration file) from Console.
+1. Consider Table structure.
+1. Explain about method that get column info of Entity from Entity Manager.
+1. Explain about method that create table from column info in **SchmeTool** 
+1. Conduct database operation by [schemaオブジェクト(schema Object)] of [マイグレーションファイル(migration file)].
+1. Use method of 「hasTable」「dropTable」in Object [schema], delete table
+1. Explain about in screen that created without registering screen info in dtb_page_layout, Header/ Footer are not displayed.
+1. Explain info that register to dtb_page_layout
+1. Conduct registration info in dtb_page_layout
