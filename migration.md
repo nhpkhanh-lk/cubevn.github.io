@@ -72,19 +72,19 @@ About purpose of Migration mechanism, there are 2 kinds of implementation of DDL
 
   (php app/console migrations:generate)
 
-2.Describe Manual of change in up,down method of Migration file 
+2. Describe Manual of change in up,down method of Migration file 
 
   However, In case contents of change of plan is Implemented already, set in order to ignore (because it will be duplicated with operation of in case run orm:schema-tool:create when clean install)
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/migration/DDLMigration.php"></script>
 
-3.Create/ Edit Table definition file (yml) of doctrine to match with contents of 2
+3. Create/ Edit Table definition file (yml) of doctrine to match with contents of 2
 
-4.Edit entity, repository of doctine to match with contents of 3
+4. Edit entity, repository of doctine to match with contents of 3
 
-5.Run (php app/console migrations:migrate) Migration from command line, check whether become the assumed DB definition or not?
+5. Run (php app/console migrations:migrate) Migration from command line, check whether become the assumed DB definition or not?
 
-6.Run Clean Install from Web Installer, check whether become DB definition like 5 or not?
+6. Run Clean Install from Web Installer, check whether become DB definition like 5 or not?
 
 
 #### Manual of creating Migration file using for DML
@@ -97,7 +97,7 @@ About purpose of Migration mechanism, there are 2 kinds of implementation of DDL
 
 <script src="https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/migration/DMLMigration.php"></script>
 
-3. Run (php app/console migrations:migrate) Migration from command line, confirm that the assumed initial data is inserted or not?
+3. Run (php app/console migrations:migrate) Migration from command line, check that the assumed initial data is inserted or not?
 
 
 ## Migration of using Doctrine
