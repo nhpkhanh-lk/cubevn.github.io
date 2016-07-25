@@ -92,8 +92,10 @@ About purpose of Migration mechanism, there are 2 kinds of implementation of DDL
 1.Generate (php app/console migrations:generate) Migration file
   (php app/console migrations:generate)
 
+
 2. Describe the change manual in up,down method of Migration file
   (In case of DML, no need to check the different implementation contents with DDL)
+
 
 <script src="https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/migration/DMLMigration.php"></script>
 
