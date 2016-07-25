@@ -175,13 +175,13 @@ class Version20160607155514 extends AbstractMigration
 
 - Table name:  dtb_page_layout
 
-| 物理名 | 登録情報 | 登録値 |
+| physical name | registration info | registration value |
 |------|------|------|
-| device_type_id | 表示デバイスのタイプ | mtb_device_typeのキー10(PC)を取得し格納 |
-| page_name | 画面のタイトル | チュートリアル/CRUD |
-| url | 画面のルーティング名称 | tutorial_crud |
-| file_name | 該当Twigのルートからのパスと名称 | Tutorial/crud_top |
-| edit_flg | 管理画面から編集可能かどうか | 2 |
+| device_type_id | Type of display Device | Get key 10 (PC) of mtb_device_type and store |
+| page_name | Title of screen | チュートリアル/CRUD |
+| url | Routing name of screen | tutorial_crud |
+| file_name | path and name from Rout of corresponding Twig | Tutorial/crud_top |
+| edit_flg | Able to edit from Management screen or not | 2 |
 
 - Describe the record addition of above into below.
 
