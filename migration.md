@@ -7,41 +7,41 @@ title: マイグレーションガイド
 
 # {{page.title}}
 
-## 概要
+## Summary
 
- - EC-CUBE 3系のマイナーバージョンアップに伴って変更されたDB定義の稼働環境への反映を自動化します。
- - DB定義の変更とは、テーブルの作成、削除、フィールドの作成、削除、インデックスの作成、削除、レコードの挿入、更新、削除等です。
- - マイグレーション処理はDoctrime migrationモジュールを使用します。
- - Doctrime migrationモジュールを使用することで、EC-CUBEのソースコードに定義されたDB定義とDBサーバ上のDB定義を比較し、必要なDB定義の変更だけをDBサーバに適応します。
+ - Automate reflection to operation environment of DB definition that was changed according to Migration up of EC-CUBE system 3.
+ - The change of DB definition means create/ delete Table/ Field/ Index, insert/ update/ delete Record.
+ - Migration process will use Doctrime migration Module.
+ - By using Doctrime migration Module, compare DB definition that was defined in source code of EC-CUBE with DB definition on DB server, just apply the change of the essential DB definition to DB server.
 
-## DBマイグレーション処理の構成
+## Structure of DB Migration process
 
- - migrationにはDoctrine-migrationモジュールを使用し、Silexから呼び出すためのServiceProvider(**https://github.com/dbtlr/silex-doctrine-migrations**)をラッパーとして使用します。
- - マイグレーション処理は当初はコンソールから起動する前提です。
- - Webインストーラ作成の際にはインストーラから起動可能にします
- - マイグレーションファイルはsrc/Eccube/Resource/doctrine/migrationに配置します。
+ - With migration, use Doctrine-migration Module, and use ServiceProvider(**https://github.com/dbtlr/silex-doctrine-migrations**) to call from Silex as a wrapper.
+ - Migration process is premise to start from Console at first.
+ -	When create Web Installer, you can start from Installer.
+ - Migration file will put in src/Eccube/Resource/doctrine/migration
 
-## マイグレーションの作成手順
+## Manual of creating Migration
 
- - Doctrineのテーブル定義ファイル(src/Eccube/Resource/doctrine/)を修正します。
-(テーブル定義を変更しない場合は不要です)
+ - Modify Table definition file (src/Eccube/Resource/doctrine/) of Doctrine 
+  (No need on case there is no change of Table definition)
 
- - 空のマイグレーションファイルを作成します。
+ - Generate empty Migration file
 
    $ php app/console migrations:generate
 
     Generated new migration class to "/var/www/html/ec-cube/src/Eccube/Resource/doctrine/migration/Version20150519204013.php"
 
- - 上で作成したマイグレーションファイルのupメソッド定義に変更内容を記述します。 変更の処理は以下の方法で記述が可能です。
-   - SchemaManagerを使ったテーブル定義の操作($table=$schema->createTable("foo")など)
-   - EntityManagerを使ったレコードの操作($em->persist($customer)など)
-   - リテラルとして埋め込んだSQLを直接実行（非推奨）
- - 同様にdownメソッド定義にDB定義のロールバックに必要な処理を記述します。
+ - Describe the change contents in up method definition of Migration file that created above. Process of change can describe by the following way.
+   - Operation(such as ($table=$schema->createTable(“foo”)) of Table definition that used SchemaManager
+   - Operation (such as ($em->persist($customer)) of record that used EntityManager.
+   - Implement SQL that embedded as literal (non-recommended)
+ - Similarily, describe the process that needs for roll-back of DB definition, is down method definition.
 
-## マイグレーションの受け入れ手順
+## Manual of accepting Migration
 
- - EC-CUBEのソースコードを更新します。
- - 作成されたマイグレーションをDBに反映します。
+ - Update source code of EC-CUBE
+ - Reflect the created Migration into DB
 
    $ php app/console migrations:migrate
 
@@ -49,86 +49,84 @@ title: マイグレーションガイド
 
        WARNING! You are about to execute a database migration that could result in schema changes and data lost. Are you sure you wish to continue? (y/n)y
 
-   (何も出力されませんが反映されています。既にDB定義がソースコードに追従済みの場合は、Nothing to migrateと表示されます)
+   (Nothing is outputted, but it has been reflected. In case DB definition has been tracked already in source code, it will display that Nothing to migrate)
 
-## マイグレーション状況の確認
+## Confirmation of Migration status 
 
- - 適応が必要なマイグレーションの有無や現状のDB定義のバージョンを確認するには、migrationのステータスを取得します。
+ - In order to check there is/ no Migration that needs for application and check currently DB definition version, get status of migration
 
    $ php app/console migrations:status
 
-2系からのバージョンアップは別途検討します....
+Version up from system 2 will consider separately...
 
-## EC-CUBE 開発者向けDBマイグレーションガイド
+## DB Migration Guide using from EC-CUBE developer
 
-### テーブル定義の変更手順
+### Manual of change of Table Definition
 
-#### はじめに
-マイグレーション機構の用途としては、DDL(テーブル定義変更)の実行とDML(初期レコード定義)の実行の二種類があります。
-それぞれ作成手順を記載します
+#### First of all
+About purpose of Migration mechanism, there are 2 kinds of implementation of DDL (change Table definition) and implementation of DML (Initial record definition). Each creating manual will be described below.
 
-#### DDL用のマイグレーションファイルの作成手順
+#### Manual of creating Migration File using for DDL
 
-1.マイグレーションファイルを作成
+1. Generate Migration file
 
   (php app/console migrations:generate)
 
-2.マイグレーションファイルのup,downメソッド内に変更手順を記述する
+2.Describe Manual of change in up,down method of Migration file 
 
-  ただし、既に予定の変更の内容が実施済みの場合は無視するように設定すること
-  (クリーンインストール時のorm:schema-tool:createを実行した場合の動作と重複してしまうため)
+  However, In case contents of change of plan is Implemented already, set in order to ignore (because it will be duplicated with operation of in case run orm:schema-tool:create when clean install)
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/migration/DDLMigration.php"></script>
 
-3.doctrineのテーブル定義ファイル(yml)を2の内容に合わせて作成又は編集する
+3.Create/ Edit Table definition file (yml) of doctrine to match with contents of 2
 
-4.doctineのentity、repositoryを3の内容に合わせて編集する
+4.Edit entity, repository of doctine to match with contents of 3
 
-5.コマンドラインからマイグレーションを実行(php app/console migrations:migrate)し、想定したDB定義となることを確認する
+5.Run (php app/console migrations:migrate) Migration from command line, check whether become the assumed DB definition or not?
 
-6.Webインストーラからクリーンインストールを実行し、5と同じDB定義になることを確認する
+6.Run Clean Install from Web Installer, check whether become DB definition like 5 or not?
 
 
-#### DML用のマイグレーションファイルの作成手順
+#### Manual of creating Migration file using for DML
 
-1.マイグレーションファイルを作成
+1.Generate (php app/console migrations:generate) Migration file
   (php app/console migrations:generate)
 
-2.マイグレーションファイルのup,downメソッド内に変更手順を記述する
-  DML用の場合はDDLと違い実施内容のチェックは必要なし
+2. Describe the change manual in up,down method of Migration file
+  (In case of DML, no need to check the different implementation contents with DDL)
 
 <script src="https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/migration/DMLMigration.php"></script>
 
-3.コマンドラインからマイグレーションを実行(php app/console migrations:migrate)し、想定した初期データが挿入されることを確認する
+3.Run (php app/console migrations:migrate) Migration from command line, confirm that the assumed initial data is inserted or not?
 
 
-## Doctrineを使ってのマイグレーション
+## Migration of using Doctrine
 
-### Entityファイル作成
+### Create Entity file
 
-yamlを更新後、下記を実行するとEntityが作成される。  
-元のソースは削除されずに、存在しない項目のみ追記される。  
+After update yaml, if run the following part, Entity will be created.  
+About the original source will not be delete, just Item that doesn’t exist, will be added.
 
 ```
 vendor/bin/doctrine orm:generate:entities --extend="Eccube\Entity\AbstractEntity" src
 ```
 
-### DBへのマイグレーション
+### Migration to DB
 
 ```
 vendor/bin/doctrine orm:schema-tool:update
 ```
 
-を実行してmigration可能かどうかを確認
+Run above, check whether can migration or not?
 
 ```
 vendor/bin/doctrine orm:schema-tool:update --dump-sql
 ```
 
-を実行してsqlを確認
+Run above, confirm sql
 
 ```
 vendor/bin/doctrine orm:schema-tool:update --force
 ```
 
-を実行してDBへマイグレーション
+Run above, Migration to DB
