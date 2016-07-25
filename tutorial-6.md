@@ -85,15 +85,15 @@ class Version20160607155514 extends AbstractMigration
 
 - Table name: dtb_crud
 
-| 論理名 | 物理名 | フィールドタイプ | その他 |
+| Logical name | Physical name | Field name | Others |
 |------|------|------|------|
-| 投稿ID | id | int | NOT NULL PRIMARY AUTO_INCREMENT |
-| 投稿種別 | reason | smallint | NOT NULL |
-| 投稿者ハンドルネーム | name | varchar(255) | NOT NULL |
-| 投稿のタイトル | title | varchar(255) | NOT NULL |
-| 投稿種別 | notes | text | DEFAULT NULL |
-| 投稿登録時間 | created_date | datetime | NOT NULL |
-| 投稿編集時間 | updated_date | datetime | NOT NULL |
+| Submission ID | id | int | NOT NULL PRIMARY AUTO_INCREMENT |
+| Submission Type | reason | smallint | NOT NULL |
+| Submission persion handle name | name | varchar(255) | NOT NULL |
+| Title of submission | title | varchar(255) | NOT NULL |
+| Submission type | notes | text | DEFAULT NULL |
+| Submission registration time | created_date | datetime | NOT NULL |
+| Submission editing time | updated_date | datetime | NOT NULL |
 
 - This is table that created part above
 
@@ -161,8 +161,8 @@ class Version20160607155514 extends AbstractMigration
     1. Get Entity Manager from Instance of Application.
     1. Use method **hasTable** to check **今回テーブルの有無**(there is/no table this time)
     1. Store path of Entity of Table creating target in array. 
-        - 今回作成テーブル該当が一件のために、配列にエンティティ名を格納する必要性はありませんが、今回説明内容が、汎用的なために、あえて配列に格納しています。
-    1. エンティティマネージャーの**getMetadataFactory**と、そのメソッド**getMetadataFor**に今回該当のエンティティのパスを指定して、エンティティから、カラム情報を取得します。
+        - Because there is one record that corresponding with the created table this time, so it is not esstential to store Entity name in Array. This explanation contents is general, so I am storing in Array.
+    1. Specify path of the corresponding Entity this time into **getMetadataFactory** of Entity Manager and **getMetadataFor** of that methods, in order to get column info from Entity.
     1. Transfer Entity Manager to **SchemaTool** by parameter, get Instance.
     1. Transfer the gotten column info to method **createSchema** of  **SchemaTool**, generate table
     1. Next, explain about method [down], method [down] has been deleting table by method **dropTable**
