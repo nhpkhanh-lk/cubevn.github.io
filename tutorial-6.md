@@ -178,7 +178,7 @@ class Version20160607155514 extends AbstractMigration
 | physical name | registration info | registration value |
 |------|------|------|
 | device_type_id | Type of display Device | Get key 10 (PC) of mtb_device_type and store |
-| page_name | Title of screen | チュートリアル/CRUD |
+| page_name | Title of screen | Tutorial/CRUD |
 | url | Routing name of screen | tutorial_crud |
 | file_name | path and name from Rout of corresponding Twig | Tutorial/crud_top |
 | edit_flg | Able to edit from Management screen or not | 2 |
