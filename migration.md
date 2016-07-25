@@ -97,7 +97,7 @@ About purpose of Migration mechanism, there are 2 kinds of implementation of DDL
 
 <script src="https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/migration/DMLMigration.php"></script>
 
-3.Run (php app/console migrations:migrate) Migration from command line, confirm that the assumed initial data is inserted or not?
+3. Run (php app/console migrations:migrate) Migration from command line, confirm that the assumed initial data is inserted or not?
 
 
 ## Migration of using Doctrine
