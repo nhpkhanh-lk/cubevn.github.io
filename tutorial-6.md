@@ -152,7 +152,7 @@ class Version20160607155514 extends AbstractMigration
 
 - I will explain about above
 
-    1. メソッドの引数に**$schema**変数が存在しますが、テーブル操作を行うためのオブジェクトです。
+    1. **$schema** variable exists in parameter of method, but it is Object that conducts Table operation.
 
     1. This contents includes many contents that explain in next chapter, so I just explain this time.
         - Detail will check below of next chapter
