@@ -1,6 +1,6 @@
 ---
 layout: default
-title: データーベースを作成しよう
+title: Let's create Database
 ---
 
 ---
