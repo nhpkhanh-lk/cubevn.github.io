@@ -17,7 +17,7 @@ title: Let’s set Database structure for Doctrine
 
     1. Explain relation between Entity Manager and database structure definition file
 
-    1. 4.	Explain about creation method of Database structure definition File (Eccube.Entity.[エンティティ名].dcm.yml)
+    1. Explain about creation method of Database structure definition File (Eccube.Entity.[エンティティ名].dcm.yml)
 
 
 ## Database structure definition File
