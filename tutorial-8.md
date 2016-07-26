@@ -437,7 +437,7 @@ vendor/bin/doctrine orm:generate:entities --extend="Eccube\\Entity\\AbstractEnti
 
 <a href="http://sssslide.com/speakerdeck.com/amidaike/ec-cube3kodorideingu-number-3" target="_blank">EC-CUBE 3コードリーディング #3</a>
 
-## Study in this 
+## Study in this chapter
 
 1. Explain summary of internal structure of Entity file
 1. Explain relation of Entity file and Entity Manager
