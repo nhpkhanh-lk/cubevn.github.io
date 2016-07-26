@@ -1,54 +1,55 @@
 ---
 layout: default
-title: Doctrineのためにエンティティファイルを作成しよう
+title: Let’s create Entity file for Doctrine
 ---
 
 ---
 
 # {{ page.title }}
 
-## 本章メニュー
+## Menu of this chapter
 
-- 本章では以下を行います。
+- In this chapter, conduct the following part
 
-    1. エンティティの説明を行います。
+    1. Explain Entity
 
-    1. エンティティとエンティティマネージャーについて説明しています。
+    1. Explain about Entity and Entity Manager
 
-    1. エンティティファイルの作成方法を説明しています。
+    1. Explain about the creating method of Entity file
 
-    1. エンティティファイルをコマンドラインから自動作成出来る事を説明しています。
+    1. Explain about  thing that can create Entity file automatically from command line
 
-## エンティティ
+## Entity
 
-- 前章では、データーベースとエンティティをマッピングするためのファイル**Eccube.Entity.[エンティティ名].dcm.yml**を作成しました。
+- In this chapter, I created file **Eccube.Entity.[エンティティ名].dcm.yml** in order to mapping database and Entity
 
-- 本章では、エンティティファイルを作成していきます。
+- In this chapter, I will create Entity file
 
-### エンティティの概要
+### Summary of Entity
 
-- **エンティティファイル**は、データーベースのカラムを、クラスのメンバ変数として**private**スコープで作成し、それに対して、**「Setter・Getter」**を作成しただけのシンプルなファイルです。
-- アソシエーション(リレーションオブジェクト)があれば、その設定も記述します。
+- **エンティティファイル** is the simple file that just create column of database by **private** scope as member variable of class, and create **「Setter・Getter」** for that
+- If there is Association (Relation Object), that setting will also described.
 
-- 前章での説明の通り、**エンティティマネージャー**が**エンティティを管理**し、エンティティ上に、プログラム中で発生した値を保持します。
+- As explaining in previous chapter, **エンティティマネージャー** will **エンティティを管理**(manage Entity), store value that occurred in Program on Entity.
 
-- 開発者は、**簡単な条件の情報取得**であれば、**マジックメソッドで情報取得**、情報の保存であれば、**対象エンティティに値をセット**し、**保存のメソッドを呼び出すだけ**で実現できます。
+- •	If developer **簡単な条件の情報取得**(get info of simple condition), can **マジックメソッドで情報取得**(get info by Magic Method), if developer save info, **対象エンティティに値をセット**(set value in the target Entity) and **保存のメソッドを呼び出すだけ**(just call the saved method)
 
-- **エンティティ**はプログラム中で**persist**されて初めて、**エンティティマネージャーの管理下**におかれます。
+- **エンティティ**(Entity) is *persist** in Program, first put **エンティティマネージャーの管理下**(under management of Entity)
 
-- プログラム中で新しく**エンティティをインスタンス化**した際は、必ず**persist**を行い、**エンティティマネージャーの管理下**におきます。
+- When **エンティティをインスタンス化** (instantiate Entity) newly in Program, conduct **persist**, put 
+ **エンティティマネージャーの管理下** (under management of Entity)
 
-#### ファイルの作成
+#### Create file
 
-- 以下フォルダに作成します。
+- Create in the following folder
 
     - /src/Eccube/Entity
 
-    1. フォルダの中のファイル**AuthorityRole.php**をコピー・リネームします。
+    1. Copy file **AuthorityRole.php** of Folder, rename.
 
 
-    1. ファイル名は**Crud.php**とします。
-        - **Crud.php**(中身はAuthorityRole.php)
+    1. File name will set that **Crud.php**
+        - **Crud.php** (contents is AuthorityRole.php)
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_8/crud_entity_before.php"></script>
 
@@ -225,11 +226,11 @@ class AuthorityRole extends \Eccube\Entity\AbstractEntity
 ```
 -->
 
-#### ファイルの修正
+#### Modify file
 
-- エンティティファイルの場合流用出来る箇所がほとんどありません。
-- 「create_date/update_date」に関する内容以外の記述をほとんど書き換えます。
-- 以下が書き換えた内容です。
+- There is no place that can re-use in case of Entity file 
+- Description under contents relating to [create_date/update_date] will be nearly re-written.
+- Below is the re-writing contents.
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_8/crud_entity_after.php"></script>
 
@@ -410,19 +411,19 @@ class Crud extends \Eccube\Entity\AbstractEntity
 -->
 
 
-### エンティティファイルをコマンドラインで作成
+### Create Entity file by command line
 
-- **エンティティ**は**Eccube.Entity.[エンティティ名].dcm.yml**があれば、コマンドラインから自動生成ができます。
+- If **エンティティ** is **Eccube.Entity.[エンティティ名].dcm.yml**, can generate automatically from command line
 
-- 本章ではコマンドラインを使って**CrudEntity**を作成する方法も補足しておきます。
+- In this chapter, I will also add method that use command line to create **CrudEntity**.
 
-- 手動で作成するとヒューマンエラーが起こりうるために、出来るかぎり**コンソール**での**自動作成**をおすすめします。
+- If create manual, human error may occur, so I recommend that **自動作成**(create automatically) by **コンソール** as possible.
 
-- コマンドラインで**EC-CUBE 3のインストールディレクトリに移動**後、以下**コマンドを実行**してください。
+- After **EC-CUBE 3のインストールディレクトリに移動**(moved to Install Directory of EC-CUBE 3) by command line, than **コマンドを実行**(run command) as below.
 
-※**Eccube.Entity.[エンティティ名].dcm.yml**の一行目にエンティティのパスを指定しますが、この際、YAMLファイル名で指定した**[エンティティ名]**と**エンティティパスのエンティティ名**が違えば**エラー**となるため、必ず**ファイル名、パスのエンティティ名**は**同一名称を使用**してください。
+※Specify path of Entity in the first row of **Eccube.Entity.[エンティティ名].dcm.yml**. In this time, if **[エンティティ名]**](Entity name) that specified by YAML file name) and **エンティティパスのエンティティ名**(Entity name of Entity path) are different, , it will be **エラー**(error), so please **同一名称を使用**(use same name) for **ファイル名、パスのエンティティ名**.
 
-※**PHPの実行パス**は、**環境変数に設定済み**とします。
+※**PHPの実行パス**(implementation path of PHP) will set that **環境変数に設定済み** (set in environment environment already)
 
 ```
 
@@ -430,15 +431,15 @@ vendor/bin/doctrine orm:generate:entities --extend="Eccube\\Entity\\AbstractEnti
 
 ```
 
-- 参考ですが、テーブル作成も**Eccube.Entity.[エンティティ名].dcm.yml**があれば同様にコマンドラインから実行できます。
+- •	This is reference, if Table creation has **Eccube.Entity.[エンティティ名].dcm.yml**, you can also run from command line similarly.
 
-- 詳細は以下を参考にしてください。
+- About detail, please refer the following part
 
 <a href="http://sssslide.com/speakerdeck.com/amidaike/ec-cube3kodorideingu-number-3" target="_blank">EC-CUBE 3コードリーディング #3</a>
 
-## 本章で学んだ事
+## Study in this 
 
-1. Entityファイルの内部構造の概要を説明しました。
-1. Entityファイルとエンティティマネージャーの関係を説明しました。
-1. Entityファイルのコマンドラインを用いた作成方法を説明しました。
-1. コマンドラインを用いたテーブルの作成方法を説明しました。
+1. Explain summary of internal structure of Entity file
+1. Explain relation of Entity file and Entity Manager
+1. Explain the creating method that used command line of Entity file
+1. Explain the creating method of Table that used command line
