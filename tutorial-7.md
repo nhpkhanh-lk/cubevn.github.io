@@ -1,58 +1,58 @@
 ---
 layout: default
-title: Doctrineのためにデーターベース構造を設定しよう
+title: Let’s set Database structure for Doctrine
 ---
 
 ---
 
 # {{ page.title }}
 
-## 本章メニュー
+## Menu of this chapter
 
-- 本章では以下を行います。
+- In this chapter, conduct the following part
 
-    1. ORMの概要とエンティティマネージャーの説明を行います。
+    1. Conduct summary of ORM and explanation of Entity Manager. 
 
-    1. エンティティファイルとエンティティマネージャーの説明を行います。
+    1. Conduct explanation of Entity file and Entity Manager.
 
-    1. エンティティマネージャーとデーターベース構造定義ファイルの関係性を説明します。
+    1. Explain relation between Entity Manager and database structure definition file
 
-    1. データーベース構造定義ファイル(Eccube.Entity.[エンティティ名].dcm.yml)の作成方法を説明します。
+    1. 4.	Explain about creation method of Database structure definition File (Eccube.Entity.[エンティティ名].dcm.yml)
 
 
-## データーベース構造定義ファイル
+## Database structure definition File
 
-- 前章で、本チュートリアルのテーブルを作成しました。
+- In this chapter, I created Table of this Tutorial
 
-- EC-CUBE 3ではデーターベース操作を**Doctine**という**ObjectRelationalMapping**を用いて透過的にデーターベースレコードを扱います。
+- In EC-CUBE, use **ObjectRelationalMapping** of **Doctine** for Database operation in order to process Database record transparently
 
-- おおまかな概念は以下の通りです。
+- The general concept is as below
 
-    - JPA/Hibernate の説明ですが、**Doctrineのエンティティマネージャーの概要**を理解しやすくなるかと思います。
+    - o	This is explanation about JPA/Hibernate, I think it is easy to understand about **Doctrineのエンティティマネージャーの概要**(summary of Entity Manager of Doctrine)
 
         - <a href="http://builder.japan.zdnet.com/sp_oracle/weblogic/35067018/" target="_blank">初めてのJPA--シンプルで使いやすい、Java EEのデータ永続化機能の基本を学ぶ</a>
 
 
         - <a href="https://vladmihalcea.com/2014/07/30/a-beginners-guide-to-jpahibernate-entity-state-transitions/" target="_blank">A beginner’s guide to JPA/Hibernate entity state transitions</a>
 
-- Doctrineでは、**エンティティマネージャー**がプログラム上の、**データモデルオブジェクト(エンティティ)を管理**し、レコードの差分を確認しながら、適切に登録、更新を行います。
+- In Doctrine, **エンティティマネージャー**(Entity Manager) will **データモデルオブジェクト(エンティティ)を管理**(manage Data Model Object (Entity)) on Programe, while confirm the difference of record, register/ update properly 
 
-- エンティティ構造は、エンティティクラスを実際に作成するため、構造をDoctrineに明示する必要はありませんが、**エンティティとテーブル**の関連は、**定義ファイル**を作成し、明示することではじめて、エンティティと**テーブルを対応(Mapping)**させる事が可能となります。
+- About Entity structure, in order to create file Entity Class actually, you don’t have to express structure in Doctrine, but relation of **エンティティとテーブル**(Entity and Table) will have to create/ express **定義ファイル**(definition file) and **テーブルを対応(Mapping)**(handle (Mapping) Table ) with Entity.
 
-- この章では、Entityとテーブルの対応(Mapping)を定義するファイルを作成します。
+- In this chapter, create file that defines handling (Mapping) Entity with Table
 
-### Eccube.Entity.[エンティティ名].dcm.ymlの作成
+### Create Eccube.Entity.[エンティティ名].dcm.yml
 
-#### ファイルの作成
+#### Create File
 
-- 以下フォルダに作成します。
+- Create in the following folder.
 
     - /src/Eccube/Resource/doctrine
 
-    1. フォルダの中のファイル**Eccube.Entity.AuthorityRole.dcm.yml**をコピー・リネームします。
+    1. Copy file **Eccube.Entity.AuthorityRole.dcm.yml** of Folder, and rename
 
-    2. ファイル名は**Eccube.Entity.Crud.dcm.yml**とします。
-        - **Eccube.Entity.Crud.dcm.yml**(中身はEccube.Entity.AuthorityRole.dcm.yml)
+    2. File name will set that **Eccube.Entity.Crud.dcm.yml**
+        - **Eccube.Entity.Crud.dcm.yml**(contents id Eccube.Entity.AuthorityRole.dcm.yml)
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_7/dcm_yml_before.yml"></script>
 
@@ -100,9 +100,9 @@ Eccube\Entity\AuthorityRole:
 ```
 -->
 
-#### ファイルの修正
+#### Modify file
 
-- 上記を以下の様に修正します。
+- Modify above as below
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/tutorial_7/dcm_yml_after.yml"></script>
 
@@ -149,50 +149,52 @@ Eccube\Entity\Crud: ★エンティティのパスをCrudに変更します( フ
 ```
 -->
 
-- 上記の説明を行います
+- Conduct explanation as above
 
     1. [Eccube\Entity\Crud:]
-    - エンティティファイルのパスを指定します。
-    - ファイルの格納位置は決まっているため、ファイル名のみ変更となります。
+    - Specify path of Entity file
+    - Position of storing file has been decided, so change just file name.
 
     1. [table:]
-    - 該当テーブルのテーブル名を指定します。
+    - Specify table name of corresponding table
 
     1. [repositoryClass:]
-     - 本テーブルに紐付けるレポジトリ名を指定します。
-     - ビジネスロジックの記述や、データベース操作を行うためのクラスです。
-     - 後の章で作成します。
+     - Specify repository name that linking with this table.
+     - It is class for describing Business Logic and conducting database operation
+	Create in next chapter
 
-    1. 「id:」に対してプライマリーキーの設定を行います。
-     - 前章で定義したテーブル定義の内容に従います。
+     - Create in next chapter
 
-    1. 「id:」セクション内、オプション「**column:**」に対してプライマリキーの物理名を指定します。
+    1. Conduct setting of Primary key with 「id:」
+     - Follow the contents of Table definition that defined in the previous chapter.
 
-    1. 「id:」セクション内「**generator:strategy**」には「AUTO」を設定します。
-    - 本設定により、MySQL、PostgresSQLなどのオートインクリメントに自動で対応します。
-    - 他にも、IDの採番方法は設定可能ですが、通常は「AUTO」で問題ありません。
+    1. Specify physical name of Primary key with option [column:] in session [id:]
+
+    1. Set [AUTO] in「**generator:strategy**」of session 「id:」
+    - According to this setting to handle automatically for auto_increment such as MySQL, PostgresSQL
+    - Besides, it is possible to set numbering method of ID, but normally set [AUTO] is no problem
     - <a href="http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/basic-mapping.html#identifier-generation-strategies" target="_blank">4.5.1. Identifier Generation Strategies</a>
 
-    1. 「fields:」に対して、通常カラムの設定を行います。
-    - 基本は「typeにはテーブルのフイールドタイプ」を、「nullableは**NOT NULL**であればfalse」と設定します。
-    - その他にも今回例の「length」など設定できるオプションがあります。
+    1. With [fields:] , conduct setting of normal column
+    - Basically, set [typeにはテーブルのフイールドタイプ] (Field type of Table in type) that [nullableは**NOT NULL**であればfalse](if nullable is  **NOT NULL**, it will be false).
+    - Besides, there is Option that can set such as [length] of example of this time.
     - <a href="http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/basic-mapping.html#property-mapping" target="_blank">4.3. Property Mapping</a>
 
-    1. 本チュートリアルは初学者向けの内容のために、アソシエーション(リレーションの設定)は説明いたしません。
+    1. This Tutorial is contents using for beginners, so I will not explain about association (setting of relation) 
 
-    1. 詳細な説明は以下を参考にしてください。
-    - 設定ファイルのフィールドタイプは以下を参照ください
+    1. About detail explanation, please refer the following part. 
+    - About Field type of setting file, please refer the following part
 
     <a href="http://docs.symfony.gr.jp/symfony2/book/doctrine.html#doctrine" target="_blank">http://docs.symfony.gr.jp/symfony2/book/doctrine.html#doctrine</a>
 
 
-    - 基本的な設定の概要は以下を参照ください
+    - About summary of basic setting, please refer below.
 
     <a href="http://docs.symfony.gr.jp/symfony2/book/doctrine.html#doctrine-the-model" target="_blank">データベースと Doctrine (“The Model”)</a>
 
-#### 備考
+#### Remarks
 
-- 定義ファイルの最後に以下の内容が記述されています。
+- The following contents is described at the end of definition file
 
 ```
 
@@ -200,14 +202,14 @@ lifecycleCallbacks: {  }
 
 ```
 
-- ここでは、Doctrineの処理に割り込む関数をコールバックとして指定できますが、通常用いる事はないため、説明は割愛いたします。
-- 慣例的に記述し、削除を行わないでください。
+- Here, specify cut function in process of Doctrine as callback, normal it is not used, so I will omit the explanation.
+- Describe conventionally, do not conduct deletion.
 
 
-## 本章で学んだ事
+## Study in this chapter
 
-1. Doctrineの概要を説明しました。
-1. Doctrineとエンティティマネージャーについて説明しました。
-1. テーブル、データーベース定義ファイル、エンティティ、レポジトリの関係について説明しました。
-1. Eccube.Entity.[エンティティ名].dcm.ymlの作成方法を説明しました。
-1. Eccube.Entity.[エンティティ名].dcm.ymlの記述方法を説明しました。
+1. Explain summary of Doctrine
+1. Explain about Doctrine and Entity Manager.
+1. Explain about relation of Table, database definition file, Entity, repository.
+1. Explain about the creating method of Eccube.Entity.[エンティティ名].dcm.yml
+1. Explain about the describing method of Eccube.Entity.[エンティティ名].dcm.yml
