@@ -149,8 +149,8 @@ class CrudController extends AbstractController
   $app['orm.em']->persist([登録エンティティ名称]);
   ```
 
-  - 上記でエンティティがエンティティマネージャーの管理下に入りました。Entity was put under management of Entity manager
-  - 後は後述する**flush**が呼び出される際に、データーの差分を比較、idの有無を把握し、登録・更新を自動で選択し処理されます。
+  - Entity was put under management of Entity manager
+  - After that, when call **flush** that mentions later, compare the difference part of data, grasp yes/no id, choose register/update automatically, conduct process. 
 
 #### Register data
 
@@ -347,7 +347,7 @@ class CrudType extends AbstractType
 
     1.  Input [test] in [投稿ハンドルネーム] 
 
-    1.  Input [テスト] in [投稿のタイトル]」に「テスト」を入力
+    1.  Input [テスト] in [投稿のタイトル]
 
     1.  Input [テスト] in [内容]
 
