@@ -120,12 +120,12 @@ class CrudController extends AbstractController
 
 1. Transfer Entity that instantiated in the second parameter of **createBuilder**
     - According to this operation, Form will connect with Entity, and **フォームデーターの保持が可能**(can store Form data)
-    - ただし、後述する**FormTypeの修正**と**リクエストオブジェクトとの結びつけ**が必要です。
+    - However, it is neccessary to **FormTypeの修正**(modify FormType) and **リクエストオブジェクトとの結びつけ**(connect with Request Object) that mentions later.
 
-1. 次に「フォーム情報を整理して入力値チェックも追加しよう」で行なった、リクエストオブジェクトとフォームオブジェクトの結びつけを行います。
+1.  Next, conduct connection between Request Object with Form Object that conducted by [フォーム情報を整理して入力値チェックも追加しよう(arrange Form info, add the inputting value)]
     - This is explained before,so I will omit the detail contents
 
-1. 次に「フォーム情報を整理して入力値チェックも追加しよう」で行なった、サブミット・入力値判定を行います。
+1. Next, conduct submit/input value judgement that conducted in [フォーム情報を整理して入力値チェックも追加しよう(arrange Form info, add the inputting value)]
     - This is explained before,so I will omit the detail contents
 
 #### Call and save Entity Manager
@@ -137,44 +137,44 @@ class CrudController extends AbstractController
     $app['orm.em']
     ```
 
-    - 上記でエンティティマネージャーが呼び出せます。
-    - 正確にいうと、上記の中にエンティティマネージャーのインスタンスが格納されているため、上記の記述に対して、行いたい処理のメソッドを呼び出すだけとなります。
+    - You can call Entity Manager by above
+    - If say exactly, Instance of Entity Manager is stored in above, so just call method of process that want to conduct for description above.
 
-#### エンティティマネージャーの管理化にエンティティを登録
+#### Register Entity in management of Entity Manager
 
-1. 次にエンティティマネージャーに、保存対象エンティティを登録します。
-  - エンティティマネージャーへのエンティティ登録
+1. Next, register the saved target Entity in Entity Manager.
+  - Register Entity to Entity Manager
 
   ```
   $app['orm.em']->persist([登録エンティティ名称]);
   ```
 
-  - 上記でエンティティがエンティティマネージャーの管理下に入りました。
+  - 上記でエンティティがエンティティマネージャーの管理下に入りました。Entity was put under management of Entity manager
   - 後は後述する**flush**が呼び出される際に、データーの差分を比較、idの有無を把握し、登録・更新を自動で選択し処理されます。
 
-#### データーの登録
+#### Register data
 
-1. **flush**を呼び出せば自動で登録が行われます。
+1. If call **flush**, the registration will be conducted automatically.
 
   ```
   $app['orm.em']->flush([対象エンティティ名称]);
   ```
 
-- 上記で保存が完了しますが、**flush**の引数に**対象エンティティ**を渡すと、**渡したエンティティのみ**が登録・更新判定の**対象**となります。
+- Saving has finished with above, but if transfer **対象エンティティ**(targer Entity) in parameter of **flush**, **渡したエンティティのみ**(just the transferred Entity) becomes **対象**(target) of registering/updating judgement.
 
-- **引数を渡さなければ**、エンティティマネージャーに登録されているエンティティ**全てが対象**となります。
+- **引数を渡さなければ**(If transfer parameter), all Entities that are registered in Entity Manager will become **全てが対象**(target).
 
-- 今回はリレーションのないデーターの保存のために、あまりDoctrineの利便性は感じにくいかも知れませんが、**リレーションデーター(アソシエーションデーター)を扱う際**は、**定義ファイル**に関連を記述し、**該当エンティティを登録**して、**flush**するだけで、**外部キーも保存**されるために、その際には、**Doctrineの利便性を享受**出来るはずです。
+- This time will save data no relation, so it may be not good for convenience of Doctrine. But **リレーションデーター(アソシエーションデーター)を扱う際**(when use Relation data (Association data)), just describing relation in **定義ファイル**(definition file), **該当エンティティを登録**(registering the corresponding Entity) , and **flush**, **外部キーも保存**(the external key will also be saved), so that time maybe **Doctrineの利便性を享受**(enjoy convenience of Doctrine).
 
-### CrudTypeの修正
+### Modification of CrudType
 
-- 次にCrudTypeをエンティティに連動させるため、各項目のオプション値を変更します。
+- Next, because make connection of CrudType with Entity, so change option value of each Item
 
-    - 保存フォルダ
+    - The saved folder
 
     - /src/Eccube/Form/Type
 
-    1. 以下の様にファイルを修正します。
+    1. Modify file as below
 
     - **CrudType.php**
 
@@ -311,7 +311,7 @@ class CrudType extends AbstractType
 ```
 -->
 
-- 上記の説明
+- Explain about above
 
     - ソース上に★印で示した様に、**mapped**オプションを**true**にする事で、初めてエンティティにフォーム項目がマッピングされます。
 
