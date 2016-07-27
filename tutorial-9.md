@@ -313,25 +313,25 @@ class CrudType extends AbstractType
 
 - Explain about above
 
-    - ソース上に★印で示した様に、**mapped**オプションを**true**にする事で、初めてエンティティにフォーム項目がマッピングされます。
+    - As mentioned by ★ mark on source, by set **mapped** option to be **true**, firstly Form Item will be mapping with Entity.
 
-### 表示内容の確認
+### Check the display contents
 
-#### エラー表示
+#### Display error
 
-- 最後に確認のためにブラウザにアクセスしてみましょう。
+- Try accessing in browser to check finally.
 
-    1. ブラウザのURLに「http://[ドメイン + インストールディレクトリ]/tutorial/crud」を入力してください。
+    1. Input [http://[ドメイン + インストールディレクトリ]/tutorial/crud] into URL of Browser.
 
-    1. 「投稿ハンドルネーム」に「テスト」を入力
+    1. Input [テスト] in [投稿ハンドルネーム]
 
-    1. 「投稿のタイトル」に「テスト」を入力
+    1. Input [テスト] in [投稿のタイトル]
 
-    1. 「内容」に「テスト」を入力
+    1. Input [テスト] in [内容]
 
-    1. この内容で登録するボタンを押下
+    1. Click 登録するボタン(Register button) by this contents.
 
-    1. 以下の内容が表示されます。
+    1. The following contents is displayed.
 
 ---
 
@@ -339,21 +339,21 @@ class CrudType extends AbstractType
 
 ---
 
-#### 正常登録時
+#### When registration is normal
 
-- 正常登録時の表示を確認します。
+- Check the display when registration is normal
 
-    1. ブラウザのURLに「http://[ドメイン + インストールディレクトリ]/tutorial/crud」を入力してください。
+    1. Please input [http://[ドメイン + インストールディレクトリ]/tutorial/crud] into URL of Browser.
 
-    1. 「投稿ハンドルネーム」に「test」を入力
+    1.  Input [test] in [投稿ハンドルネーム] 
 
-    1. 「投稿のタイトル」に「テスト」を入力
+    1.  Input [テスト] in [投稿のタイトル]」に「テスト」を入力
 
-    1. 「内容」に「テスト」を入力
+    1.  Input [テスト] in [内容]
 
-    1. この内容で登録するボタンを押下
+    1. Click 登録するボタン(Register button) by this contents.
 
-    1. 以下の内容が表示されます。
+    1. The following contents is displayed.
 
 ---
 
@@ -361,9 +361,9 @@ class CrudType extends AbstractType
 
 ---
 
-#### データーベースの内容
+#### Contents of Database
 
-- テーブルにデーターが保存されています。
+- Data is saved in table
 
 ---
 
@@ -371,14 +371,14 @@ class CrudType extends AbstractType
 
 ---
 
-## 本章で学んだ事
+## Study in this chapter
 
 1. Explain about Instantiating of Entity
 1. Explain about setting method when linking Entity with Form Type
-1. フォームタイプファイルの修正箇所の説明を行いました。
-1. リクエストオブジェクトとフォームオブジェクトの紐付け方法の説明を行いました。
-1. サブミット・入力値判定の説明を行いました。
-1. エンティティマネージャーへのエンティティの登録の仕方を説明しました。
-1. エンティティマネージャーでの保存方法の説明をしました。
-1. データ登録時の各画面を確認しました。
-1. 登録データーの確認を行いました。
+1. Explain about the modification place of Form type file
+1. Explain about linking method of Request Object and Form Object
+1. Explain about method of submit/input value judgment
+1. Explain about method of registering Entity to Entity Manager.
+1. Explain about saving method in Entity manager.
+1. Check each screen when registering data
+1. Conduct the check of registration data
