@@ -7,32 +7,31 @@ title: データーベースに登録してみよう
 
 # {{ page.title }}
 
-## 本章メニュー
+## Menu of this chapter
 
-- 本章では以下を行います。
+- In this chapter, conduct the fo
+    1. Explain about method of getting Entity Manager.
 
-    1. エンティティマネージャーの取得方法を説明します。
+    1. Explain about method of registering data in Entity.
 
-    1. エンティティにデーターを登録する方法を説明しています。
+    1. Explain about method of managing Entity in Entity Manager
 
-    1. エンティティマネージャーでエンティティを管理する方法を説明します。
+    1. Explain about method of registering info in Entity Manager.
 
-    1. エンティティマネージャーで情報を登録する方法を説明します。
+## Registration of info that used Entity Manager
 
-## エンティティマネージャーを利用した情報の登録
+- In previous chapter, I explained about Summary of Entity and the creating method of file.
 
-- 前章では、エンティティの概要と、ファイルの作成方法を説明しました。
+- Until here, I created **dtb_crud**, **Eccube.Entity.Crud.dcm.yml**, **Crud.php**
 
-- ここまでの章で、**dtb_crud**、**Eccube.Entity.Crud.dcm.yml**、**Crud.php**を作成しました。
+- Because the created things have been set full, so in this chapter I will register data into Database in Entity Manager.
 
-- 作成物が揃ったために、この章では、エンティティマネージャーでデーターベースにデータを登録します。
+## Modification of Controller
 
-## コントローラーの修正
-
-- 以下のコントローラーを修正していきます。
+- Modify the following controller
     - /src/Controller/Default/CrudController.php
 
-    1. ファイルを開いて以下の様に修正します。
+    1. Open file to modify as below.
 
         - **CrudController.php**
 
@@ -107,32 +106,32 @@ class CrudController extends AbstractController
 -->
 
 
-- 上記の説明を行なっていきます。
+- Conduct the explanation above
 
-#### 保存対象エンティティのインスタンス化
+#### Instantiate the saved target Entity
 
-1. まず前章で作成したエンティティをインスタンス化します。
-      - エンティティの作成では、**バックスラッシュ + Eccubeからの相対パス + ファイル名(拡張子なし)**を**new**します。
-      - **ファイル名(拡張子)以外**を**名前空間で事前に指定**していた際は、相対パスは必要ありません。
+1. First , in previous chapter instantiate the created Entity 
+      - IN creating Entity, do **new** for **バックスラッシュ + Eccubeからの相対パス + ファイル名(拡張子なし)**
+      - When **名前空間で事前に指定**(specify name space in advance) **ファイル名(拡張子)以外** (out of file name (extension), relative path is no required.
 
       ```
       use Eccube\Entity\[該当エンティティ名(拡張子なし)]
       ```
 
-1. **createBuilder**の第二引数にインスタンス化したエンティティを渡します。
-    - 本操作によって、フォームがエンティティと紐付き**フォームデーターの保持が可能**になります。
+1. Transfer Entity that instantiated in the second parameter of **createBuilder**
+    - According to this operation, Form will connect with Entity, and **フォームデーターの保持が可能**(can store Form data)
     - ただし、後述する**FormTypeの修正**と**リクエストオブジェクトとの結びつけ**が必要です。
 
 1. 次に「フォーム情報を整理して入力値チェックも追加しよう」で行なった、リクエストオブジェクトとフォームオブジェクトの結びつけを行います。
-    - 説明済みのため、詳細な内容は割愛いたします。
+    - This is explained before,so I will omit the detail contents
 
 1. 次に「フォーム情報を整理して入力値チェックも追加しよう」で行なった、サブミット・入力値判定を行います。
-    - 説明済みのため、詳細な内容は割愛いたします。
+    - This is explained before,so I will omit the detail contents
 
-#### エンティティマネージャーの呼び出しと保存
+#### Call and save Entity Manager
 
-1. 判定結果に問題がなかった際は、エンティティマネージャーを呼び出します。
-    - エンティティマネージャーの呼び出し
+1. When there was no problem in judgement, call Entity Manager.
+    - Call Entity Manager
     
     ```
     $app['orm.em']
@@ -374,8 +373,8 @@ class CrudType extends AbstractType
 
 ## 本章で学んだ事
 
-1. エンティティのインスタンス化の説明を行いました。
-1. エンティティとフォームタイプを紐付ける際の設定方法の説明を行いました。
+1. Explain about Instantiating of Entity
+1. Explain about setting method when linking Entity with Form Type
 1. フォームタイプファイルの修正箇所の説明を行いました。
 1. リクエストオブジェクトとフォームオブジェクトの紐付け方法の説明を行いました。
 1. サブミット・入力値判定の説明を行いました。
