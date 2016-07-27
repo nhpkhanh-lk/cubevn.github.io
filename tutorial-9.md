@@ -9,7 +9,7 @@ title: データーベースに登録してみよう
 
 ## Menu of this chapter
 
-- In this chapter, conduct the fo
+- In this chapter, conduct the following part
     1. Explain about method of getting Entity Manager.
 
     1. Explain about method of registering data in Entity.
