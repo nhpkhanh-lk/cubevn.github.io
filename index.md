@@ -23,10 +23,10 @@ description: Here is Document site of EC-CUBE. We provide all information such a
 ## EC-CUBE 3 Specification
 
 - [Directory and file structure](/spec-directory-structure.html)
-  1. Main directory・role
-  1. Setting file
-  1. Constant
-  1. Replacement 2 system・3 system
+ 1. Main directory・role
+ 2. Setting file
+ 3. Constant
+ 4. Replacement 2 system・3 system
 - [Template searching order](/template.html)
 - <a href="https://github.com/EC-CUBE/eccube3-doc/blob/master/feature_list.xls" target="_blank">Function list</a>
 - <a href="https://github.com/EC-CUBE/eccube3-doc/tree/master/ER-D" target="_blank">Table・ER Diagram</a>
@@ -67,10 +67,10 @@ description: Here is Document site of EC-CUBE. We provide all information such a
 
 	- [Technique list](/architecture.html)
 		1. Silex 
-		1. Symfony2
-		1. Database abstraction layer 
-		1. Template engine 
-		1. Library management 
+		2. Symfony2
+		3. Database abstraction layer 
+		4. Template engine 
+		5. Library management 
 
 
 ## Tutorial
@@ -86,16 +86,16 @@ description: Here is Document site of EC-CUBE. We provide all information such a
 ### Tutorial list
 
 - **Setting URL**
-    - [ルーティングとコントローラープロバイダー](tutorial-1.html)
+    - [Routing and controller provider](tutorial-1.html)
 
 - **Try displaying View from Controller**
-    - [ビューのレンダリング](tutorial-2.html)
+    - [Rendering of view](tutorial-2.html)
 
 - **Try transferring variable to screen**
-    - [Twig構文とView変数](tutorial-3.html)
+    - [Twig structure and View variable](tutorial-3.html)
 
 - **Try displaying Form**
-    - [Formとフォームビルダー](tutorial-4.html)
+    - [Form and Form builder](tutorial-4.html)
 
 - **Arrange Form info and add the check input value**
     - [FormType](tutorial-5.html)
@@ -103,29 +103,29 @@ description: Here is Document site of EC-CUBE. We provide all information such a
 - **Let’s create Database**
     - Because this content is explained in [Development Guideline] so we only show the Table specification of this Tutorial 
     - Please refer the link below for detail
-        - [マイグレーションガイド](migration.html)
-        - [本チュートリアルのテーブル定義](tutorial-6.html)
+        - [Migration guide](migration.html)
+        - [Table specification in this tutorial](tutorial-6.html)
 
 - **Let’s set Database structure for Doctrine**
-    - [データーベーススキーマ定義](tutorial-7.html)
+    - [Database schema specification](tutorial-7.html)
 
 - **Let’s create Entity file for Doctrine**
-    - [エンティティ](tutorial-8.html)
+    - [Entity](tutorial-8.html)
 
 - **Let's register Database**
-    - [エンティティマネージャーを利用した情報の登録](tutorial-9.html)
+    - [Register information use Entity manager](tutorial-9.html)
 
 - **Let's get information from database and display as Table list**
-    - [データーベース情報の取得とViewのループ処理](tutorial-10.html)
+    - [Getting database information and Loop processing of View](tutorial-10.html)
 
 - **Let's arrange Database operation processing in repository**
-    - [レポジトリとデータベース操作](tutorial-11.html)
+    - [Repository and database operation](tutorial-11.html)
 
 - **Let's edit the list**
-    - [条件検索とアップデート処理](tutorial-12.html)
+    - [Conditions search and update process](tutorial-12.html)
 
 - **Let's delete unnecessary information**
-    - [レコードの削除](tutorial-13.html)
+    - [Delete record](tutorial-13.html)
 
 
 ## Cookbook
