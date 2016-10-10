@@ -30,7 +30,7 @@ title: データベースから情報を取り出してリストを表示しよ�
 - 以下のコントローラーを修正していきます。
     - /src/Controller/Default/CrudController.php
 
-    1. ファイルを開いて以下の様に修正します。
+    1. gggファイルを開いて以下の様に修正します。
 
         - **CrudController.php**
 
