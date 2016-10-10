@@ -23,10 +23,10 @@ description: Here is Document site of EC-CUBE. We provide all information such a
 ## EC-CUBE 3 Specification
 
 - [Directory and file structure](/spec-directory-structure.html)
- 1. Main directory・role
- 2. Setting file
- 3. Constant
- 4. Replacement 2 system・3 system
+  1. Main directory・role
+  2. Setting file
+  3. Constant
+  4. Replacement 2 system・3 system
 - [Template searching order](/template.html)
 - <a href="https://github.com/EC-CUBE/eccube3-doc/blob/master/feature_list.xls" target="_blank">Function list</a>
 - <a href="https://github.com/EC-CUBE/eccube3-doc/tree/master/ER-D" target="_blank">Table・ER Diagram</a>
@@ -60,7 +60,7 @@ description: Here is Document site of EC-CUBE. We provide all information such a
 
 ## Development help
 
-- [デバッグ・Tips](tips.html)
+- [Debug・Tips](tips.html)
 
 ## Technique used in EC-CUBE 3
 - We provide overview of Core technique in EC-CUBE 3 and some reference site
@@ -116,7 +116,7 @@ description: Here is Document site of EC-CUBE. We provide all information such a
     - [Register information use Entity manager](tutorial-9.html)
 
 - **Let's get information from database and display as Table list**
-    - [Getting database information and Loop processing of View](tutorial-10.html)
+    - [Getting database information and Loop processing of View](tutorial-10.html)
 
 - **Let's arrange Database operation processing in repository**
     - [Repository and database operation](tutorial-11.html)
