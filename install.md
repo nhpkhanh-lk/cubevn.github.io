@@ -9,7 +9,7 @@ title: インストール方法
 
 ## 事前準備
 
-- 予めMySQLもしくはPostgreSQLでデータベースを作成しておいて下さい。
+- 予めMySQLもしくはPostgreSQLでデータベースを作成しておいて下さい。111111
 - htmlのフォルダが、DocumentRootとなるように設置してください
 - htmlがDocumentRootでない場合は、http://{DocumentRoot}/{htmlへのパス} となります。
 
