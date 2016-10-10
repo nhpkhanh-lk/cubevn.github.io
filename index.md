@@ -49,14 +49,14 @@ description: Here is Document site of EC-CUBE. We provide all information such a
 ## Development Guideline
 -We provide the main flow and prerequisite knowledge used when you develop 
 
-	- [General development](workflow-general-image.html)
-	- [Coding rule](coding_style.html)
-	- [Migration guide](migration.html)
-	- <a href="http://qiita.com/nanasess/items/350e59b29cceb2f122b3" target="_blank">Log design guideline</a>
-	- [Development step using Git](workflow.html)
-	- [Customize Reference](customize-reference.html)
-        1. Created・changed file when customize
-        2. External component
+- [General development](workflow-general-image.html)
+- [Coding rule](coding_style.html)
+- [Migration guide](migration.html)
+- <a href="http://qiita.com/nanasess/items/350e59b29cceb2f122b3" target="_blank">Log design guideline</a>
+- [Development step using Git](workflow.html)
+- [Customize Reference](customize-reference.html)
+1. Created・changed file when customize
+2. External component
 
 ## Development help
 
