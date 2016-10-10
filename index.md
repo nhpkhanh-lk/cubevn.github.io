@@ -1,141 +1,141 @@
 ---
 layout: default
-title: ホーム
-description: EC-CUBEのドキュメントサイトです。開発ガイドラインや要素技術の概念、本体開発やプラグイン開発のチュートリアル、Cookbookなどの情報を提供しています。
+title: HOME
+description: Here is Document site of EC-CUBE. We provide all information such as Development Guideline, Concept of elemental technology, Tutorial for Development on main EC-Cube and Plugin, Cookbook, etc.
 ---
 
 ---
 
-# EC-CUBE 3 開発ドキュメント
+# EC-CUBE 3 Development Document
 
 ## GitHub
 
-- <a href="https://github.com/EC-CUBE/ec-cube" target="_blank">EC-CUBE 3 開発レポジトリ</a>
-- <a href="https://github.com/EC-CUBE/ec-cube.github.io" target="_blank">EC-CUBE 3 開発ドキュメントレポジトリ</a>
+- <a href="https://github.com/EC-CUBE/ec-cube" target="_blank">EC-CUBE 3 Development Repository</a>
+- <a href="https://github.com/EC-CUBE/ec-cube.github.io" target="_blank">EC-CUBE 3 Development Document Repository</a>
 
 ## Quick Start
 
-- [システム要件](/requirement.html)
-- [開発環境の構築](development-environment.html)
-- [インストール方法](/install.html)
-- [アップデート方法](/update.html)
+- [System requirement](/requirement.html)
+- [Development environment structure](development-environment.html)
+- [How to install](/install.html)
+- [How to update](/update.html)
 
-## EC-CUBE 3 仕様
+## EC-CUBE 3 Specification
 
-- [ディレクトリ・ファイル構成](/spec-directory-structure.html)
-  1. 主なディレクトリと役割
-  1. 設定ファイル
-  1. 定数
-  1. 2系・3系置き換え早見表
-- [テンプレート探索順序](/template.html)
-- <a href="https://github.com/EC-CUBE/eccube3-doc/blob/master/feature_list.xls" target="_blank">機能一覧</a>
-- <a href="https://github.com/EC-CUBE/eccube3-doc/tree/master/ER-D" target="_blank">テーブル・ER図</a>
-- <a href="https://github.com/EC-CUBE/eccube3-doc/tree/master/IntegrationTest" target="_blank">結合試験項目書</a>
+- [Directory and file structure](/spec-directory-structure.html)
+  1. Main directory・role
+  1. Setting file
+  1. Constant
+  1. Replacement 2 system・3 system
+- [Template searching order](/template.html)
+- <a href="https://github.com/EC-CUBE/eccube3-doc/blob/master/feature_list.xls" target="_blank">Function list</a>
+- <a href="https://github.com/EC-CUBE/eccube3-doc/tree/master/ER-D" target="_blank">Table・ER Diagram</a>
+- <a href="https://github.com/EC-CUBE/eccube3-doc/tree/master/IntegrationTest" target="_blank">Integration test item document</a>
 
-## プラグイン仕様
+## Plugin Specification
 
-- [プラグイン仕様・チュートリアル](/plugin.html)
-- [インストーラ仕様](/plugin_install.html)
-- [ハンドラによる優先制御仕様](/plugin_handler.html) 
-- [php app/console plugin:develop を利用したプラグイン開発](/plugin_console.html)
-- [プラグインのテスト](plugin-test.html)
+- [Plugin Specification・tutorial](/plugin.html)
+- [Install Specification](/plugin_install.html)
+- [Priority control specification by handler](/plugin_handler.html) 
+- [Develop Plugin using php app/console plugin:develop ](/plugin_console.html)
+- [Plugin test](plugin-test.html)
 
-## Web API仕様
+## Web API Specification
 
-- [Web API β版 プラグインスタートアップガイド](/web-api-doc.html)
-- [Web API開発指針](/api.html)
-- [Web API認証 ( Authorization ) ガイド](/api_authorization.html)
+- [Web API Plugin start-up Guide verβ](/web-api-doc.html)
+- [Web API Development Policy](/api.html)
+- [Web API認証 ( Authorization ) Guide](/api_authorization.html)
 
-## 開発ガイドライン
-- 開発を行う際の、主なフローと、前提知識を提供します。
+## Development Guideline
+-We provide the main flow and prerequisite knowledge used when you develop 
 
-	- [開発作業全体概要](workflow-general-image.html)
-	- [コーディング規約](coding_style.html)
-	- [マイグレーションガイド](migration.html)
-	- <a href="http://qiita.com/nanasess/items/350e59b29cceb2f122b3" target="_blank">ログ設計指針</a>
-	- [Gitを用いた開発手順](workflow.html)
-	- [カスタマイズリファレンス](customize-reference.html)
-        1. カスタマイズ時に作成・変更するファイル
-        2. 外部コンポーネント
+	- [General development](workflow-general-image.html)
+	- [Coding rule](coding_style.html)
+	- [Migration guide](migration.html)
+	- <a href="http://qiita.com/nanasess/items/350e59b29cceb2f122b3" target="_blank">Log design guideline</a>
+	- [Development step using Git](workflow.html)
+	- [Customize Reference](customize-reference.html)
+        1. Created・changed file when customize
+        2. External component
 
-## 開発の補助
+## Development help
 
 - [デバッグ・Tips](tips.html)
 
-## EC-CUBE 3で利用されている技術
-- EC-CUBE 3のコアとなる技術概要と、参考になるサイトの参照先を紹介しています。
+## Technique used in EC-CUBE 3
+- We provide overview of Core technique in EC-CUBE 3 and some reference site
 
-	- [技術一覧](/architecture.html)
+	- [Technique list](/architecture.html)
 		1. Silex 
 		1. Symfony2
-		1. データーベース抽象化レイヤ 
-		1. テンプレートエンジン 
-		1. ライブラリ管理 
+		1. Database abstraction layer 
+		1. Template engine 
+		1. Library management 
 
 
-## チュートリアル
+## Tutorial
 
-- チュートリアルで最終的に作るもの
+- In turorial, which was made finally
 
-    - データーベースの「CRUD」を画面表示とあわせて作成します。
+    - Make [CRUD] of database same with screen display.
 
-    - 本チュートリアルの完成ソースは以下から入手できます。
+    - Can get the source completed in this tutorial in link below
     
         - <a href="https://github.com/geany-y/ec-cube/tree/documents/tutorial" target="_blank">GitHub</a>
 
-### チュートリアル一覧
+### Tutorial list
 
-- **URLを設定しよう**
+- **Setting URL**
     - [ルーティングとコントローラープロバイダー](tutorial-1.html)
 
-- **コントローラーからビューを表示してみよう**
+- **Try displaying View from Controller**
     - [ビューのレンダリング](tutorial-2.html)
 
-- **画面に変数を渡してみよう**
+- **Try transferring variable to screen**
     - [Twig構文とView変数](tutorial-3.html)
 
-- **フォームを表示してみよう**
+- **Try displaying Form**
     - [Formとフォームビルダー](tutorial-4.html)
 
-- **フォーム情報を整理して入力値チェックも追加しよう**
+- **Arrange Form info and add the check input value**
     - [FormType](tutorial-5.html)
 
-- **データーベースを作成しよう**
-    - 本章は「開発ガイドライン」で説明を行なっているために、本チュートリアルのテーブル定義のみ、記述します。
-    - 詳しい作成方法は以下を参照ください。
+- **Let’s create Database**
+    - Because this content is explained in [Development Guideline] so we only show the Table specification of this Tutorial 
+    - Please refer the link below for detail
         - [マイグレーションガイド](migration.html)
         - [本チュートリアルのテーブル定義](tutorial-6.html)
 
-- **Doctrineのためにデーターベース構造を設定しよう**
+- **Let’s set Database structure for Doctrine**
     - [データーベーススキーマ定義](tutorial-7.html)
 
-- **Doctrineのためにエンティティファイルを作成しよう**
+- **Let’s create Entity file for Doctrine**
     - [エンティティ](tutorial-8.html)
 
-- **データーベースに登録してみよう**
+- **Let's register Database**
     - [エンティティマネージャーを利用した情報の登録](tutorial-9.html)
 
-- **データベースから情報を取り出してテーブルリストで表示してみよう**
+- **Let's get information from database and display as Table list**
     - [データーベース情報の取得とViewのループ処理](tutorial-10.html)
 
-- **データーベース操作処理をレポジトリに整理しよう**
+- **Let's arrange Database operation processing in repository**
     - [レポジトリとデータベース操作](tutorial-11.html)
 
-- **リストを編集しよう**
+- **Let's edit the list**
     - [条件検索とアップデート処理](tutorial-12.html)
 
-- **いらない情報を削除してみよう**
+- **Let's delete unnecessary information**
     - [レコードの削除](tutorial-13.html)
 
 
-## クックブック
+## Cookbook
 
-- 本クックブックでは、チュートリアルとは違い、より実践的なカスタマイズ方法を説明していきます。
+- In this cookbook, different from tutorial, we explain how to customize more practically.
 
-### 管理画面項目の追加
+### Adding management screen item
 
-1. [本体カスタマイズ](cookbook-1-cube3-customize-admin-add.html)
+1. [Customize Main](cookbook-1-cube3-customize-admin-add.html)
 
-### GoogleAnaliticsの追加方法
+### How to add GoogleAnalitics
 
-1. [管理機能ブロックを利用したJavaScriptの追加](cookbook-2-cube3-customize-js.html)
+1. [Add JavaScript using Management function block](cookbook-2-cube3-customize-js.html)
