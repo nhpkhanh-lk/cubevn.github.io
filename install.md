@@ -9,7 +9,7 @@ title: インストール方法
 
 ## Preparation
 
-- Please create database again by MySQL or PostgreSQL
+- Please create database by MySQL or PostgreSQL
 - Set html folder become DocumentRoot
 - If html is not DocumentRoot, it will become http://{DocumentRoot}/{htmlへのパス} 
 
