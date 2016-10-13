@@ -5,54 +5,54 @@ title: インストール方法
 
 ---
 
-# インストール方法 install
+# HOW TO INSTALL
 
-## 事前準備
+## Preparation
 
-- 予めMySQLもしくはPostgreSQLでデータベースを作成しておいて下さい。111111
-- htmlのフォルダが、DocumentRootとなるように設置してください
-- htmlがDocumentRootでない場合は、http://{DocumentRoot}/{htmlへのパス} となります。
+- Please create database again by MySQL or PostgreSQL
+- Set html folder become DocumentRoot
+- If html is not DocumentRoot, it will become http://{DocumentRoot}/{htmlへのパス} 
 
-## インストール方法
+## Installation
 
-EC-CUBEのインストールは、以下の2種類の方法があります。
+There are 2 ways to install EC-CUBE
 
-- シェルスクリプトインストーラー
-- Webインストーラー
+- Shell script installer
+- Web Installer
 
-## シェルスクリプトインストーラーを利用したインストール方法
+## Insalling by Shell script installer
 
-`eccube_install.sh`の51行目付近、Configuration以下の設定内容を、環境に応じて修正し、実行してください。
+That fits with the environment, change setting content which below Configuration and near line 51 of `eccube_install.sh` then run.
 
-- PostgreSQLの場合
+- Incase of PostgreSQL
 
 ```
 eccube_install.sh pgsql
 ```
 
-- MySQLの場合
+- Incase of MySQL
 
 ```
 eccube_install.sh mysql
 ```
 
-インストール完了後、 `http://{インストール先URL}/admin`にアクセス
-EC-CUBEの管理ログイン画面が表示されればインストール成功です。以下のID/Passwordにてログインしてください。
+After installation, access  `http://{インストール先URL}/admin`.
+If Login screen of EC-CUBE Management appear, installation is success.Please log in by ID/Password below.
 
 `ID: admin PW: password`
 
-## Webインストーラーを利用したインストール方法
+## Insalling by Web installer
 
-- composerを利用して外部ライブラリをインスールする
+- Use the composer and install an external library
 
 ```
 curl -sS https://getcomposer.org/installer | php
 php ./composer.phar install --dev --no-interaction
 ```
 
-- Webインストーラーにアクセスする
+- Access Web installer 
 
-`http://{インストール先URL}/install/`にアクセスし、表示されるインストーラーの指示にしたがってインスールしてください。
+After access to `http://{インストール先URL}/install/`, install according to displayed installer's instruction.
 
 
 
