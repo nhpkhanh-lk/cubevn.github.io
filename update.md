@@ -5,43 +5,43 @@ title: アップデート方法
 
 ---
 
-# アップデート方法
+# How to Update
 
-EC-CUBE 3.0.2から導入されたマイグレーションを利用したバージョンアップの方法を解説します
+Here is explanation about how to version up the migration installed from EC-CUBE 3.0.2.
 
-開発時のマイグレーションの用意に関しては[マイグレーションガイド](migration.html)をご参考ください
+About preparing migration used when development, please refer [マイグレーションガイド](migration.html).
 
-## 手順
+## Process
 
-- 以下のディレクトリを上書きする
+- Overwrite the Directory below
     - src/
     - html/
     - vendor/
-+ `http://インストール先/install.php/migration`にアクセスしマイグレーションを実行
-+ `html/install.php`を削除
++ Access `http://インストール先/install.php/migration`and run migration.
++ Delete `html/install.php`
 
-## 注意事項
+## Notes
 
-### vendorの更新について
+### About updating vendor
 
-* composer.jsonに変更がない場合vendorの上書きは不要です
-* composerが利用可能な環境の場合は、vendorの上書きではなく、composer.json, composer.lockの上書き後、以下でも可能です
+* If composer.json doesn't have any change, do not need to overwrite vendor.
+* If the environment can use composer, it's not overwriting vendor but after overwriting, the below file can use composer.json, composer.lock.
 
 ```
 > php composer.phar install --no-dev --no-interaction --optimize-autoloader
 ```
 
-### htmlおよびappディレクトリ以下が更新された場合
+### In case file below html and app directory was changed 
 
-* `html`や`app`ディレクトリ以下が更新された場合、各ファイルの差分を反映頂く必要があります。
-* `各バージョンでの変更差分` を参考に、差分を適用してください。
+* If the `html` and `app` files below have been changed, it's neccesary to reflect the differences between each file.
+* Refer `各バージョンでの変更差分` then apply these differences.
 
-### テンプレートをカスタマイズしている場合 
+### In case customize the template 
 
-* テンプレートのカスタマイズを行っている場合は、`src/Eccube/Resource/template` の変更差分をご確認下さい。
-* `各バージョンでの変更差分` を参考に、差分を適用してください。
+* When customize the template, please check the changes difference of `src/Eccube/Resource/template`.
+* Refer `各バージョンでの変更差分` then apply these differences.
 
-## 各バージョンでの変更差分
+## Changes difference in each Version 
 
 ### 3.0.2→3.0.3
 
@@ -58,7 +58,7 @@ EC-CUBE 3.0.2から導入されたマイグレーションを利用したバー�
 ### 3.0.5→3.0.6
 
 [https://github.com/EC-CUBE/ec-cube/compare/3.0.5...3.0.6](https://github.com/EC-CUBE/ec-cube/compare/3.0.5...3.0.6)
-・今回は `autoload.php` も変更対象になっておりますのでご注意ください。
+・This time, `autoload.php`  also becomes update target, please be careful.
 
 ### 3.0.6→3.0.7
 
@@ -68,15 +68,15 @@ EC-CUBE 3.0.2から導入されたマイグレーションを利用したバー�
 
 [https://github.com/EC-CUBE/ec-cube/compare/3.0.7...3.0.8](https://github.com/EC-CUBE/ec-cube/compare/3.0.7...3.0.8)
 
-・index_dev.phpをお使いになる方は、
+・Who use index_dev.php, please run  
 ``` php composer.phar update symfony/var-dumper symfony/debug-bundle ```
-を実行して必要なライブラリをインストールしてください。
+and install the required libraries.
 
 ### 3.0.8→3.0.9
 
 [https://github.com/EC-CUBE/ec-cube/compare/3.0.8...3.0.9](https://github.com/EC-CUBE/ec-cube/compare/3.0.8...3.0.9)
 
-以下のファイルも更新対象となります。
+Below files also become update targets
 
 - app/console
 - cli-config.php
@@ -88,17 +88,17 @@ EC-CUBE 3.0.2から導入されたマイグレーションを利用したバー�
 - html/template/install/assets/js/function.js
 
 
-・3.0.9からはdump用ライブラリを含めるようになりましたので、  
+・Because it also includes libraries using for dump from 3.0.9, so
 ```
 php composer.phar update symfony/var-dumper symfony/debug-bundle
 ```  
-は不要です。
+is unneccesary 
 
 ### 3.0.9→3.0.10
 
 [https://github.com/EC-CUBE/ec-cube/compare/3.0.9...3.0.10](https://github.com/EC-CUBE/ec-cube/compare/3.0.9...3.0.10)
 
-以下のファイルも更新対象となります。
+Below files also become update targets
 
 - autoload.php
 - html/index.php
