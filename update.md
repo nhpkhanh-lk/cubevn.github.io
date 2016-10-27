@@ -58,6 +58,7 @@ About preparing migration used when development, please refer [マイグレー�
 ### 3.0.5→3.0.6
 
 [https://github.com/EC-CUBE/ec-cube/compare/3.0.5...3.0.6](https://github.com/EC-CUBE/ec-cube/compare/3.0.5...3.0.6)
+
 ・This time, `autoload.php`  also becomes update target, please be careful.
 
 ### 3.0.6→3.0.7
