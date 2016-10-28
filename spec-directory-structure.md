@@ -5,26 +5,26 @@ title: ディレクトリ・ファイル構成
 
 ---
 
-# ディレクトリ・ファイル構成
+# Directory and file structure
 
-### 特徴
+### Feature
 
-1. EC-CUBE 3ではSilexフレームワークを採用しているため、**2系から大幅にディレクトリ構造が変化**しました。
+1. Because Silex framework is used in EC-CUBE 3, we will **Greatly change the Directory structure from system 2**.
 
-1. **Symfony2のディレクトリ構造を参考**に、EC-CUBE 3**独自構成**となっています。
+1. Based on ** Reference of Symfony2's directory structure**, EC-CUBE 3 will become **Original structure**.
 
-1. **公開ディレクトリについては２系をほぼ踏襲**しています。
+1. In progress of **About public directory, almost the same with system 2**.
 
 
-### 主なディレクトリと役割
+### Main directory and the roles
 
-- 以下に主なフォルダとディレクトリ構成を示します。
+- Folder and directory structure is as below.
 
-1. app : 主に環境によって変更が入るものを配置。
-1. html : Document Rootとなるフォルダ。外部から直接参照する物のみ配置。
-1. src : EC-CUBEのCOREとなるソースを配置。
+1. app : Place what had mainly changed by the environment.
+1. html : Folder will become Document Root. Only place which be able to refer from outside directly.
+1. src : Place the source which is CORE of EC-CUBE.
 
-下記に各ディレクトリの詳細を説明します。
+In the following, we explain detail descripton of each directory
 
 <!--
 ```
@@ -79,7 +79,7 @@ title: ディレクトリ・ファイル構成
 ```
 -->
 
-#### app配下
+#### Under app
 
 - **設定ファイル**や**ログ・ファイル等**が配置、**プラグインは「Plugin」ディレクトリ**配下に配置
 
@@ -112,9 +112,9 @@ title: ディレクトリ・ファイル構成
 ```
 -->
 
-#### html配下
+#### Under html
 
-- **公開ディレクトリ**となり、**リソースファイル**(cssや画像ファイル）を配置
+- Become **Public directory**, place **Resource file**(file css and image）
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/spec_directory_structure/directory_html.txt"></script>
 
@@ -184,9 +184,9 @@ title: ディレクトリ・ファイル構成
 ```
 -->
 
-#### src配下
+#### Under src
 
-- **アプリケーション本体**となり、phpファイルやTwigファイルを配置
+- Become **Application main body**, arrange php file and Twig file
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/spec_directory_structure/directory_src.txt"></script>
 
@@ -308,27 +308,28 @@ title: ディレクトリ・ファイル構成
 ```
 -->
 
-### 設定ファイル
+### Setting file
 
-- EC-CUBE 3の設定ファイルは以下の通りです
+- Setting file of EC-CUBE 3 is as below
 
-#### 対象ファイル
+#### Target file
 
 1. /app/config/ec-cube/**config.yml**
-- SSL通信や言語など EC-CUBE 3のサイト全体に関わる基本的な設定が記述されています。
+-  Describe basic settings related to all the EC-CUBE 3 such as SSL communication and language.
 
 1. /app/config/ec-cube/**database.yml**
-- データーベース名や、ポートなどの、データーベース接続に関する設定が記述されています。
+- Describe settings related to Database connection such ass name of database or port.
 
 1. /app/config/ec-cube/**mail.yml**
-- 暗号可や認証情報など、メールのオプションに関する設定が記述されています。
+- Describe seetings related to e-mail option such as encryption allowing and authentication information.
 
 1. /app/config/ec-cube/**path.yml**
-- 管理・フロント等のURLやアップロードファイル等のパスが設定されています。
+- Setting the URL of such as Management・Front or path of upload file, ect...
 
-### 定数
+### Constant
 
-- EC-CUBE 3で利用される定数は以下に保存されています
+- Constant used in EC-CUBE 3 has been stored in the following
+
 
 #### 対象ファイル
 
