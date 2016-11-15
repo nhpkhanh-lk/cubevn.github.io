@@ -5,17 +5,17 @@ title: テンプレートの探索順序
 
 ---
 
-# テンプレートの探索順序
+# Template searching order   
 
-## 概要
+## Overview
 
-EC-CUBE 3.0 では、デザインテンプレートのファイルを探す際に`render()`に渡されたファイルをいくつかのフォルダを順に探査し、該当するテンプレートファイルを発見次第、そのデザインテンプレートのファイルを利用する。
-なお、Pluginによるデザインテンプレートへの介入は許容するが、完全な上書きは認めない
+In EC-CUBE, when searching file Design template, we search file passed `render()` in several folders one by one and after finding out a suitable template file we use it.
+However, though intervention to Design template file by Plugin is allowed, there is still not completed overwriting.
 
-### 探査順
+### Searching order
 
-* フロント
-  * デフォルトのtemplate_codeは`default`とする。
+* Front
+  * The default template_code is `default`
 
 ```
   1. app/template/[template_code]
@@ -23,8 +23,8 @@ EC-CUBE 3.0 では、デザインテンプレートのファイルを探す際�
   3. app/Plugin/[plugin_code]/Resource/template/[template_code]
 ```
 
-* 管理画面
-  * 管理画面のtemplate_codeは`admin`とする
+* Management screen
+  * template_code of management screen is `admin`
 
 ```
 1. app/template/admin
@@ -32,11 +32,11 @@ EC-CUBE 3.0 では、デザインテンプレートのファイルを探す際�
 3. app/plugin/[plugin_code]/Resource/template/admin/[template_admin]
 ```
 
-### 探査例
+### Searching example
 
-* フロントの例
-デザインテンプレート名「MyDesign」を利用しており、Controllerで
-`$app['view']->render('TemplateDir/template_name.twig');`  とされている場合
+* Example for Front
+
+When used Design template's name [MyDesign] and it becomes `$app['view']->render('TemplateDir/template_name.twig');` by Controller.
 
 ```
  1. app/template/MyDesign/TemplateDir/template_name.twig
@@ -44,8 +44,9 @@ EC-CUBE 3.0 では、デザインテンプレートのファイルを探す際�
  3. app/Plugin/[plugin_code]/Resource/template/TemplateDir/template_name.twig
 ```
 
-* 管理画面の例
-`$app['view']->render('Product/index.twig');`  とされている、商品マスターのテンプレートをカスタマイズし、app/以下においている。
+* Example for Management screen
+
+Make it become  `$app['view']->render('Product/index.twig');`, customize template of Product master and put into app/ .
 
 ```
  1. app/template/admin/product/index.twig
@@ -53,11 +54,11 @@ EC-CUBE 3.0 では、デザインテンプレートのファイルを探す際�
  3. app/Plugin/[plugin_code]/Resource/template/admin/product/index.twig
 ```
 
-## 管理画面での編集時の挙動（ブロック編集やページ詳細）
+## Behavior of editing on Management screen (block editing and page details)
 
-現在利用しているテンプレートを読み込み。なければ標準(src/Eccube/Resource/template/default/以下のファイル）をもってきて、新たにapp/template/default/以下に保存
+Loading the template being used at present. If it doesn't have, bring it (file under src / Eccube / Resource / template / default /) and newly save it under app / template / default / .
 
-### 読み込み時の挙動イメージ
+### Image of behavior when loading
 
 ```
 if (app/template/[template_code]/block/category.tpl) {
@@ -67,7 +68,7 @@ if (app/template/[template_code]/block/category.tpl) {
 }
 ```
 
-### 保存時の挙動イメージ
+### Image of behavior when saving
 
 save (app/template/[template_code]/block/category.tpl)
 
