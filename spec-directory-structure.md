@@ -81,8 +81,7 @@ In the following, we explain detail descripton of each directory
 
 #### Under app
 
-- **設定ファイル**や**ログ・ファイル等**が配置、**プラグインは「Plugin」ディレクトリ**配下に配置
-
+- Arrange files such as **設定ファイル**(Setting file) or **ログ・ファイル等**(Log file) but put it under **プラグインは「Plugin」ディレクトリ**(Plugin is in "Plugin" directory).
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/spec_directory_structure/directory_app.txt"></script>
 
@@ -331,18 +330,17 @@ In the following, we explain detail descripton of each directory
 - Constant used in EC-CUBE 3 has been stored in the following
 
 
-#### 対象ファイル
+#### Target file
 
 1. Common/**constants.php**
-    - EC-CUBEのバージョンなど、基本情報の定数です。
+    - Constant of basic information of EC-CUBE version.
 
 2. Resource/config/**constant.yml.dist**
-    - 主にプログラム上で利用する定数です。
+    - Constant mainly used in the program.
 
 
-### 2系・3系置き換え早見表
-
-| 2系                    | 3系                                      |
+### Quick replacement table for 2 and 3 systems
+| 2 System                    | 3 System                                     |
 |------------------------|------------------------------------------|
 | SC_FormParam           | Eccube\Form\Type\                        |
 | SC_Query               | Doctrine Orm                              |
@@ -351,6 +349,6 @@ In the following, we explain detail descripton of each directory
 | *.tpl                  | Eccube\Resouce\template\\*.twig                       |
 
 
-## 参照元
+## Reference
 
 - <a href="http://sssslide.com/speakerdeck.com/amidaike/ec-cube3kodorideingu-number-1" target="_blank">EC-CUBE 3コードリーディング #1</a>
