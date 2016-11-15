@@ -81,7 +81,7 @@ In the following, we explain detail descripton of each directory
 
 #### Under app
 
-- Arrange files such as **設定ファイル**(Setting file) or **ログ・ファイル等**(Log file) but put it under **プラグインは「Plugin」ディレクトリ**(Plugin is in "Plugin" directory).
+- Arrange files such as **Setting file** or **Log file etc..** but put **Plugin under "Plugin" directory**.
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/spec_directory_structure/directory_app.txt"></script>
 
