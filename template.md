@@ -36,7 +36,7 @@ However, though intervention to Design template file by Plugin is allowed, there
 
 * Example for Front
 
-When used Design template names [MyDesign] and it becomes `$app['view']->render('TemplateDir/template_name.twig');` by Controller.
+Use Design template names [MyDesign] and it becomes `$app['view']->render('TemplateDir/template_name.twig');` by Controller.
 
 ```
  1. app/template/MyDesign/TemplateDir/template_name.twig
