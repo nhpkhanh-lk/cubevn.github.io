@@ -7,55 +7,55 @@ title: プラグインのテスト
 
 # {{ page.title }}
 
-## テストの作成
+## Create a Test 
 
-- プラグイン作成においても、EC-CUBEのテストクラスの継承を行えば、単体テストを比較的容易に作成できます。
+- Even when make a Plugin, if we inherit test class of EC-CUBE , we can create unit test easily.
 
-- 本章では、簡単なプラグインを例に「テストの作成・自身のレポジトリ上へプッシュ」した際の継続的インテグレーションの利用方法を説明します。
+- In this chapter, I use simple plugin as an example to explain how to use continuous integration when "Creating a test and push it on  repository"
 
-### テストの目的
+### Goal of Test
 
-- EC-CUBE本体のバージョンアップ時に動作するかどうかを確認します。
+- Check that doest it operate in version of main EC-CUBE.
 
-- 継続的インテグレーションを用いプラグインの改修時にEC-CUBEの過去バージョンで動作するかを確認します。
+- When improve plugin used continous, we check dose it run in other version in the pass of EC-Cube.
 
-### 単体テスト手順
+### Unitest order
 
-1. ローカルでテストコードを作成する
+1. Creat code of test in local.
 
-1. ローカルでユニットテストを実行し、問題がないことを確認する。
+1. Carry out Unit test in local and check that is there any problems
 
-1. 自身のGitHubレポジトリにプッシュ。
+1. Push to personal GitHub repository
 
-1. EC-CUBE 3の対象環境に適合しているか確認するために「Travis」を用いてテストを行う。
+1. Use "Travis" to test in order to check does it meet with EC-CUBE 3 target environment or not.
 
-### 前提
+### Prerequisite
 
-1. プラグインは事前に作成されており、インストール・アンインストール、基本機能は動作確認済みとします。
+1. Plugin has been created first then check action of install・uninstall and basic function.
 
-1. 今回は以下に例としてのプラグインを作成しています。
+1. This time, only create plugins as examples below.
 
-1. 以下をクローンして、参考としてください。
+1. Please clone the following and refer.
   - <a href="https://github.com/geany-y/ExamleTest" target="_blank">ExampleTestプラグイン</a>
 
-1. 今回のテスト対象は上記レポジトリの「ExampleService.php」というサービスクラスが対象となります。
+1. Test target this time is service class [ExampleService.php] of above repository.
 
-### テスト対象ファイル機能
+### File function of Test target
 
-1. 「ExamleService.php」内のメソッド「getPluginInstallDateFormatJa」が対象メソッドです。
+1. The method [getPluginInstallDateFormatJa] in [ExamleService.php] is the target method.
 
-1. 引数にプラグインのコードを渡すと、そのプラグインがインストールされた日付を**dtb_plugin**から取得します。
+1. In case passing plugin code as an argument, get the date this plug-in was installed from ** dtb_plugin **.
 
-1. 該当コードのプラグインが見つからない際は、falseを返却します。
+1. If do not find out plugin had suitable code, return false.
 
-### テストファイルの作成
+### Create test file
 
-1.以下の様にフォルダを作成してください。
+1. Please create folder as below.
 
-  - /app/Plugin/[自身で作成したプラグインフォルダ名]/Tests/Service
-  - フォルダの作成方法は環境で変わるため、割愛させていただきます。
-  - フォルダ内もプラグインのルートディレクトリ構造と同様に、Serviceなどであれば、Serviceフォルダを生成してください。
-  - 今回例では、以下フォルダ直下に作成しています。
+  - /app/Plugin/[folder name of Plugin you made]/Tests/Service
+  - Because way to create folder changes by the environment, I will omit it.
+  - Inside the folder is similar with root directory structure of Plugin, if there is Service, please create in Service folder
+  - Example this time is created directly in the folder below
 
   ---
 
@@ -63,12 +63,12 @@ title: プラグインのテスト
 
   ---
 
-2.次にファイルを作成します。
+2.Create file next
 
-  - 以下手順に添って作成してください。
-  - 今回例ではサービスのテストのみ作成するため、以下のファイルをコピー・リネームしてください。
+  - Please create base on the order below.
+  - In this example, because we create only the service test, please copy / rename the following files.
     - [EC-CUBEインストールディレクトリ]/tests/Eccube/Tests/Service/ShoppingServiceTest.php
-  - コピー後setUpやtearDownなど初期化・終了時処理のメソッドを除き全て削除します。
+  - After copying, delete all but except methods of initialization・ending process such as setUp and tearDown.
 
 3.以下のファイルを作成済みの**/app/Plugin/[自身で作成したプラグインフォルダ名]/Tests/Service**にコピーします。
 
