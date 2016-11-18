@@ -19,7 +19,7 @@ title: プラグインのテスト
 
 - When improve plugin used continous, we check dose it run in other version in the pass of EC-Cube.
 
-### Unitest order
+### Unit test order
 
 1. Creat code of test in local.
 
