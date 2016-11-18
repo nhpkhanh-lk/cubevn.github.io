@@ -21,7 +21,7 @@ title: プラグインのテスト
 
 ### Unit test order
 
-1. Creat code of test in local.
+1. Create code of test in local.
 
 1. Carry out Unit test in local and check that is there any problems
 
