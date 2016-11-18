@@ -63,16 +63,16 @@ title: プラグインのテスト
 
   ---
 
-2.Create file next
+2. Create file 
 
-  - Please create base on the order below.
+  - Please create base on the following order.
   - In this example, because we create only the service test, please copy / rename the following files.
     - [EC-CUBEインストールディレクトリ]/tests/Eccube/Tests/Service/ShoppingServiceTest.php
   - After copying, delete all but except methods of initialization・ending process such as setUp and tearDown.
 
-3.以下のファイルを作成済みの**/app/Plugin/[自身で作成したプラグインフォルダ名]/Tests/Service**にコピーします。
+3. Copy to **/app/Plugin/[folder name of Plugin you made]/Tests/Service** of file had been created below.
 
-  - 以下の様に修正・メソッドの追記を行います。
+  - Add corrections and methods as below.
 
 <script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/plugin_test/ExampleServiceTest.php"></script>
 
@@ -145,36 +145,36 @@ class ExampleServiceTest extends EccubeTestCase ★クラス名称を修正
 ```
 -->
 
-- 上記の説明を行います。
+- I will explain the aboved content.
 
-    1. コピー後、編集ファイルの名前空間の修正を行います。
-    - 今回作成するファイルの格納フォルダを指定してください。
+    1. After copying, modify the namespace of the edit file. 
+    - Please specify the storage folder for created file this time.
 
-    1. 今回テスト対象の、ExampleServiceの名前空間を指定します。
+    1. Specify the namespace of ExampleService for this test.
 
-    1. クラス名を、今回テスト対象ファイルのあわせて変更します。
+    1. Change the class name to match the test target file this time.
 
-    1. メソッドを追加します。
-    - はじめに正常系のエラーテストを追加しています。
-    - 次に正常系のテストを追加しています。
+    1. Add method.
+    - Firstly, add error test of normal system. 
+    - Next, add test of normal system.
 
-#### 備考
+#### Note
 
-  - 本章では、テストコードの書き方については、一切説明を行いません。
-  - 以下を参考に作成を行なってください。
+  - In this chapter, we do not explain how to write test code at all.
+  - Please refer the followings to write.
   - <a href="http://qiita.com/chihiro-adachi/items/f2fd1cbe10dccacb3631" target="_blank">EC-CUBE 3のメモ - ユニットテスト -</a>
 
-### ローカルでのテストの実行
+### Do test at local
 
-- ここまでの作業でテストが作成できました。
-- 一度ローカルで確認して、単一環境で機能として問題ないか確認をおこないます。
+- With works until now, we can create test.
+- Check once at local then check are there any problems as function in a single environment.
 
-  1.コンソールを起動する。
+  1.Run the console 
 
-  - ご自身の環境に合わせたコンソールを起動してください。
-  - ※Windows環境であれば、環境パスに、PHPの実行パスは指定済みとします。
+  - Please run the console that suit to your own environment.
+  - ※If it is Windows environment, the execution path of PHP have been specified in environment path.
 
-  2.以下の様に**EC-CUBE 3のインストールディレクトリ**に移動してください。
+  2. Please move to **EC-CUBE 3のインストールディレクトリ** as below
 
 ---
 
@@ -182,13 +182,13 @@ class ExampleServiceTest extends EccubeTestCase ★クラス名称を修正
 
 ---
 
-  3.以下コマンドを実行します。
+  3. Run the command below.
 
 ```
 vendor/bin/phpunit ./app/Plugin/[自身で作成したプラグインのフォルダ名]
 ```
 
-- 内容が正しければ、以下の様な内容が表示されるはずです。
+- If content is right, it will be displayed as below.
 
 
 ---
@@ -197,21 +197,21 @@ vendor/bin/phpunit ./app/Plugin/[自身で作成したプラグインのフォ�
 
 ---
 
-### 継続的インテグレーションを使った複数環境でのテスト
+### Test in multiple environment using continuous integration
 
-- 前項で問題がなければ、自身のGitHub環境にプッシュし、継続的インテグレーションを提供する、「Travis-CI」で複数環境でのテストをおこないます。
+- If there is no problem in the previous section, we will push to Github then test in multiple environments with "Travis-CI" which provides continuous integration.
 
-#### Travis-CI設定ファイルの作成
+#### Create file for setting Travis-CI
 
-1.プラグインのルートディレクトリに**.travis.yml**を作成します。
+1.Create **.travis.yml** in the root directory of the plugin.
 
-2.今回の例では以下フォルダが該当です。
+2.In this example, the following folder is applicable.
 
   - [EC-CUBE 3インストールディレクトリ]/app/Plugin/ExampleTest
 
-3.フォルダ内にファイルを作成し、以下を記述します。
+3.Create a file in the folder and write the followings.
 
-  - 変更が必要な箇所のみ★印を付与して説明しています。
+  - Only parts that need to be changed are marked with ★ and explained.
 
   - .travis.yml
 
@@ -286,47 +286,47 @@ after_script: ★プラグインの、インストール・アンインストー
 ```
 -->
 
-- 上記の設定項目内容を以下に説明します。
+- I will explain the content of setting items above.
 
 1. [php：]
-  - phpの各バージョンを設定します。
-  - 組み合わせ数が多くなるため、5.3と5.6のみなど、ある程バージョンを絞る方が適切です。
+  - Setting versions of php.
+  - As the number of combinations increases, it is better to narrow down the version such as 5.3 and 5.6 only.
 
 1. [env：> global：]
-  - PLUGIN_CODEの右辺に作成したプラグインのコードを指定します。
+  - Specify code of the created plugin on the right side of PLUGIN_CODE.
 
 1. [env：> matrix：]
-  - テストのマトリクスの指定です。
-  - ここでEC-CUBEの各バージョンを設定します。
+  - It is specification of the test matrix.
+  - Setting versions of EC-CUBE here.
 
 1. [befoe_script：]
-  - プラグインのユニットテストを実行するまでの前準備です。
-    - 処理フローは以下となります。
-      - プラグインをパッケージング(tarでアーカイブ)
-      - ec-cube本体をclone
-      - envで指定したec-cube本体のバージョンにcheckout
-      - ec-cube本体のインストール
-      - プラグインのインストール
+  - Preparation before doing Unit test for plugin
+    - The processing flow is as below.
+      - Packaging plugins (Archive with tar)
+      - Clone the ec-cube main
+      - checkout for version of ec-cube main body specified by env
+      - Install ec-cube main unit
+      - Install plugin
 
 1. [script：]
-  - phpユニットテストを実行しています。
-  - ここでインストールされたプラグインに内包されているユニットテストが実行されます。
+  - Run php unit test.
+  - Do unit test that included in the installed plugin.
 
-- 以下にTravisの設定ファイルの参考を記述しておきますので、参考としてください。
+- We write about setting file of Travis for reference, please refer.
 
 - <a href="https://github.com/EC-CUBE/coupon-plugin/blob/master/.travis.yml" target="_blank">.travis.yml(参考)</a>
 
-#### Travis-CIとGitHubの連携
+#### Linking between Travis-CI and GitHub
 
-- GitHubにログイン済みの状態で以下にアクセスし、連携をONにします。
+- After logging in to GitHub, access the following and turn ON linking.
 
 - `https://travis-ci.org/profile/[user]` 
 
-- 表示されているレポジトリの一覧から、該当レポジトリのボタン表示をスライドさせ緑色でONの状態で連携完了です。
+- From the displayed repository list, slide the suitable repository button. If it become ON grren, linking is completed.
 
 
-#### GitHubへのプッシュ
+#### Push to GitHub
 
-- 完了したら、自身のレポジトリにプッシュを行うと自動でTravis-CIが稼働し、テストを行います。
+- After finish, push to your own repository then Travis-CI will automatically run and test. 
 
-- テスト結果はGitHubとTravis-CIを設定したページで確認できます。
+- Can confirm test result on the page which GitHub and Travis-CI are set up.
