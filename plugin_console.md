@@ -5,11 +5,11 @@ title: php app/console plugin:develop を利用したプラグイン開発
 
 ---
 
-# php app/console plugin:develop を利用したプラグイン開発
+# Developing Plugin using php app/console plugin:develop 
 
 
-プラグイン開発時、一旦アーカイブした後プラグインのインストールを行う必要がありますが、  
-EC-CUBE 3.0.9からコマンドベースで開発の手助けを行う手順が提供されました。
+When develop Plugin, once we need to install plugin have achieved 
+but from EC-CUBE 3.0.9, the procedure to develop basing on command is provided.
 
 ```
 php app/console plugin:develop
