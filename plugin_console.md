@@ -15,15 +15,15 @@ but from EC-CUBE 3.0.9, the procedure to develop basing on command is provided.
 php app/console plugin:develop
 ```
 
-このコマンドを使うと、コマンドベースでプラグインのインストールや有効化が行えるようになり、
-DBのマイグレーション等がお手軽に試せるようになります。
+By using command you can install and enable plugins on a command basis, 
+so it becomes easy to test such as DB migration
 
 
-#### plugin:developの使い方
+#### How to use plugin:develop
 
 
-```plugin:develop``` はプラグインを画面からインストールしなくても、
-インストール、アンインストール、有効、無効、アップデートをコマンドベースで行えます。
+Plugin do not need to install ```plugin:develop``` in screen, 
+you can install, uninstall, enable, disable and update on a command basis.
 
 
 * example
@@ -37,32 +37,33 @@ php app/console plugin:develop update
 ```
 
 
-* コマンドの利用方法
+* How to use command 
 
-オプション指定に ```--code[=CODE]``` が存在し、  
-codeを指定した場合、指定したコードのPluginManager.phpの該当するメソッドが実行されます。
+There is ```--code[=CODE]``` in Option specification,  
+If code is specified, the method corresponding with PluginManager.php of specified code will be executed.
 
 ```
 php app/console plugin:develop enable --code=plugincode
 ```
-この例だとPluginManager.phpのenable関数が実行されます。
+In this example, enable function of PluginManager.php is executed
 
 
-* ```plugin:develop install``` のみで利用できるコマンド
+* Command can be used only by  ```plugin:develop install``` 
 
-オプション指定に ```--path[=PATH]``` が存在し、  
-pathを指定した場合、アーカイブされているプラグインをインストールします。  
-また、 ```code``` の指定は必要ありません。
+There is ```--path[=PATH]``` in Option specification,  
+If path is specified, install the achieved Plugin   
+but ```code``` does not need to specify   
 
 ```
 php app/console plugin:develop install --path=/aaa/bbb/plugin.tar.gz
 ```
 
-* ```plugin:develop uninstall``` のみで利用できるコマンド
+* Command can be used only by ```plugin:develop uninstall``` 
 
-オプション指定に ```--uninstall-force[=UNINSTALL-FORCE]``` が存在し、  
-```true``` を指定すると該当するプラグインのディレクトリが削除されます。  
-デフォルトはfalseです。
+There is ```--uninstall-force[=UNINSTALL-FORCE]``` in Option specification,  
+if specify ```true```, directory of corresponding plugin will be deleted.
+
+Default is false.
 
 ```
 php app/console plugin:develop uninstall --code=plugincode --uninstall-force=true
