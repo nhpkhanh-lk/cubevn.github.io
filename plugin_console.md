@@ -16,7 +16,7 @@ php app/console plugin:develop
 ```
 
 By using command you can install and enable plugins on a command basis, 
-so it becomes easy to test such as DB migration
+so it becomes easy to test such as DB migration.
 
 
 #### How to use plugin:develop
@@ -52,7 +52,7 @@ In this example, enable function of PluginManager.php is executed
 
 There is ```--path[=PATH]``` in Option specification,  
 If path is specified, install the achieved Plugin   
-but ```code``` does not need to specify   
+but ```code``` does not need to specify.  
 
 ```
 php app/console plugin:develop install --path=/aaa/bbb/plugin.tar.gz
@@ -61,7 +61,7 @@ php app/console plugin:develop install --path=/aaa/bbb/plugin.tar.gz
 * Command can be used only by ```plugin:develop uninstall``` 
 
 There is ```--uninstall-force[=UNINSTALL-FORCE]``` in Option specification,  
-if specify ```true```, directory of corresponding plugin will be deleted.
+If specify ```true```, directory of corresponding plugin will be deleted.
 
 Default is false.
 
