@@ -7,33 +7,33 @@ title: ハンドラによる優先制御仕様
 
 # {{ page.title }}
 
-EC-CUBE 3 Plugin間の優先度制御
+Priority control between EC-CUBE 3 Plugins
 
-## 課題
-稼働環境に同じイベントをフックする複数のプラグインを同時にインストールし、各プラグインのイベントハンドラがパラメータを書き換える場合、書き換える順序によっては想定しない動作が発生する恐れがある。
-さらに、監査、ロギング、デバッグ用等で他のプラグインより必ず先又は後で起動する必要のあるハンドラの起動順序を制御したい
+## Issue
+When install number of Plugin hooking the same event at the same time in operating environment then rewrite event handler of each Plugin into parameters, unexpected action may occur depend on the order.
+In addition, I also want to control the starting order of handlers need to start before or after other Plugin such as inspector, logging, debugging.
 
-##### 例
-購入時のFormEventをカード決済プラグインと後払いプラグインのイベントハンドラが書き換える場合、後のハンドラが書き換えるフォーム要素を前のプラグインが削除している可能性がある
+##### Example
+When rewrite Plugin using FormEvent for card payment when purchase or deferred payment into event handler, element of rewrite form need to use in later handler can be deleted in previous handler.
 
-## 対策
-管理画面からユーザが各イベントのハンドラの起動順を設定できるようにする
-例：後払い(3)→カード決済(2) →監査(1)の順でFormEventのイベントハンドラが起動
-起動順序は管理画面等からDB上のハンドラ優先度テーブル（仮）に保持する。
-SymfonyのEventDispatcher の仕様に合わせて実行順は-511～+511の降順とする
+## Solution
+Make it able for user to set the starting order of each event handler in Management screen
+Ex：lauch event handler of FormEvent likes order: deferred payment(3)→Card payment(2) →inspector(1)
+Starting order in Management screen can be saved to handler priority table (temporary) in DB 
+Corresponding to specification of EventDispatcher of Symfony, order of execution is descending order of -511 to + 511
 
-### テーブル構成
-ハンドラ優先度テーブルは以下のフィールドを保有する
+### Table structure
+The handler priority table have the following fields
 
-* id:int    (サロゲートキー)
-* event:string not null (イベント名)
-* priority:int not null (優先度)
-* plugin_id:int not null(プラグインID)
-* handler:string not null(ハンドラ名)
+* id:int    (surrogate key)
+* event:string not null (event name)
+* priority:int not null (priority)
+* plugin_id:int not null(plugin ID)
+* handler:string not null(handle name)
 
-    event,priorityの2フィールドでユニーク
+    2 fields event,priority are unique
 
-## 起動優先度とハンドラ種別
+## Starting priority and handler type
 
 * 優先度は+400～-399は**通常型ハンドラ**用とする
 * 優先度-400～-499は**後発型ハンドラ**用とする(デバッグ、監査用を想定)
