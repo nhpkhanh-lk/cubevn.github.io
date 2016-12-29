@@ -10,8 +10,8 @@ title: ハンドラによる優先制御仕様
 Priority control between EC-CUBE 3 Plugins
 
 ## Issue
-When install number of Plugin hooking the same event at the same time in operating environment then rewrite event handler of each Plugin into parameters, unexpected action may occur depend on the order.
-In addition, I also want to control the starting order of handlers need to start before or after other Plugin such as inspector, logging, debugging.
+When install number of Plugins that hooking the same event at the same time in operating environment then rewrite event handler of each Plugin into parameters, unexpected action may occur depend on the order.
+In addition, we also want to control the starting order of handlers need to start before or after other Plugin such as inspector, logging, debugging.
 
 ##### Example
 When rewrite Plugin using FormEvent for card payment when purchase or deferred payment into event handler, element of rewrite form need to use in later handler can be deleted in previous handler.
@@ -35,12 +35,12 @@ The handler priority table have the following fields
 
 ## Starting priority and handler type
 
-* 優先度は+400～-399は**通常型ハンドラ**用とする
-* 優先度-400～-499は**後発型ハンドラ**用とする(デバッグ、監査用を想定)
-* 優先度+500～+401は**先発型ハンドラ**用とする(同上)
-* 優先度0は実行時にハンドラを登録しない(ハンドラを無効化)
+* If priority is +400～-399, it's used for **通常型ハンドラ** (Normal type handler)
+* If priority is -400～-499, it's used for **後発型ハンドラ** (After-run type handler) (Debug, Assumed for audit)
+* If priority is +500～+401, it's used for **先発型ハンドラ** (Previous-run handler) (same as above)
+* If priority is 0, do not register handler when execute (disable handler)
 
-## プラグインインストール時の動作
+## Behavior when installing Plugin
 
 * 各プラグインのgetSubscribedEvents内のイベントハンドラと優先度をハンドラ優先度テーブルに挿入する
 * 当該イベントにハンドラが1件も登録されていない場合のデフォルト優先度は以下のとおり
