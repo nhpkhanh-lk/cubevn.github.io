@@ -9,7 +9,7 @@ title: システム要件
 
 ## Front Features List
 
-| No | Category |Feature Name |Feature Detail |Code Status
+| No | Category | Feature Name | Feature Detail | Code Status
 |---|--------------------------|-----------------------|-------|--------------|
 |1 |Product Intro| Product List | Hiển thị các sản phẩm đã đang ký theo từng category |　〇
 |2 | | Product Thumbnail | Hiển thị sản phẩm trên trang danh sách sản phẩm dưới dạng thumbnail |　〇
