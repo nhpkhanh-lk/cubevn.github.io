@@ -1,164 +1,285 @@
 ---
 layout: default
-title: コーディング規約
+title: Code standard
 ---
 
 ---
 
-# {{ page.title }}
+## Quy tắc code dành riêng cho EC-CUBE
 
+### Quy tắc đặt tên
 
-## 標準規約
-
-以下の規約に準じる
-
-* PSR-0 - オートローディング規約
-* PSR-1 - 基本コーディング規約
-* PSR-2 - コーディングスタイルガイド
-* [Silexの作法](http://silex-users-jp.phper.jp/)
-* [Symfony2の作法](http://docs.symfony.gr.jp/symfony2/)に従う
-* twigテンプレート及びjsファイルのインデントは、Symfony2に合わせて4スペースで記述する
-
-## EC-CUBEの独自規約
-
-### 命名規則
-
-* URL：末尾に `/` をつけない
+* URL：Không thêm / vào cuối URL
   + `https://example.com`
   + `https://example.com/product`
   + `https://example.com/product/new`
   + `https://example.com/product/2/edit`
-    - newの場合、内部的には同じControllerを利用し、引数のデフォルト値をnullで適用して対応
-    - editで引数が指定されていない場合は、Exception(BadRequest)を投げる
-    - editで引数が指定されているが、存在しない場合は、Exception(NotFound)を投げる
-  + 以下は[こちらの理由](https://github.com/EC-CUBE/ec-cube/issues/181)から例外とする
-    - `https://example.com/mypage/`
-    - `https://example.com/admin/`
 
-* ControllerProviderのRouting定義
-  + RequestMethodを限定したいときは`match()`ではなく適切なRequestMethodを指定する
-    ex: getでのアクセスを許容したくない場合は`post()`を利用する、など
+    - Trong trường hợp new thì không cần truyền tham số
+    - Trong trường hợp edit thì nếu không truyền tham số sẽ phát sinh Exception(BadRequest)
+    - Trong trường hợp edit thì dù truyền tham số mà tham số đó không tồn tại sẽ phát sinh Exception(NotFound)
 
-* ディレクト名、ファイル名
-  + ディレクトリ名は単数形とする
-    - ただし、`data`は例外として許容する
-  + `DirName`
-    - ただし以下は例外とする
-    　　`RootDir`の`src`や`app`
-  + `ControllerClassName.php`
-  + `FormNameType.php`
-  + `EntityName.php` `Master/EntityName.php`  : `EntityName`はdtbやmtbを除いたテーブル名のUpperCamel
+* Tên File, tên Folder
+  + Về cơ bản sử dụng UpperCamel như dưới đây
+    - `ControllerClassName.php`
+    - `FormNameType.php`
+    - `EntityName.php` `Master/EntityName.php`
+  + Ngoại trừ các thư mục đặc biệt như data, app
 
-* テンプレートファイル
+* Tên template (chữ thường cách nhau bởi _ )
   + `TemplateDir/template_name.twig`
 
-* PHPソース内
-  + [Symfonyコーディング規約](http://symfony.com/doc/current/contributing/code/standards.html)に従う
-  + EC-CUBEの独自規約として、以下を定める
-    + entity変数をアッパーキャメルとする
-    + twigのスカラ値のアクセスは、スネークケースとする
-  + コード例
+* Code PHP
+  + Theo như [Symfony code standard](http://symfony.com/doc/current/contributing/code/standards.html)
+  + Code mẫu(nhìn là có thể nắm gần hết quy tắc code)
 
-<script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/coding_style/HogeController.php"></script>
+```
+<?php
 
-<script src="http://gist-it.appspot.com/https://github.com/EC-CUBE/ec-cube.github.io/blob/master/Source/coding_style/hoge.twig"></script>
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-* データベース
-  + https://github.com/EC-CUBE/ec-cube/issues/210 に従う
+namespace Acme;
 
-* セミコロンの位置
+/**
+ * Coding standards demonstration.
+ */
+class FooBar
+{
+    const SOME_CONST = 42;
+
+    /**
+     * @var string
+     */
+    private $fooBar;
+
+    /**
+     * @param string $dummy Some argument description
+     */
+    public function __construct($dummy)
+    {
+        $this->fooBar = $this->transformText($dummy);
+    }
+
+    /**
+     * @return string
+     *
+     * @deprecated
+     */
+    public function someDeprecatedMethod()
+    {
+        @trigger_error(sprintf('The %s() method is deprecated since version 2.8 and will be removed in 3.0. Use Acme\Baz::someMethod() instead.', __METHOD__), E_USER_DEPRECATED);
+
+        return Baz::someMethod();
+    }
+
+    /**
+     * Transforms the input given as first argument.
+     *
+     * @param bool|string $dummy   Some argument description
+     * @param array       $options An options collection to be used within the transformation
+     *
+     * @return string|null The transformed input
+     *
+     * @throws \RuntimeException When an invalid option is provided
+     */
+    private function transformText($dummy, array $options = array())
+    {
+        $defaultOptions = array(
+            'some_default' => 'values',
+            'another_default' => 'more values',
+        );
+
+        foreach ($options as $option) {
+            if (!in_array($option, $defaultOptions)) {
+                throw new \RuntimeException(sprintf('Unrecognized option "%s"', $option));
+            }
+        }
+
+        $mergedOptions = array_merge(
+            $defaultOptions,
+            $options
+        );
+
+        if (true === $dummy) {
+            return;
+        }
+
+        if ('string' === $dummy) {
+            if ('values' === $mergedOptions['some_default']) {
+                return substr($dummy, 0, 5);
+            }
+
+            return ucwords($dummy);
+        }
+    }
+
+    /**
+     * Performs some basic check for a given value.
+     *
+     * @param mixed $value     Some value to check against
+     * @param bool  $theSwitch Some switch to control the method's flow
+     *
+     * @return bool|null The resultant check if $theSwitch isn't false, null otherwise
+     */
+    private function reverseBoolean($value = null, $theSwitch = false)
+    {
+        if (!$theSwitch) {
+            return;
+        }
+
+        return !$value;
+    }
+}
+```
+
+  + Quy định riêng của EC-CUBE
+    + Với biến `entity` thì dùng UpperCamel
+    + Với tham số truyền trong khi render twig thì nếu là entity thì như trên, còn không thì chữ thường cách nhau bởi _
+  + Code mẫu
+
+```php
+
+// HogeController
+
+class HogeController
+{
+    protected $title;
+
+    protected $subTitle;
+
+    public function index(Application $app, $id)
+    {
+        $Product = $app['eccube.repository.product']->find($id);
+
+        $totalCount = 1;
+
+        // ...
+
+        $app->render('path/to/hoge.twig', array(
+            'form' => $form->createView(),
+            'Product' => $Product,
+            'total_count' => $totalCount,
+        ))
+    }
+}
+
+// hoge.twig
+
+{{ total_count }}
+
+{{ Product.name }}
+{{ Product.free_area }}
+
+{% for ProductClass in Product.ProductClasses %}
+    {{ ProductClass.price01 }}
+    {{ ProductClass.price02 }}
+{% endfor %}
+
+{% for OrderDetailForm in form.OrderDetails %}
+    {{ form_widget(OrderDetailForm.product_name) }}
+    {{ form_widget(OrderDetailForm.price) }}
+    {{ form_widget(OrderDetailForm.quantity) }}
+{% endfor %}
+```
+
+* Database
+  + Theo như https://github.com/EC-CUBE/ec-cube/issues/210
+    - Tên bảng chữ thường cách nhau bởi _
+    - bảng dữ liệu thì prefix là dtb_
+    - bảng master thì prefix là mtb_
+    - Flag thì để kiểu smallint
+
+* Vị trí của dấu chấm phẩy
 
 ```php
 $builder
 　　->add('name')
-　　->add('age'); // ココ
+　　->add('age'); // here
 ```
 
 ```php
 $array = array(
 　　'name' => 'shinichi',
 　　'age' => '26',
-); // ココ
+); // here
 ```
 
-* 名前空間の`\`をつかうとこ、つかわないとこ
-    + つかうとこ
-        - useしてない名前空間を利用するとき
-        - PHP標準のClassを利用するとき `new \Datetime()`
-    + つかわないとこ
+* Về việc sử dụng dấu \ cùng với namespace
+    + Sử dụng khi
+        - muốn dùng những namespace không được định nghĩa bởi câu lệnh use
+        - Các namespace chuẩn của PHP như là  `new \Datetime()`
+    + Không sử dụng khi
         - `use Namespace`
-        - `Eccube\Entity\Xxx` を利用するところ
+        - Đối với entity `Eccube\Entity\Xxx`
           ex: `$app['orm.em']->getRepository('Eccube\Entity\Xxx');`
 
-* TwigからRouting定義されたURLを取得する際は、` url('route_name')  ` をつかう
-  + HTTPSを確実にコントロールするため
 
-* `form_errors`の表示位置
-  * 入力欄の下にエラーを表示する
+* Vị trí hiển thị của `form_errors`
+  * Hiển thị ở dưới ô nhập liệu tương ứng
 
 ```
     form_widget(form.name)
     form_errors(form.name)
 ```
 
-  + key名は、意味の伝わる英語の文章となるようにすること
-    ex: `File copying failed.`
-
 * FlashMessage
-  + フロント・管理画面それぞれでnamespaceを切り替えて使用する
-    (第2引数で指定/デフォルトはfront)
-  + 以下の４つ(errorとdangerは同等)のレベルに応じたフラッシュメッセージを適切に表示すること
+  + Sử dụng khi thay đổi namespace tại các màn hình front hay admin
+  + Có 4 loai level như dưới đây
       - `$app->addSuccess('It works!');` // front.success
       - `$app->addInfo('You got a new message!');` // front.info
       - `$app->addWarning('Check your mail address');` // front.warning
       - `$app->addDanger('Error occured!!', 'admin');` // admin.danger
       - `$app->addError('Can't delete this section', 'admin');` // admin.error
 
-## どこに何かくか
+## Giải thích về các thành phần chính của EC-CUBE
 
-EC-CUBEのソースはすべて`src/Eccube`以下にある。
+Code EC-CUBE thì toàn bộ nằm trong thư mục `src/Eccube`
 
-| どこ | なに | 2.13のなに |
+| Where | What | in 2.13 version　 |
 |------|------|------|
-| ControllerProvider | Routingの定義。リクエストをControllerにわたす | html/以下の各ページの毎のphp |
-| Controller | リクエストを受けて、処理を各所に委譲。Viewを返す | LC_Page_Xxx |
-| Service | ビジネスロジックを記述。if文とかfor文とかはこの中にかくことになりがち | SC_Xxx |
-| ServiceProvider | DIコンテナにつっこむものたち。Form\TypeとかRepositoryとかをここで格納する | SC_InitialとかRequire_base的なもの |
-| Resource/doctrine | doctrineの定義ファイル置き場。YAMLでかく | (なし) |
-| Entity | DoctrineによってマッピングされるObject。こいつをコネコネする | (なし) |
-| Repository | Entityをコネコネする郡。`findBy()`とかはこの中に | SC_Query |
-| Form/Type | Formを構成するパーツをかく。Validatorもいっしょに | SC_FormParam |
-| View | びゅー。Twigでかく | Xxx.tpl |
+| ControllerProvider | Định nghĩa Routing. Truyền request đến controller | html/Các trang php ở dưới thư mục này |
+| Controller | Nhận request, xử lý và trả lại response cho view | LC_Page_Xxx |
+| Service | Tầng Business logic. Đảm nhận những xử lý logic | SC_Xxx |
+| ServiceProvider | Đăng ký những biến toàn cục của hệ thông  | SC_Initial hoặc là Require_base |
+| Resource/doctrine | Nơi đặt file định nghĩa của doctrine. Viết bằng yaml | Không có |
+| Entity | Thực thể để map với các doctrine tương ứng| Không có |
+| Repository | Định nghĩa các hàm tương tác với bảng dữ liệu trong Entity | SC_Query |
+| Form/Type | Định nghĩa Form, Validator... | SC_FormParam |
+| View | View viết bằng Twig | Xxx.tpl |
 
 
-## ControllerをFatにしないために
-Controllerでは以下に挙げる振る舞い以外を許容しない
-* Requestを受ける
-* FormにRequestをBindする
-* Repositoryに処理を委譲する
-* Serviceに処理を委譲する
-* データを変換する
-* ViewをRenderする
+## Để Controller không qúa phức tạp
+Ngoài những xử lý dưới đây thì không được phép viết trong Controller
+* Nhận Request
+* Bind request vs Form
+* Chuyển giao xử lý cho Repository
+* Chuyển giao xử lý cho Service
+* Chuyển đổi dữ liệu
+* Render View
 
-
-以下で規定したものをそれぞれ適した場所に記述することにより、FatControllerになることを避ける
 
 ### Controller
-* 新規登録と編集で異なるEntityを取得する際は、Controllerでわかるように明示する
+* Trong trường hợp tạo mới và edit mà lấy các Entity khác nhau thì chia làm 2 method khác nhau trong Controlelr
 
 ### Repository
-* QueryBuilderを使った複雑なクエリを実行したい場合
-* `findByXxx()`は利用しないこと
-* `findByXxx()`を作成しないこと
+* Trong trường hợp muốn chạy câu query phức tạp mà sử dụng QueryBuilder
+* Không dùng `findByXxx()`
+* Không tạo `findByXxx()`
 
 ### FormType
-* FormEvent / FormExtensionを使った拡張
-* DataTransformerを使った変換
+* Mở rông thì dùng FormEvent / FormExtension
+* Chuyển đổi thì dùng DataTransformer
 
 ### Service
-* ビジネスロジックの実装
+* Thực thi business logic.
 
-## テストの書き方
-* Web、Service、Repository、FormTypeのテストを必須とする
-* WebTestは、`AbstractWebTestCase.php` を継承して作成する
-* RequestMethodが指定されたテストの場合は、それ以外が失敗することを確認する
+## Unit test
+* Cần viết test cho Web、Service、Repository、FormType
+* WebTest thì kế thừa từ `AbstractWebTestCase.php`
