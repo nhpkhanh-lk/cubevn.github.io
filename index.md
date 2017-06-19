@@ -1,8 +1,3 @@
----
-layout: default
-title: HOME
-description: Here is Document site of EC-CUBE. We provide all information such as Development Guideline, Concept of elemental technology, Tutorial for Development on main EC-Cube and Plugin, Cookbook, etc.
----
 
 ---
 
@@ -18,8 +13,6 @@ description: Here is Document site of EC-CUBE. We provide all information such a
 - [System requirement](/requirement.html)
 - [Development environment structure](development-environment.html)
 - [How to install](/install.html)
-- [Xampp install](/xampp_install.html)
-- [WebMatrix install](/webmatrix_install.html)
 - [How to update](/update.html)
 
 ## EC-CUBE 3 Specification
@@ -30,7 +23,7 @@ description: Here is Document site of EC-CUBE. We provide all information such a
   3. Constant
   4. Replacement 2 system・3 system
 - [Template searching order](/template.html)
-- [Function list](/feature-list.html)
+- <a href="https://github.com/EC-CUBE/eccube3-doc/blob/master/feature_list.xls" target="_blank">Function list</a>
 - <a href="https://github.com/EC-CUBE/eccube3-doc/tree/master/ER-D" target="_blank">Table・ER Diagram</a>
 - <a href="https://github.com/EC-CUBE/eccube3-doc/tree/master/IntegrationTest" target="_blank">Integration test item document</a>
 
@@ -41,7 +34,6 @@ description: Here is Document site of EC-CUBE. We provide all information such a
 - [Priority control specification by handler](/plugin_handler.html) 
 - [Develop Plugin using php app/console plugin:develop ](/plugin_console.html)
 - [Plugin test](plugin-test.html)
-- [Plugin sample dev](plugin_sample_dev.html)
 
 ## Web API Specification
 
@@ -64,9 +56,6 @@ description: Here is Document site of EC-CUBE. We provide all information such a
 ## Development help
 
 - [Debug・Tips](tips.html)
-- [PHP Storm Debug](plugin-storm-debug.html)
-- [PHP Storm Plugin](plugin-storm-plugin.html)
-- [PHP Storm Unittest](plugin-storm-unittest.html)
 
 ## Technique used in EC-CUBE 3
 - We provide overview of Core technique in EC-CUBE 3 and some reference site
