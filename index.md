@@ -64,9 +64,9 @@ description: Here is Document site of EC-CUBE. We provide all information such a
 ## Development help
 
 - [Debug・Tips](tips.html)
-- [PHP Storm Debug](plugin-storm-debug.html)
-- [PHP Storm Plugin](plugin-storm-plugin.html)
-- [PHP Storm Unittest](plugin-storm-unittest.html)
+- [PHP Storm Debug](php-storm-debug.html)
+- [PHP Storm Plugin](php-storm-plugin.html)
+- [PHP Storm Unittest](php-storm-unittest.html)
 
 ## Technique used in EC-CUBE 3
 - We provide overview of Core technique in EC-CUBE 3 and some reference site
