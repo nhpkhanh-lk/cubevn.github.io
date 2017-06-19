@@ -12,3 +12,8 @@ kramdown:
 highlighter: rouge
 gems:
   - jekyll-sitemap
+
+description: "EC-CUBE 3 Document "
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
