@@ -15,7 +15,7 @@ What is EC-CUBE 3???
 # The Book
 
 The Developer’s guide to leveraging the flexibility of EC-CUBe.
-Here you will find all the concepts used in the EC-CUBE. The Book helps to understand how EC-CUBE works.
+Here you will find all the concepts used in the EC-CUBE. [The Book](/3.0/book/index.html) helps to understand how EC-CUBE works.
 
 # The Customization Guide
 The [Customization Guide](/3.0/customization/index.html) is helpful while wanting to adapt EC-CUBE to your personal business needs.
@@ -34,46 +34,46 @@ The [Customization Guide](/3.0/customization/index.html) is helpful while wantin
 - [Customizing Grids](/3.0/customization/grid.html)
 
 # EC-CUBE Plugins
-The collection of Sylius Plugins together with the guide on Plugins development. Remember that you can use all the [customization techniques](/customization_guide.html) in Plugins.
+The collection of Sylius Plugins together with the guide on Plugins development. Remember that you can use all the [customization techniques](/3.0/customization/index.html) in Plugins.
 
-- [How to create a plugin for Sylius?](/creating_plugin.html)
+- [How to create a plugin for Sylius?](/3.0/plugins/creating_plugin.html)
 
 # The Cookbook
-[The Cookbook](/cook_book.html) is a collection of specific solutions for specific needs.
+[The Cookbook](/3.0/cookbook/index.html) is a collection of specific solutions for specific needs.
 
 # The REST API Reference
-[The API guide](/api_guide.html) covers the REST API of Sylius platform.
+[The API guide](/3.0/api/index.html) covers the REST API of Sylius platform.
 
-- [Introduction to Sylius REST API](/api_guide.html)
-- [Authorization](/api_guide.html)
-- [Admin Users API](/api_guide.html)
-- [Carts API](/api_guide.html)
-- [Channels API](/api_guide.html)
-- [Checkout API](/api_guide.html)
-- [Countries API](/api_guide.html)
-- [Currencies API](/api_guide.html)
-- [Customers API](/api_guide.html)
-- [Exchange Rates API](/api_guide.html)
-- [Locales API](/api_guide.html)
-- [Orders API](/api_guide.html)
-- [Payment Methods API](/api_guide.html)
-- [Payments API](/api_guide.html)
-- [Product Attributes API](/api_guide.html)
-- [Product Options API](/api_guide.html)
-- [Product Reviews API](/api_guide.html)
-- [Product Variants API](/api_guide.html)
-- [Products API](/api_guide.html)
-- [Promotion Coupons API](/api_guide.html)
-- [Promotions API](/api_guide.html)
-- [Provinces API](/api_guide.html)
-- [Shipments API](/api_guide.html)
-- [Shipping Categories API](/api_guide.html)
-- [Shipping Methods API](/api_guide.html)
-- [Tax Categories API](/api_guide.html)
-- [Tax Rates API](/api_guide.html)
-- [Taxons API](/api_guide.html)
-- [Zones API](/api_guide.html)
-- [Sorting and filtration](/api_guide.html)
+- [Introduction to Sylius REST API](/3.0/api/introduction.html)
+- [Authorization](/3.0/api/authorization.html)
+- [Admin Users API](/3.0/api/admin_users.html)
+- [Carts API](/3.0/api/carts.html)
+- [Channels API](/3.0/api/channels.html)
+- [Checkout API](/3.0/api/checkouts.html)
+- [Countries API](/3.0/api/countries.html)
+- [Currencies API](/3.0/api/currencies.html)
+- [Customers API](/3.0/api/customers.html)
+- [Exchange Rates API](/3.0/api/exchange_rate.html)
+- [Locales API](/3.0/api/locales.html)
+- [Orders API](/3.0/api/orders.html)
+- [Payment Methods API](/3.0/api/payment_methods.html)
+- [Payments API](/3.0/api/payment.html)
+- [Product Attributes API](/3.0/api/product_attributes.html)
+- [Product Options API](/3.0/api/product_options.html)
+- [Product Reviews API](/3.0/api/product_reviews.html)
+- [Product Variants API](/3.0/api/product_variants.html)
+- [Products API](/3.0/api/product.html)
+- [Promotion Coupons API](/3.0/api/promotion_coupons.html)
+- [Promotions API](/3.0/api/promotions.html)
+- [Provinces API](/3.0/api/provinces.html)
+- [Shipments API](/3.0/api/shipments.html)
+- [Shipping Categories API](/3.0/api/shipping_categories.html)
+- [Shipping Methods API](/3.0/api/shipping_methods.html)
+- [Tax Categories API](/3.0/api/tax_categories.html)
+- [Tax Rates API](/3.0/api/tax_rates.html)
+- [Taxons API](/3.0/api/taxons.html)
+- [Zones API](/3.0/api/zones.html)
+- [Sorting and filtration](/3.0/api/sorting_filtration.html)
 
 
 # The BDD Guide
