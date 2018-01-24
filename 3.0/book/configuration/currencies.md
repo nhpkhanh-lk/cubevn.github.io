@@ -1,0 +1,1 @@
+configuration/currencies.html
