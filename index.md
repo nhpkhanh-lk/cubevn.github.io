@@ -87,7 +87,7 @@ In [the BDD Guide](/3.0/bdd/index.html) you will learn how to write clean and re
 - [How to define a new suite?](/3.0/bdd/how_to_define_new_suite.html)
 - [How to use transformers?](/3.0/bdd/how_to_use_transformers.html)
 
--->
+
 
 ### 下記のような内容が削除されるかもしれません。
 
@@ -230,3 +230,4 @@ In [the BDD Guide](/3.0/bdd/index.html) you will learn how to write clean and re
 ### How to add GoogleAnalitics
 
 1. [Add JavaScript using Management function block](cookbook-2-cube3-customize-js.html)
+-->
