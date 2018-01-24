@@ -60,7 +60,7 @@ You should also have a look here if you are looking for Cart, which is in Sylius
 
 - [Orders](orders/orders.html)
 - [Taxation](orders/taxation.html)
-- [Adjustments](orders/adjusments.html)
+- [Adjustments](orders/adjustments.html)
 - [Promotions](orders/promotions.html)
 - [Coupons](orders/coupons.html)
 - [Payments](orders/payments.html)

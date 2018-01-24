@@ -20,7 +20,7 @@ Here you will find all the concepts used in the EC-CUBE. [The Book](/3.0/book/in
 # The Customization Guide
 The [Customization Guide](/3.0/customization/index.html) is helpful while wanting to adapt EC-CUBE to your personal business needs.
 
-- [Customizing Models](/3.0/customization/models.html)
+- [Customizing Models](/3.0/customization/model.html)
 - [Customizing Forms](/3.0/customization/form.html)
 - [Customizing Repositories](/3.0/customization/repository.html)
 - [Customizing Factories](/3.0/customization/factory.html)
