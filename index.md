@@ -6,6 +6,108 @@ description: Here is Document site of EC-CUBE. We provide all information such a
 
 ---
 
+# EC-CUBE 3
+
+What is EC-CUBE 3???
+
+
+
+# The Book
+
+The Developer’s guide to leveraging the flexibility of EC-CUBe.
+Here you will find all the concepts used in the EC-CUBE. The Book helps to understand how EC-CUBE works.
+
+#The Customization Guide
+The [Customization Guide](/customization_guide.html) is helpful while wanting to adapt EC-CUBE to your personal business needs.
+
+- [Customizing Models](/customization_models.html)
+- [Customizing Forms](/customization_forms.html)
+- [Customizing Repositories](/customization_repositories.html)
+- [Customizing Factories](/customization_factories.html)
+- [Customizing Controllers](/customization_controllers.html)
+- [Customizing Validation](/customization_validation.html)
+- [Customizing Menus](/customization_menus.html)
+- [Customizing Templates](/customization_templates.html)
+- [Customizing Translations](/customization_translations.html)
+- [Customizing Flashes](/customization_flashes.html)
+- [Customizing State Machines](/customization_state_machines.html)
+- [Customizing Grids](/customization_grids.html)
+
+#EC-CUBE Plugins
+The collection of Sylius Plugins together with the guide on Plugins development. Remember that you can use all the [customization techniques](/customization_guide.html) in Plugins.
+
+- [How to create a plugin for Sylius?](/creating_plugin.html)
+
+#The Cookbook
+[The Cookbook](/cook_book.html) is a collection of specific solutions for specific needs.
+
+#The REST API Reference
+[The API guide](/api_guide.html) covers the REST API of Sylius platform.
+
+- [Introduction to Sylius REST API](/api_guide.html)
+- [Authorization](/api_guide.html)
+- [Admin Users API](/api_guide.html)
+- [Carts API](/api_guide.html)
+- [Channels API](/api_guide.html)
+- [Checkout API](/api_guide.html)
+- [Countries API](/api_guide.html)
+- [Currencies API](/api_guide.html)
+- [Customers API](/api_guide.html)
+- [Exchange Rates API](/api_guide.html)
+- [Locales API](/api_guide.html)
+- [Orders API](/api_guide.html)
+- [Payment Methods API](/api_guide.html)
+- [Payments API](/api_guide.html)
+- [Product Attributes API](/api_guide.html)
+- [Product Options API](/api_guide.html)
+- [Product Reviews API](/api_guide.html)
+- [Product Variants API](/api_guide.html)
+- [Products API](/api_guide.html)
+- [Promotion Coupons API](/api_guide.html)
+- [Promotions API](/api_guide.html)
+- [Provinces API](/api_guide.html)
+- [Shipments API](/api_guide.html)
+- [Shipping Categories API](/api_guide.html)
+- [Shipping Methods API](/api_guide.html)
+- [Tax Categories API](/api_guide.html)
+- [Tax Rates API](/api_guide.html)
+- [Taxons API](/api_guide.html)
+- [Zones API](/api_guide.html)
+- [Sorting and filtration](/api_guide.html)
+
+
+#The BDD Guide
+In [the BDD Guide](/bdd_guide.html) you will learn how to write clean and reusable features, contexts and pages using Behat.
+
+- [Basic Usage](/bdd_guide.html)
+- [Introduction to containers](/bdd_guide.html)
+- [How to add a new context?](/bdd_guide.html)
+- [How to add a new page object?](/bdd_guide.html)
+- [How to define a new suite?](/bdd_guide.html)
+- [How to use transformers?](/bdd_guide.html)
+
+#The Contribution Guide
+[The Contribution Guide](/contribution_guide.html) to Sylius.
+
+- [Contributing Code](/contribution_guide.html)
+- [Contributing Documentation](/contribution_guide.html)
+- [Contributing Translations](/contribution_guide.html)
+- [Organization](/contribution_guide.html)
+
+#Support
+[The Support section](/support_section.html) for Sylius.
+
+#Components & Bundles
+[Documentation of all Sylius components and bundles](/components_bundles.html) useful when using them standalone.
+
+- [Sylius Components Documentation](/components_bundles.html)
+- [Sylius Bundles Documentation](/components_bundles.html)
+
+
+
+
+###下記のような内容が削除されるかもしれません。
+
 # EC-CUBE 3 Development Document
 
 ## GitHub
