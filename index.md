@@ -17,31 +17,31 @@ What is EC-CUBE 3???
 The Developer’s guide to leveraging the flexibility of EC-CUBe.
 Here you will find all the concepts used in the EC-CUBE. The Book helps to understand how EC-CUBE works.
 
-#The Customization Guide
-The [Customization Guide](/customization_guide.html) is helpful while wanting to adapt EC-CUBE to your personal business needs.
+# The Customization Guide
+The [Customization Guide](/customization/index.html) is helpful while wanting to adapt EC-CUBE to your personal business needs.
 
-- [Customizing Models](/customization_models.html)
-- [Customizing Forms](/customization_forms.html)
-- [Customizing Repositories](/customization_repositories.html)
-- [Customizing Factories](/customization_factories.html)
-- [Customizing Controllers](/customization_controllers.html)
-- [Customizing Validation](/customization_validation.html)
-- [Customizing Menus](/customization_menus.html)
-- [Customizing Templates](/customization_templates.html)
-- [Customizing Translations](/customization_translations.html)
-- [Customizing Flashes](/customization_flashes.html)
-- [Customizing State Machines](/customization_state_machines.html)
-- [Customizing Grids](/customization_grids.html)
+- [Customizing Models](/customization/models.html)
+- [Customizing Forms](/customization/form.html)
+- [Customizing Repositories](/customization/repository.html)
+- [Customizing Factories](/customization/factory.html)
+- [Customizing Controllers](/customization/controller.html)
+- [Customizing Validation](/customization/validation.html)
+- [Customizing Menus](/customization/menu.html)
+- [Customizing Templates](/customization/template.html)
+- [Customizing Translations](/customization/translation.html)
+- [Customizing Flashes](/customization/flash.html)
+- [Customizing State Machines](/customization/state_machine.html)
+- [Customizing Grids](/customization/grid.html)
 
-#EC-CUBE Plugins
+# EC-CUBE Plugins
 The collection of Sylius Plugins together with the guide on Plugins development. Remember that you can use all the [customization techniques](/customization_guide.html) in Plugins.
 
 - [How to create a plugin for Sylius?](/creating_plugin.html)
 
-#The Cookbook
+# The Cookbook
 [The Cookbook](/cook_book.html) is a collection of specific solutions for specific needs.
 
-#The REST API Reference
+# The REST API Reference
 [The API guide](/api_guide.html) covers the REST API of Sylius platform.
 
 - [Introduction to Sylius REST API](/api_guide.html)
@@ -76,7 +76,7 @@ The collection of Sylius Plugins together with the guide on Plugins development.
 - [Sorting and filtration](/api_guide.html)
 
 
-#The BDD Guide
+# The BDD Guide
 In [the BDD Guide](/bdd_guide.html) you will learn how to write clean and reusable features, contexts and pages using Behat.
 
 - [Basic Usage](/bdd_guide.html)
@@ -86,7 +86,7 @@ In [the BDD Guide](/bdd_guide.html) you will learn how to write clean and reusab
 - [How to define a new suite?](/bdd_guide.html)
 - [How to use transformers?](/bdd_guide.html)
 
-#The Contribution Guide
+# The Contribution Guide
 [The Contribution Guide](/contribution_guide.html) to Sylius.
 
 - [Contributing Code](/contribution_guide.html)
@@ -94,10 +94,10 @@ In [the BDD Guide](/bdd_guide.html) you will learn how to write clean and reusab
 - [Contributing Translations](/contribution_guide.html)
 - [Organization](/contribution_guide.html)
 
-#Support
+# Support
 [The Support section](/support_section.html) for Sylius.
 
-#Components & Bundles
+# Components & Bundles
 [Documentation of all Sylius components and bundles](/components_bundles.html) useful when using them standalone.
 
 - [Sylius Components Documentation](/components_bundles.html)
@@ -106,7 +106,7 @@ In [the BDD Guide](/bdd_guide.html) you will learn how to write clean and reusab
 
 
 
-###下記のような内容が削除されるかもしれません。
+### 下記のような内容が削除されるかもしれません。
 
 # EC-CUBE 3 Development Document
 
