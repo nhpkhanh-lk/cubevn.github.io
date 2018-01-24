@@ -4,8 +4,8 @@ The Developer’s guide to leveraging the flexibility of Sylius. Here you will f
 # Introduction
 Introduction aims to describe the philosophy of Sylius. It will also teach you about environments before you start installing it.
 
--[Introduction to Sylius](../introduction/introduction.html)
--[Understanding Environments](../introduction/environments.html)
+- [Introduction to Sylius](introduction/introduction.html)
+- [Understanding Environments](introduction/environments.html)
 
 # Installation
 The installation chapter is of course a comprehensive guide to installing Sylius on your machine, but it also provides a general instruction on upgrading Sylius in your project.
