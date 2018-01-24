@@ -5,7 +5,6 @@ description: Here is Document site of EC-CUBE. We provide all information such a
 ---
 
 ---
-[version]: 3.0
 
 # EC-CUBE 3
 
@@ -19,20 +18,20 @@ The Developer’s guide to leveraging the flexibility of EC-CUBe.
 Here you will find all the concepts used in the EC-CUBE. The Book helps to understand how EC-CUBE works.
 
 # The Customization Guide
-The [Customization Guide](/[version]/customization/index.html) is helpful while wanting to adapt EC-CUBE to your personal business needs.
+The [Customization Guide](/3.0/customization/index.html) is helpful while wanting to adapt EC-CUBE to your personal business needs.
 
-- [Customizing Models](/[version]/customization/models.html)
-- [Customizing Forms](/[version]/customization/form.html)
-- [Customizing Repositories](/[version]/customization/repository.html)
-- [Customizing Factories](/[version]/customization/factory.html)
-- [Customizing Controllers](/[version]/customization/controller.html)
-- [Customizing Validation](/[version]/customization/validation.html)
-- [Customizing Menus](/[version]/customization/menu.html)
-- [Customizing Templates](/[version]/customization/template.html)
-- [Customizing Translations](/[version]/customization/translation.html)
-- [Customizing Flashes](/[version]/customization/flash.html)
-- [Customizing State Machines](/[version]/customization/state_machine.html)
-- [Customizing Grids](/[version]/customization/grid.html)
+- [Customizing Models](/3.0/customization/models.html)
+- [Customizing Forms](/3.0/customization/form.html)
+- [Customizing Repositories](/3.0/customization/repository.html)
+- [Customizing Factories](/3.0/customization/factory.html)
+- [Customizing Controllers](/3.0/customization/controller.html)
+- [Customizing Validation](/3.0/customization/validation.html)
+- [Customizing Menus](/3.0/customization/menu.html)
+- [Customizing Templates](/3.0/customization/template.html)
+- [Customizing Translations](/3.0/customization/translation.html)
+- [Customizing Flashes](/3.0/customization/flash.html)
+- [Customizing State Machines](/3.0/customization/state_machine.html)
+- [Customizing Grids](/3.0/customization/grid.html)
 
 # EC-CUBE Plugins
 The collection of Sylius Plugins together with the guide on Plugins development. Remember that you can use all the [customization techniques](/customization_guide.html) in Plugins.
