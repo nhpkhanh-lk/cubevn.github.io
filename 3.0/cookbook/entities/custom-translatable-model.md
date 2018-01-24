@@ -1,0 +1,1 @@
+custom-translatable-model.html
