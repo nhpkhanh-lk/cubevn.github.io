@@ -41,6 +41,7 @@ The collection of Sylius Plugins together with the guide on Plugins development.
 # The Cookbook
 [The Cookbook](/3.0/cookbook/index.html) is a collection of specific solutions for specific needs.
 
+<!--
 # The REST API Reference
 [The API guide](/3.0/api/index.html) covers the REST API of Sylius platform.
 
@@ -77,34 +78,16 @@ The collection of Sylius Plugins together with the guide on Plugins development.
 
 
 # The BDD Guide
-In [the BDD Guide](/bdd_guide.html) you will learn how to write clean and reusable features, contexts and pages using Behat.
+In [the BDD Guide](/3.0/bdd/index.html) you will learn how to write clean and reusable features, contexts and pages using Behat.
 
-- [Basic Usage](/bdd_guide.html)
-- [Introduction to containers](/bdd_guide.html)
-- [How to add a new context?](/bdd_guide.html)
-- [How to add a new page object?](/bdd_guide.html)
-- [How to define a new suite?](/bdd_guide.html)
-- [How to use transformers?](/bdd_guide.html)
+- [Basic Usage](/3.0/bdd/basic_usage.html)
+- [Introduction to containers](/3.0/bdd/introduction_to_containers.html)
+- [How to add a new context?](/3.0/bdd/how_to_add_new_context.html)
+- [How to add a new page object?](/3.0/bdd/how_to_add_new_page.html)
+- [How to define a new suite?](/3.0/bdd/how_to_define_new_suite.html)
+- [How to use transformers?](/3.0/bdd/how_to_use_transformers.html)
 
-# The Contribution Guide
-[The Contribution Guide](/contribution_guide.html) to Sylius.
-
-- [Contributing Code](/contribution_guide.html)
-- [Contributing Documentation](/contribution_guide.html)
-- [Contributing Translations](/contribution_guide.html)
-- [Organization](/contribution_guide.html)
-
-# Support
-[The Support section](/support_section.html) for Sylius.
-
-# Components & Bundles
-[Documentation of all Sylius components and bundles](/components_bundles.html) useful when using them standalone.
-
-- [Sylius Components Documentation](/components_bundles.html)
-- [Sylius Bundles Documentation](/components_bundles.html)
-
-
-
+-->
 
 ### 下記のような内容が削除されるかもしれません。
 

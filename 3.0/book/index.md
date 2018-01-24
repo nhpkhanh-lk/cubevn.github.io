@@ -1,13 +1,13 @@
-#The Book
+# The Book
 The Developer’s guide to leveraging the flexibility of Sylius. Here you will find all the concepts used in Sylius. The Books helps to understand how Sylius works.
 
-#Introduction
+# Introduction
 Introduction aims to describe the philosophy of Sylius. It will also teach you about environments before you start installing it.
 
--[Introduction to Sylius](/introduction/introduction.html)
--[Understanding Environments](/introduction/environments.html)
+-[Introduction to Sylius](../introduction/introduction.html)
+-[Understanding Environments](../introduction/environments.html)
 
-#Installation
+# Installation
 The installation chapter is of course a comprehensive guide to installing Sylius on your machine, but it also provides a general instruction on upgrading Sylius in your project.
 
 -[System Requirements](/installation/requirements.html)
@@ -15,7 +15,7 @@ The installation chapter is of course a comprehensive guide to installing Sylius
 -[Sylius installation via Vagrant](/installation/vagrant_installation.html)
 -[Upgrading](/installation/upgrading.html)
 
-#Architecture
+# Architecture
 The key to understanding principles of Sylius internal organization. Here you will learn about the Resource layer, state machines, events and general non e-commerce concepts adopted in the platform, like E-mails or Fixtures.
 
 -[Architecture Overview](/architecture/architecture.html)
@@ -27,7 +27,7 @@ The key to understanding principles of Sylius internal organization. Here you wi
 -[Fixtures](/architecture/fixtures.html)
 -[Events](/architecture/events.html)
 
-#Configuration
+# Configuration
 Having knowledge about basics of our architecture we will introduce the three most important concepts - Channels, Locales and Currencies. These things have to be configured before you will have a Sylius application up and running.
 
 Channels
