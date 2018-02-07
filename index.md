@@ -11,6 +11,12 @@ description: Here is Document site of EC-CUBE. We provide all information such a
 What is EC-CUBE 3???
 
 
+# Quick Start
+- [システム要件](/3.0/quick/requirement.html)
+- [インストール方法](/3.0/quick/install.html)
+- [プロキシサーバの設定](/3.0/quick/proxy.html)
+- [インストール時にURLからhtmlを無くす](/3.0/quick/remove-html.html)
+- [EC-CUBE本体のバージョンアップ](/3.0/quick/update.html)
 
 # The Book
 
